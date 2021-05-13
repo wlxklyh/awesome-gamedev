@@ -46,7 +46,8 @@ https://blog.csdn.net/i_dovelemon/article/details/38342739
 - 辐射度算法(radiosity)（未读）：
 https://blog.csdn.net/kuangben2000/article/details/82955658
 
-- 烘焙漏光
+- 烘焙漏光：
+这里就是说加大lightmap分辨率
 https://www.bilibili.com/video/av96889514/
 ### 实时渲染
 
