@@ -9,7 +9,8 @@
     - [性能优化](#性能优化)
     - [GamePlay](#gameplay)
     - [网络](#网络)
-    - [](#)
+    - [工具](#工具)
+        - [IDE](#ide)
 
 <!-- /TOC -->
 ## 说明
@@ -36,9 +37,17 @@ https://zhuanlan.zhihu.com/p/36439822
 翻译：https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/    
 英文：https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
 
+- 3D空间中射线与轴向包围盒AABB的交叉检测算法
+https://blog.csdn.net/i_dovelemon/article/details/38342739
+
+
+
 ### 烘焙和离线渲染
 - 辐射度算法(radiosity)（未读）：
 https://blog.csdn.net/kuangben2000/article/details/82955658
+
+- 烘焙漏光
+https://www.bilibili.com/video/av96889514/
 ### 实时渲染
 
 
@@ -48,4 +57,7 @@ https://blog.csdn.net/kuangben2000/article/details/82955658
 
 ## 网络
 
-## 
+## 工具
+### IDE
+vs2017的resharper插件：
+https://www.jianshu.com/p/494bdde2a431
