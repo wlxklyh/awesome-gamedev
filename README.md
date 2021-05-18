@@ -2,10 +2,10 @@
 <!-- TOC -->
 
 - [awesome-gamedev](#awesome-gamedev)
-    - [说明](#说明)
-    - [书籍](#书籍)
-    - [GPU](#gpu)
-    - [图形学](#图形学)
+    - [:loudspeaker:说明](#loudspeaker说明)
+    - [:book:书籍](#book书籍)
+    - [:rocket:GPU](#rocketgpu)
+    - [:mount_fuji:图形学](#mount_fuji图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
         - [实时渲染](#实时渲染)
     - [性能优化](#性能优化)
@@ -13,23 +13,24 @@
     - [网络](#网络)
     - [工具](#工具)
         - [IDE](#ide)
+        - [有趣的](#有趣的)
 
 <!-- /TOC -->
-## 说明
+## :loudspeaker:说明
  收集游戏进阶的 文章 demo 教程等等
 
-## 书籍
+## :book:书籍
 |书名|地址|介绍|
 |-|-|-|
 |![](Img/2021-05-18-15-40-48.png)|链接：https://pan.baidu.com/s/1SRPqDrdbXTttnO-6Z2PtHQ 提取码：wlxk ||
 
-## GPU
+## :rocket:GPU
 - CUDA（未读）：
 https://blog.csdn.net/chengyq116/article/details/105919991
 https://zhuanlan.zhihu.com/p/34587739
 
 
-## 图形学
+## :mount_fuji:图形学
 - lightprobe
 简述：文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数
 https://www.jianshu.com/p/6dfe403f75f6
@@ -86,3 +87,7 @@ https://www.bilibili.com/video/av96889514/
 ### IDE
 vs2017的resharper插件：
 https://www.jianshu.com/p/494bdde2a431
+
+### 有趣的
+
+https://www.thisfaner.com/o/git-emoji/
