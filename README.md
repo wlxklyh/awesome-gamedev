@@ -24,6 +24,11 @@ https://zhuanlan.zhihu.com/p/34587739
 
 
 ## 图形学
+- lightprobe
+简述：文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数
+https://www.jianshu.com/p/6dfe403f75f6
+简述：Unity里面内置函数ShadeSH9 也解释了光照探针原理
+https://gameinstitute.qq.com/community/detail/124147
 - 距离场？？（后面看光追 路径追踪再看）：
 - ray matching？？（后面看光追 路径追踪再看）：
 
