@@ -3,6 +3,7 @@
 
 - [awesome-gamedev](#awesome-gamedev)
     - [说明](#说明)
+    - [书籍](#书籍)
     - [GPU](#gpu)
     - [图形学](#图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
@@ -16,6 +17,11 @@
 <!-- /TOC -->
 ## 说明
  收集游戏进阶的 文章 demo 教程等等
+
+## 书籍
+|书名|地址|介绍|
+|-|-|-|
+|![](Img/2021-05-18-15-40-48.png)|链接：https://pan.baidu.com/s/1SRPqDrdbXTttnO-6Z2PtHQ 提取码：wlxk ||
 
 ## GPU
 - CUDA（未读）：
