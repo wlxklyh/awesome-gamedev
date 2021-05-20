@@ -3,7 +3,7 @@
 
 - [awesome-gamedev](#awesome-gamedev)
     - [:loudspeaker:说明](#loudspeaker说明)
-    - [:book:书籍](#book书籍)
+    - [📚书籍](#📚书籍)
     - [:rocket:GPU](#rocketgpu)
     - [:mount_fuji:图形学](#mount_fuji图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
@@ -19,7 +19,7 @@
 ## :loudspeaker:说明
  收集游戏进阶的 文章 demo 教程等等
 
-## :book:书籍
+## 📚书籍
 |书名|地址|介绍|
 |-|-|-|
 |![](Img/2021-05-18-15-40-48.png)|链接：https://pan.baidu.com/s/1SRPqDrdbXTttnO-6Z2PtHQ 提取码：wlxk ||
