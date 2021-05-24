@@ -31,6 +31,12 @@ https://zhuanlan.zhihu.com/p/34587739
 
 
 ## :mount_fuji:图形学
+- GPULightmass
+https://github.com/AlanIWBFT/GPULightmass
+- mitsuba2 ？
+- 光追github ?
+https://github.com/Mike-Leo-Smith
+- optix7 官方demo?
 - lightprobe
 简述：文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数
 https://www.jianshu.com/p/6dfe403f75f6
@@ -87,6 +93,12 @@ https://www.bilibili.com/video/av96889514/
 ### IDE
 vs2017的resharper插件：
 https://www.jianshu.com/p/494bdde2a431
+GPU -Z：
+![](Img/2021-05-20-15-20-52.png)
+
+shaderred：
+shader调试工具
+https://shadered.org/docs/debugger.html
 
 ### 有趣的
 
