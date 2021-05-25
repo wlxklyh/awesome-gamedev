@@ -4,6 +4,8 @@
 - [awesome-gamedev](#awesome-gamedev)
     - [:loudspeaker:说明](#loudspeaker说明)
     - [📚书籍](#📚书籍)
+    - [:computer:博客](#computer博客)
+    - [:computer:工程](#computer工程)
     - [:rocket:GPU](#rocketgpu)
     - [:mount_fuji:图形学](#mount_fuji图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
@@ -24,6 +26,17 @@
 |-|-|-|
 |![](Img/2021-05-18-15-40-48.png)|链接：https://pan.baidu.com/s/1SRPqDrdbXTttnO-6Z2PtHQ 提取码：wlxk ||
 
+## :computer:博客 
+|博客|地址|介绍|
+|-|-|-|
+|云风博客|http://blog.codingnow.com/||
+
+## :computer:工程 
+|工程demo|地址|介绍|
+|-|-|-|
+|GPULightmass|https://github.com/AlanIWBFT/GPULightmass||
+
+
 ## :rocket:GPU
 - CUDA（未读）：
 https://blog.csdn.net/chengyq116/article/details/105919991
@@ -31,6 +44,14 @@ https://zhuanlan.zhihu.com/p/34587739
 
 
 ## :mount_fuji:图形学
+
+
+- DirectionMap
+简述：Unity的描述
+https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html
+
+- MTL Metropolis Light Transport ?
+https://blog.csdn.net/libing_zeng/article/details/77239332
 - GPULightmass
 https://github.com/AlanIWBFT/GPULightmass
 - mitsuba2 ？
@@ -99,6 +120,8 @@ GPU -Z：
 shaderred：
 shader调试工具
 https://shadered.org/docs/debugger.html
+
+- Substance Painter ？？
 
 ### 有趣的
 
