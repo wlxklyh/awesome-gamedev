@@ -7,6 +7,7 @@
     - [:computer:博客](#computer博客)
     - [:computer:工程](#computer工程)
     - [:rocket:GPU](#rocketgpu)
+    - [:mag:Paper](#magpaper)
     - [:mount_fuji:图形学](#mount_fuji图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
         - [实时渲染](#实时渲染)
@@ -42,9 +43,45 @@
 https://blog.csdn.net/chengyq116/article/details/105919991
 https://zhuanlan.zhihu.com/p/34587739
 
+## :mag:Paper
+这里有挺多文章
+http://www.ppsloan.org/publications/
+
+
+这个是讲球谐函数的文章：
+It was introduced in a paper at Siggraph 2002
+by Sloan, Kautz and Snyder as a technique for ultra realistic
+lighting of models
+http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf
+
+
+球谐函数 里面有UE的推导
+https://zhuanlan.zhihu.com/p/350057737
+
+Stupid SH:
+https://www.ppsloan.org/publications/StupidSH36.pdf
+
+SH生成DirectionalMap：
+简述：讲述了SH L1怎么可以更加真实 这样就可以只用4个参数 来表示
+https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
+
+迪士尼
+https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf
+
+蒙特卡洛积分在光追的应用：
+For more, see Siggraph 2001, “State of
+the Art in Monte Carlo Ray Tracing”,
+Course 29 
+Peter Shirley,”Realistic Ray Tracing”,
+A. K. Peters, 2001 
+
+Matt Pharr, “Design of a Realistic Image
+Synthesis System”, 2002, available at
+http://graphics.stanford.edu/~mmp
+/book.pdf 
 
 ## :mount_fuji:图形学
-
+- 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
 
 - DirectionMap
 简述：Unity的描述
