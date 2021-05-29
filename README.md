@@ -58,11 +58,18 @@ http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20H
 球谐函数 里面有UE的推导
 https://zhuanlan.zhihu.com/p/350057737
 
+UE的shader代码：
+https://zhuanlan.zhihu.com/p/36031421
+
+
 Stupid SH:
 https://www.ppsloan.org/publications/StupidSH36.pdf
 
 SH生成DirectionalMap：
-简述：讲述了SH L1怎么可以更加真实 这样就可以只用4个参数 来表示
+简述：讲述了SH L1怎么可以更加真实 这样就可以只用4个参数.
+https://liye.info/docdownloadv2-reconstructing-diffuse-lighting-from-spherical-harmonic-geomerics-pr_9ab504d8f0a0555e06b42fad4cc3d5b3
+
+球谐函数：
 https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
 
 迪士尼
@@ -163,3 +170,7 @@ https://shadered.org/docs/debugger.html
 ### 有趣的
 
 https://www.thisfaner.com/o/git-emoji/
+
+
+GLSL查询：
+https://github.com/wshxbqq/GLSL-Card/blob/master/README.md
