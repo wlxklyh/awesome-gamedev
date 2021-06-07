@@ -1,0 +1,51 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel BoxBlurX
+#pragma kernel BoxBlurY
+
+Texture2D InputRT;
+RWTexture2D<float4> Result;
+int BlurDiameter;
+int InputRTWidth;
+int InputRTHeight;
+
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+
+[numthreads(1,768,1)]
+void BoxBlurX(uint3 id : SV_DispatchThreadID)
+{
+	float4 colourSum = InputRT[int2(0, id.y)] * BlurDiameter / 2;
+	for (int index = 0; index <= BlurDiameter / 2; index++)
+		colourSum += InputRT[int2(index, id.y)];
+	for (int index = 0; index < InputRTWidth; index++)
+	{
+		Result[int2(index,id.y)] = colourSum / BlurDiameter;
+
+		// move window to the next 
+		float4 leftBorder = InputRT[int2(max(index - BlurDiameter / 2, 0), id.y)];
+		float4 rightBorder = InputRT[int2(min(index + BlurDiameter / 2 + 1, InputRTWidth - 1), id.y)];
+
+		colourSum -= leftBorder;
+		colourSum += rightBorder;
+	}
+}
+
+[numthreads(1024, 1, 1)]
+void BoxBlurY(uint3 id : SV_DispatchThreadID)
+{
+	float4 colourSum = InputRT[int2(id.x, 0)] * BlurDiameter / 2;
+	for (int index = 0; index <= BlurDiameter / 2; index++)
+		colourSum += InputRT[int2(id.x, index)];
+	for (int index = 0; index < InputRTHeight; index++)
+	{
+		Result[int2(id.x,index)] = colourSum / BlurDiameter;
+
+		// move window to the next 
+		float4 leftBorder = InputRT[int2(id.x, max(index - BlurDiameter / 2, 0))];
+		float4 rightBorder = InputRT[int2(id.x, min(index + BlurDiameter / 2 + 1, InputRTHeight - 1))];
+
+		colourSum -= leftBorder;
+		colourSum += rightBorder;
+	}
+}

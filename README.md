@@ -138,6 +138,14 @@ https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext
 https://www.bilibili.com/video/BV1YK4y1T7yY
 
 ### 烘焙和离线渲染
+- 烘焙器：
+Bakery
+Enlighten 
+Progressive 
+
+- Unity 烘焙学习
+https://zhuanlan.zhihu.com/p/78706246
+
 - 辐射度算法(radiosity)）：
 简述：非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识
 https://blog.csdn.net/kuangben2000/article/details/82955658
