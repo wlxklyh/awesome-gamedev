@@ -141,7 +141,7 @@ https://www.bilibili.com/video/BV1YK4y1T7yY
 - 烘焙器：
 Bakery
 Enlighten 
-Progressive :lightmap在uv空间做filter
+Progressive 
 
 - Unity 烘焙学习
 https://zhuanlan.zhihu.com/p/78706246
@@ -153,19 +153,6 @@ https://blog.csdn.net/kuangben2000/article/details/82955658
 - 烘焙漏光：
 这里就是说加大lightmap分辨率
 https://www.bilibili.com/video/av96889514/
-
-- UE4烘焙
-简述：
-https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/
-
-https://zhuanlan.zhihu.com/p/72086470
-
-https://blog.csdn.net/u013412391/article/details/106457631
-
-- 烘焙
-简述：lightmap UV空间不连续 geometry上连续 导致的过度有缝
-https://zhuanlan.zhihu.com/p/81198807
-
 ### 实时渲染
 
 
