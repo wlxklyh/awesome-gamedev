@@ -48,11 +48,8 @@ https://zhuanlan.zhihu.com/p/34587739
 http://www.ppsloan.org/publications/
 
 
-这个是讲球谐函数的文章：
-It was introduced in a paper at Siggraph 2002
-by Sloan, Kautz and Snyder as a technique for ultra realistic
-lighting of models
-http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf
+简述：It was introduced in a paper at Siggraph 2002 by Sloan, Kautz and Snyder as a technique for ultra realistic lighting of models
+[http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)
 
 
 球谐函数 里面有UE的推导
@@ -63,29 +60,24 @@ https://zhuanlan.zhihu.com/p/36031421
 
 
 Stupid SH:
+简述：讲SH
 https://www.ppsloan.org/publications/StupidSH36.pdf
 
 SH生成DirectionalMap：
 简述：讲述了SH L1怎么可以更加真实 这样就可以只用4个参数.
 https://liye.info/docdownloadv2-reconstructing-diffuse-lighting-from-spherical-harmonic-geomerics-pr_9ab504d8f0a0555e06b42fad4cc3d5b3
 
-球谐函数：
+球谐函数
+简述：球谐函数
 https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
 
 迪士尼
 https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf
 
 蒙特卡洛积分在光追的应用：
-For more, see Siggraph 2001, “State of
-the Art in Monte Carlo Ray Tracing”,
-Course 29 
-Peter Shirley,”Realistic Ray Tracing”,
-A. K. Peters, 2001 
+For more, see Siggraph 2001, “State of the Art in Monte Carlo Ray Tracing”, Course 29  Peter Shirley,”Realistic Ray Tracing”, A. K. Peters, 2001 
 
-Matt Pharr, “Design of a Realistic Image
-Synthesis System”, 2002, available at
-http://graphics.stanford.edu/~mmp
-/book.pdf 
+
 
 ## :mount_fuji:图形学
 - 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
@@ -94,8 +86,19 @@ http://graphics.stanford.edu/~mmp
 简述：Unity的描述
 https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html
 
-- MTL Metropolis Light Transport ?
+- Metropolis Light Transport（MTL）
+简述：这里讲了Basic PT、monte carlo light tracing、bidirectional path tracing、original metropoli light Transport、 PSSMLT
 https://blog.csdn.net/libing_zeng/article/details/77239332
+详细：
+    |类别|介绍|缺点|光线出发||
+    |-|-|-|-|-|
+    |basic path tracing:|视口射线 然后不断反射 射中光源则为有效| 效率很低 很多无效射线|视口出发||
+    |whitted style path tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
+    |Monte Carlo Path Tracing|从光源出发 在场景中反弹 每次击中场景中的物体表面 判断下能否跟视口连线成为有效路径 | 视口只是场景的一小部分的时候 光源出发的射线很多都浪费了 小光源有优势|光源出发|[1.Monte Carlo Path Tracing](http://www.graphics.stanford.edu/courses/cs348b-01/course29.hanrahan.pdf)|
+    |bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
+    |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
+    |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
+    
 - GPULightmass
 https://github.com/AlanIWBFT/GPULightmass
 - mitsuba2 ？
@@ -188,6 +191,11 @@ shader调试工具
 https://shadered.org/docs/debugger.html
 
 - Substance Painter ？？
+
+- 截帧
+renderdoc
+https://renderdoc.org/docs/getting_started/quick_start.html
+
 
 ### 有趣的
 
