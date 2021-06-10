@@ -11,6 +11,9 @@
     - [:mount_fuji:图形学](#mount_fuji图形学)
         - [烘焙和离线渲染](#烘焙和离线渲染)
         - [实时渲染](#实时渲染)
+    - [引擎](#引擎)
+        - [Unreal](#unreal)
+        - [Unity](#unity)
     - [性能优化](#性能优化)
     - [GamePlay](#gameplay)
     - [网络](#网络)
@@ -93,18 +96,23 @@ https://blog.csdn.net/libing_zeng/article/details/77239332
     |类别|介绍|缺点|光线出发||
     |-|-|-|-|-|
     |basic path tracing:|视口射线 然后不断反射 射中光源则为有效| 效率很低 很多无效射线|视口出发||
-    |whitted style path tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
+    |whitted style ray tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
     |Monte Carlo Path Tracing|从光源出发 在场景中反弹 每次击中场景中的物体表面 判断下能否跟视口连线成为有效路径 | 视口只是场景的一小部分的时候 光源出发的射线很多都浪费了 小光源有优势|光源出发|[1.Monte Carlo Path Tracing](http://www.graphics.stanford.edu/courses/cs348b-01/course29.hanrahan.pdf)|
     |bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
     |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
     |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
     
 - GPULightmass
+简述：Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass
 https://github.com/AlanIWBFT/GPULightmass
-- mitsuba2 ？
-- 光追github ?
+- mitsuba2
+简述：开源渲染器 知乎说几个小时可以看懂代码
+
+- 光追github 
+简述：清华学生的github 写了光追的渲染器
 https://github.com/Mike-Leo-Smith
-- optix7 官方demo?
+- optix7 官方demo
+
 - lightprobe
 简述：文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数
 https://www.jianshu.com/p/6dfe403f75f6
@@ -171,7 +179,16 @@ https://blog.csdn.net/u013412391/article/details/106457631
 https://zhuanlan.zhihu.com/p/81198807
 
 ### 实时渲染
-
+## 引擎
+### Unreal
+- shader编译配置
+Engine\Config\ConsoleVariables.ini 
+- shader编译
+简述：讲了技巧 还没细看 貌似挺不错的文章
+https://zhuanlan.zhihu.com/p/154081604
+这个貌似也不错
+https://www.cnblogs.com/kekec/p/8684068.html
+### Unity
 
 ## 性能优化
 
