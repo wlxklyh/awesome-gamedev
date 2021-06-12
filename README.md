@@ -181,13 +181,19 @@ https://zhuanlan.zhihu.com/p/81198807
 ### 实时渲染
 ## 引擎
 ### Unreal
-- shader编译配置
-Engine\Config\ConsoleVariables.ini 
+- Trick
+1. Engine\Config\ConsoleVariables.ini  配置shader编译选项
+2. 使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可
+3. 修改buildconfiguration 会导致全部重编
+4. Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程
+
 - shader编译
 简述：讲了技巧 还没细看 貌似挺不错的文章
 https://zhuanlan.zhihu.com/p/154081604
 这个貌似也不错
 https://www.cnblogs.com/kekec/p/8684068.html
+
+
 ### Unity
 
 ## 性能优化
