@@ -47,37 +47,41 @@ https://blog.csdn.net/chengyq116/article/details/105919991
 https://zhuanlan.zhihu.com/p/34587739
 
 ## :mag:Paper
-这里有挺多文章
+- Siggraph的一些文章集合 
+**简述：**  Siggraph的一些文章集合
 http://www.ppsloan.org/publications/
 
 
-简述：It was introduced in a paper at Siggraph 2002 by Sloan, Kautz and Snyder as a technique for ultra realistic lighting of models
-[http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)
+- 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing)  
+**简述：** It was introduced in a paper at Siggraph 2002 by Sloan, Kautz and Snyder as a technique for ultra realistic lighting of models  
+[http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)  
 
 
-球谐函数 里面有UE的推导
-https://zhuanlan.zhihu.com/p/350057737
-
-UE的shader代码：
+- 球谐函数 
+**简述：** 这里讲解了UE球谐函数的推导 （还没怎么看懂）  
+https://zhuanlan.zhihu.com/p/350057737  
+UE的shader代码：  
 https://zhuanlan.zhihu.com/p/36031421
 
 
-Stupid SH:
-简述：讲SH
+- Stupid SH
+**简述：** 讲SH（没看）
 https://www.ppsloan.org/publications/StupidSH36.pdf
 
-SH生成DirectionalMap：
-简述：讲述了SH L1怎么可以更加真实 这样就可以只用4个参数.
+- SH生成DirectionalMap：
+**简述：** 讲述了SH L1怎么可以更加真实 这样就可以只用4个参数  
 https://liye.info/docdownloadv2-reconstructing-diffuse-lighting-from-spherical-harmonic-geomerics-pr_9ab504d8f0a0555e06b42fad4cc3d5b3
 
-球谐函数
-简述：球谐函数
+- 球谐函数
+**简述：** 球谐函数  
 https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
 
-迪士尼
+- 迪士尼
+**简述：** 没看  
 https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf
 
-蒙特卡洛积分在光追的应用：
+- 蒙特卡洛积分在光追的应用：
+**简述：** 没看 
 For more, see Siggraph 2001, “State of the Art in Monte Carlo Ray Tracing”, Course 29  Peter Shirley,”Realistic Ray Tracing”, A. K. Peters, 2001 
 
 
@@ -86,12 +90,12 @@ For more, see Siggraph 2001, “State of the Art in Monte Carlo Ray Tracing”, 
 - 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
 
 - DirectionMap
-简述：Unity的描述
+**简述：** 方向图在Unity的描述  
 https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html
 
 - Metropolis Light Transport（MTL）
-简述：这里讲了Basic PT、monte carlo light tracing、bidirectional path tracing、original metropoli light Transport、 PSSMLT
-https://blog.csdn.net/libing_zeng/article/details/77239332
+**简述：** 这里讲了Basic PT、monte carlo light tracing、bidirectional path tracing、original metropoli light Transport、 PSSMLT  
+https://blog.csdn.net/libing_zeng/article/details/77239332  
 详细：
     |类别|介绍|缺点|光线出发||
     |-|-|-|-|-|
@@ -103,40 +107,44 @@ https://blog.csdn.net/libing_zeng/article/details/77239332
     |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
     
 - GPULightmass
-简述：Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass
+**简述：** Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass  
 https://github.com/AlanIWBFT/GPULightmass
 - mitsuba2
-简述：开源渲染器 知乎说几个小时可以看懂代码
+**简述：** 开源渲染器 知乎说几个小时可以看懂代码
 
 - 光追github 
-简述：清华学生的github 写了光追的渲染器
+**简述：** 清华学生的github 写了光追的渲染器  
 https://github.com/Mike-Leo-Smith
 - optix7 官方demo
+**简述：** 没看
 
 - lightprobe
-简述：文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数
-https://www.jianshu.com/p/6dfe403f75f6
-简述：Unity里面内置函数ShadeSH9 也解释了光照探针原理
-https://gameinstitute.qq.com/community/detail/124147
+**简述：** 文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数  
+https://www.jianshu.com/p/6dfe403f75f6  
+简述：Unity里面内置函数ShadeSH9 也解释了光照探针原理  
+https://gameinstitute.qq.com/community/detail/124147  
 - 距离场？？（后面看光追 路径追踪再看）：
+**简述：** 没查
+
 - ray matching？？（后面看光追 路径追踪再看）：
+**简述：** 没查
 
 - 2U展开：
-简述：从Unity的角度来解释2U 展开 然后说了怎么解决黑边问题
-https://www.jianshu.com/p/8e98414d601c
-简述：Unreal里面怎么只是2U
-https://docs.unrealengine.com/zh-CN/WorkingWithContent/Types/StaticMeshes/LightmapUnwrapping/index.html
-简述：生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库
-https://github.com/jpcy/xatlas
+**简述：** 从Unity的角度来解释2U 展开 然后说了怎么解决黑边问题  
+https://www.jianshu.com/p/8e98414d601c  
+**简述：** Unreal里面怎么只是2U  
+https://docs.unrealengine.com/zh-CN/WorkingWithContent/Types/StaticMeshes/LightmapUnwrapping/index.html  
+**简述：** 生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  
+https://github.com/jpcy/xatlas  
 
 - 层次包围盒（BVH）：
-简述：大致了解BVH 公式推导还是要看game101里面的讲解
+**简述：** 大致了解BVH 公式推导还是要看game101里面的讲解
 https://zhuanlan.zhihu.com/p/36439822
 - 全局光照初步认识（Global illumination，简称GI）：https://zhuanlan.zhihu.com/p/126362480
-- 球面高斯（(Spherical Gaussian, 简称SG）（未读）：
-翻译：https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/    
+- 球面高斯（(Spherical Gaussian, 简称SG）（未读）： 
+**翻译：** https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/     
 英文：https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
-
+ 
 - 3D空间中射线与轴向包围盒AABB的交叉检测算法
 https://blog.csdn.net/i_dovelemon/article/details/38342739
 
