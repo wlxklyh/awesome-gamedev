@@ -20,6 +20,7 @@
     - [工具](#工具)
         - [IDE](#ide)
         - [有趣的](#有趣的)
+        - [TODO](#todo)
 
 <!-- /TOC -->
 ## :loudspeaker:说明
@@ -167,7 +168,7 @@ https://www.bilibili.com/video/BV1YK4y1T7yY
     **简述：** 这个是插件 要60美元 不过挺多项目使用 
     - Enlighten   
     **简述：** 这个就是旧版本的Progressive   
-    - Progressive  
+    - Progressive Unity5.6开始   
     Progressive UV空间的Filter  
     **简述：** lightmap在uv空间做filter可以看下源码   
     CPU Progressive 教程：https://www.bilibili.com/video/BV1At411172s  
@@ -213,6 +214,9 @@ https://www.cnblogs.com/kekec/p/8684068.html
 
 
 ### Unity
+- FBX导入Unity  
+**简述：** 这里介绍了Unity怎么导入FBX和一些注意事项  
+https://zhuanlan.zhihu.com/p/56413668
 
 ## 性能优化
 
@@ -243,3 +247,6 @@ https://www.thisfaner.com/o/git-emoji/
 
 GLSL查询：  
 https://github.com/wshxbqq/GLSL-Card/blob/master/README.md  
+
+
+### TODO
