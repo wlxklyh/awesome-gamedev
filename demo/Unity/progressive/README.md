@@ -35,7 +35,7 @@
 |7. 预览albedo|![20210614232822](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614232822.png)||
 |8. 预览UV的映射关系|![20210614232908](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614232908.png)||
 |9. 预览哪里是无效纹素|![20210614233003](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614233003.png)||
-|10. 预览UV重叠的地方|![20210614233039](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614233039.png)||
+|10. 预览UV重叠的地方|![20210615005130](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210615005130.png)||
 
 
 - **lightmap filter**  
