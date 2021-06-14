@@ -41,7 +41,7 @@
 - **lightmap filter**  
 ![20210614232230](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614232230.png)
 
-- **UV重叠**  
+- **UV重叠问题**  
 ![20210614234031](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614234031.png)  
 修改FBX的导出2U 改成生成2U 然后pack margin为8 这个是单个object里面的padding  
 ![20210614234237](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614234237.png)
@@ -49,17 +49,17 @@
 - **接缝问题**  
 ![20210614234544](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614234544.png)  
 ![20210614234605](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614234605.png)  
-勾选stitch Seams就可以在几何空间Filter 避免接缝  
+勾选stitch Seams就可以在几何空间Filter 避免接缝    
 ![20210614235228](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614235228.png)  
 ![20210614235251](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614235251.png)  
 
 
-- **动态物体** 
+- **动态物体**  
 添加了一个Cube 因为会动所以不参与烘焙 然后是黑色的没有lightmap信息  
 ![20210614235859](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614235859.png)  
 用light probe来照亮动态物体 然后烘焙  
 ![20210615000043](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210615000043.png)  
-烘焙结果
+烘焙结果  
 ![GIF](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/GIF.gif)
 
 - **全局光照模式**    
