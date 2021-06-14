@@ -140,50 +140,60 @@ https://github.com/jpcy/xatlas
 - 层次包围盒（BVH）：  
 **简述：** 大致了解BVH 公式推导还是要看game101里面的讲解
 https://zhuanlan.zhihu.com/p/36439822
-- 全局光照初步认识（Global illumination，简称GI）：https://zhuanlan.zhihu.com/p/126362480
+
+- 全局光照初步认识（Global illumination，简称GI）：  
+**简述**: 初学者看理解一些概念比较合适 这篇比较简单和比较应用类型   
+https://zhuanlan.zhihu.com/p/126362480
+
 - 球面高斯（(Spherical Gaussian, 简称SG）（未读）： 
 **翻译：** https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/     
 英文：https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
  
-- 3D空间中射线与轴向包围盒AABB的交叉检测算法
+- 3D空间中射线与轴向包围盒AABB的交叉检测算法  
+**简述：** 初学者看 GAMES101里面也讲的很好 
 https://blog.csdn.net/i_dovelemon/article/details/38342739
 
-- 图形学视频:  
-简述：Games101 图形学基础  
+- 图形学视频:    
+**简述：**Games101 图形学基础  
 https://www.bilibili.com/video/BV1X7411F744  
-简述：Games201 物理  
+**简述：** Games201 物理  
 https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext  
-简述：Games202 实时渲染  
+**简述：** Games202 实时渲染  
 https://www.bilibili.com/video/BV1YK4y1T7yY  
 
 ### 烘焙和离线渲染  
-- 烘焙器：  
-Bakery  
-Enlighten   
-Progressive  
-Progressive :lightmap在uv空间做filter  
+- 各种烘焙器：  
+    - Bakery   
+    **简述：** 这个是插件 要60美元 不过挺多项目使用 
+    - Enlighten   
+    **简述：** 这个就是旧版本的Progressive   
+    - Progressive  
+    Progressive UV空间的Filter  
+    **简述：** lightmap在uv空间做filter可以看下源码   
+    CPU Progressive 教程：https://www.bilibili.com/video/BV1At411172s  
+    GPU Progressive 教程：https://www.bilibili.com/video/BV1j4411U7KB  
+
+ 
 
 - Unity 烘焙学习  
 https://zhuanlan.zhihu.com/p/78706246  
 
 - 辐射度算法(radiosity)）：  
-简述：非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识  
+**简述：** 非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识  
 https://blog.csdn.net/kuangben2000/article/details/82955658  
 
 - 烘焙漏光：  
-这里就是说加大lightmap分辨率  
+**简述：** 这里就是说加大lightmap分辨率  
 https://www.bilibili.com/video/av96889514/  
 
 - UE4烘焙  
-简述：   
+**简述：**   
 https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
-
 https://zhuanlan.zhihu.com/p/72086470  
-
 https://blog.csdn.net/u013412391/article/details/106457631  
 
-- 烘焙  
-简述：lightmap UV空间不连续 geometry上连续 导致的过度有缝  
+- 烘焙UV的Filter  
+**简述：** lightmap UV空间不连续 geometry上连续 导致的过度有缝  
 https://zhuanlan.zhihu.com/p/81198807  
 
 ### 实时渲染  
@@ -229,9 +239,7 @@ https://renderdoc.org/docs/getting_started/quick_start.html
 
 
 ### 有趣的  
-
 https://www.thisfaner.com/o/git-emoji/  
-
 
 GLSL查询：  
 https://github.com/wshxbqq/GLSL-Card/blob/master/README.md  
