@@ -7,7 +7,9 @@
 ## 
 
 ## 参考
-- FBX导入问题  
+- FBX导入Unity  
+**简述：** 这里介绍了Unity怎么导入FBX和一些注意事项  
+https://zhuanlan.zhihu.com/p/56413668  
 ![20210614211445](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614211445.png)
 
 - UV重叠问题  

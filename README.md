@@ -36,10 +36,13 @@
 |-|-|-|
 |云风博客|http://blog.codingnow.com/||
 
+
 ## :computer:工程 
 |工程demo|地址|介绍|
 |-|-|-|
 |GPULightmass|https://github.com/AlanIWBFT/GPULightmass||
+|Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
+|Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
 
 
 ## :rocket:GPU
@@ -226,13 +229,14 @@ https://zhuanlan.zhihu.com/p/56413668
 
 ## 工具
 ### IDE
-vs2017的resharper插件：  
+- vs2017的resharper插件：  
 https://www.jianshu.com/p/494bdde2a431  
-GPU -Z：  
-![](Img/2021-05-20-15-20-52.png)  
 
-shaderred：  
-shader调试工具  
+- GPU -Z：  
+![](Img/2021-06-14-21-18-11.png)
+
+- shaderred：  
+**简述：** shader调试工具  
 https://shadered.org/docs/debugger.html  
 
 - Substance Painter ？？  
