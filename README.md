@@ -50,6 +50,10 @@
 https://blog.csdn.net/chengyq116/article/details/105919991
 https://zhuanlan.zhihu.com/p/34587739
 
+- CUDA 教程  
+**简述：** 从第七集开始看 前面很多觉得不是很有必要的东西。  
+https://www.bilibili.com/video/BV1kx411m7Fk?p=1  
+
 ## :mag:Paper
 - Siggraph的一些文章集合  
 **简述：**  Siggraph的一些文章集合
@@ -190,7 +194,7 @@ https://blog.csdn.net/kuangben2000/article/details/82955658
 **简述：** 这里就是说加大lightmap分辨率  
 https://www.bilibili.com/video/av96889514/  
 
-- UE4烘焙  
+- UE4烘焙(还没看)  
 **简述：**   
 https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
 https://zhuanlan.zhihu.com/p/72086470  
@@ -214,6 +218,47 @@ https://zhuanlan.zhihu.com/p/81198807
 https://zhuanlan.zhihu.com/p/154081604  
 这个貌似也不错  
 https://www.cnblogs.com/kekec/p/8684068.html  
+
+- UE源码分析的书籍  
+https://www.sxpdf.com/wp-content/themes/begin/down.php?id=8737  
+
+- UE渲染概念  
+https://blog.csdn.net/jiangdengc/article/details/59486288  
+
+- UE4 Lightmap从烘焙到渲染  
+https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/    
+
+- UE4 继承关系  
+```cpp
+转载自：https://www.jianshu.com/p/c288d7ee5cfc
+一级派生Class UActorComponent 角色组件
+        1.Class UInputComponent 输入组件
+        2.Class UMovementComponent 移动组件
+二级派生Class USceneComponent 场景可见 包含Transform
+        1.Class UPost ProcesComponent 处理效果
+三级派生Class UPrimitiveComponent 图源(Render 渲染 Physical 物理计算) 和Unity差别非常大
+        1.Class UMeshComponent 网格组件
+            (1).Class UStatic MeshComponent 静态网格组件
+                a.Class UStatic Mesh 网格实例
+            (2).Class USkinned MeshComponent 皮肤网格组件
+                b.Class USkeleta MeshComponent 骨骼网格组件
+                    b1.Class USkeleta Mesh 骨骼实例
+        2.Class UBrushComponent 笔刷组件
+        3.Class ULandscapeComponent 场景组件
+        4.Class ULightComponent 灯光组件
+            (1).Class ULightComponent Base 灯光大类组件
+                a.Class ULightComponent 光源组件
+                    a1.Class UDirect LightComponent 平行光组件
+                    a2.Class UPoint LightComponent 点光源组件
+                        a2_1.Class USpot LightComponent 射光源组件
+                b.Class USky LightComponent 天空光组件
+        5.Class UShapeComponent 形状组件
+            (1).Class UBoxComponent 正方体组件
+            (2).Class UCapsuleComponent 胶囊组件
+            (3).Class USphereComponent 圆柱组件
+        6.Class UAudioComponent 音频组件
+        7.Class UCameraComponent 摄像头组件
+```
 
 
 ### Unity
