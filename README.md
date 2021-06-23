@@ -171,6 +171,11 @@ https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext
 https://www.bilibili.com/video/BV1YK4y1T7yY  
 
 ### 烘焙和离线渲染  
+- pbrt3  
+**简述：**pbrt3的资源文件  
+https://benedikt-bitterli.me/resources/  
+
+
 - 各种烘焙器：  
     - Bakery   
     **简述：** 这个是插件 要60美元 不过挺多项目使用 
