@@ -14,6 +14,7 @@
     - [引擎](#引擎)
         - [Unreal](#unreal)
         - [Unity](#unity)
+    - [数学](#数学)
     - [性能优化](#性能优化)
     - [GamePlay](#gameplay)
     - [网络](#网络)
@@ -205,6 +206,38 @@ https://blog.csdn.net/u013412391/article/details/106457631
 https://zhuanlan.zhihu.com/p/81198807  
 
 ### 实时渲染  
+- 光照系统  
+```cpp
+传统光照系统 
+    1.punctual lighting
+        1. 太阳光（阴影） 
+        2. 点光
+            1. 前向渲染 forward tilebased light
+            2. 延迟渲染 deferred one pass for one light
+    2.global illumination
+        1. 动态 
+            1.diffuse light probe
+            2.specular IBL 
+        2. 静态    
+            1.diffuse lightmap
+            2.specular IBL （reflection probe然后还要插值） 手机插值多个需要采样多个IBL
+    3.Ambient  only flat color
+缺陷：
+    1. 需要多个reflection probe来插值 从而表现高光 这样受到手机内存和性能的制约 最多用几个 而且没插值（插值要采样多个）
+    2. 摆的不多会导致看起来不能量守恒
+    3. 烘焙的diffuse 没有法线效果（UE4 和 U3d有低阶球谐来代表方向）
+    4. Ambient没有高光效果 所以非能量守恒
+解决：
+    1. Radiosity Normal Mapping 存储三个方向的光
+    2. 球谐lightmap 球谐light probe:
+```
+
+
+- Radiosity Normal Mapping  
+    - avoid flat Ambient.   
+    - three full RGB lighting values in three directions in TS  
+    - ok with rough spec not with low roughness
+
 ## 引擎  
 ### Unreal  
 - Trick  
@@ -260,12 +293,26 @@ https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0
         7.Class UCameraComponent 摄像头组件
 ```
 
+- UE智能指针  
+https://zhuanlan.zhihu.com/p/369974105  
+
 
 ### Unity
 - FBX导入Unity  
 **简述：** 这里介绍了Unity怎么导入FBX和一些注意事项  
 https://zhuanlan.zhihu.com/p/56413668
 
+## 数学
+- 坐标系变换（未读）  
+https://blog.csdn.net/pkxpp/article/details/100109480  
+
+- M矩阵还原Pos Rot Scale  
+**简述：** 这个作者找过一些链接可以看下  
+https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8
+**简述：** 讲了几个解法    
+https://zhuanlan.zhihu.com/p/35117630
+**简述：** 说了一种错误的做法   
+https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813
 ## 性能优化
 
 ## GamePlay
