@@ -18,6 +18,7 @@
     - [性能优化](#性能优化)
     - [GamePlay](#gameplay)
     - [网络](#网络)
+    - [C++](#c)
     - [工具](#工具)
         - [IDE](#ide)
         - [有趣的](#有趣的)
@@ -186,7 +187,8 @@ https://benedikt-bitterli.me/resources/
     **简述：** lightmap在uv空间做filter可以看下源码   
     CPU Progressive 教程：https://www.bilibili.com/video/BV1At411172s  
     GPU Progressive 教程：https://www.bilibili.com/video/BV1j4411U7KB  
-
+    - Blender  
+    https://zhuanlan.zhihu.com/p/146665394  
  
 
 - Unity 烘焙学习  
@@ -323,6 +325,13 @@ https://math.stackexchange.com/questions/237369/given-this-transformation-matrix
 ## GamePlay
 
 ## 网络
+
+## C++  
+- C++编译
+**简述：** 预处理生成.i文件(vs可以设置生成) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制   
+https://www.bilibili.com/video/BV1vE41187dW/   
+**简述：** 讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针 
+https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576  
 
 ## 工具
 ### IDE
