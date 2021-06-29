@@ -31,8 +31,11 @@
 ## 📚书籍
 |书名|地址|介绍|
 |-|-|-|
-|![](Img/2021-05-18-15-40-48.png)|链接：https://pan.baidu.com/s/1SRPqDrdbXTttnO-6Z2PtHQ 提取码：wlxk ||
-
+|![](Img/2021-05-18-15-40-48.png)|链接：https://share.weiyun.com/57krWlgp 密码：wlxk|《Physically Based Rendering Third Edition》离线渲染必读|
+|![](Img/2021-06-29-20-23-05.png)|链接：https://share.weiyun.com/uZXkQaGz 密码：wlxk |《大象无形》从事Unreal源码相关工作 初学者可以看下|
+|![](Img/2021-06-29-20-27-41.png)|链接：https://share.weiyun.com/6pd557VZ 密码：wlxk|《垃圾回收的算法与实现》从事Java、C#、lua、python等带有GC的语言开发 可以读此书来了解GC|
+|![](Img/2021-06-29-20-31-37.png)|链接：https://share.weiyun.com/WjeOnX7T 密码：wlxk|《readinglua》|
+|![](Img/2021-06-29-20-32-42.png)|链接：https://share.weiyun.com/wM7ukZeM 密码：wlxk|《Programming in Lua-中文》|
 ## :computer:博客 
 |博客|地址|介绍|
 |-|-|-|
@@ -187,9 +190,12 @@ https://benedikt-bitterli.me/resources/
     **简述：** lightmap在uv空间做filter可以看下源码   
     CPU Progressive 教程：https://www.bilibili.com/video/BV1At411172s  
     GPU Progressive 教程：https://www.bilibili.com/video/BV1j4411U7KB  
-    - Blender  
-    https://zhuanlan.zhihu.com/p/146665394  
+
  
+- Blender  建模工具
+https://zhuanlan.zhihu.com/p/146665394  
+
+
 
 - Unity 烘焙学习  
 https://zhuanlan.zhihu.com/p/78706246  
@@ -202,11 +208,7 @@ https://blog.csdn.net/kuangben2000/article/details/82955658
 **简述：** 这里就是说加大lightmap分辨率  
 https://www.bilibili.com/video/av96889514/  
 
-- UE4烘焙(还没看)  
-**简述：**   
-https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
-https://zhuanlan.zhihu.com/p/72086470  
-https://blog.csdn.net/u013412391/article/details/106457631  
+
 
 - 烘焙UV的Filter  
 **简述：** lightmap UV空间不连续 geometry上连续 导致的过度有缝  
@@ -250,8 +252,12 @@ https://zhuanlan.zhihu.com/p/81198807
 - Trick  
 1. Engine\Config\ConsoleVariables.ini  配置shader编译选项  
 2. 使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可
+mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate 
+mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source
+https://cloud.tencent.com/developer/article/1368057  
 3. 修改buildconfiguration 会导致全部重编
 4. Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程
+
 
 - shader编译  
 简述：讲了技巧 还没细看 貌似挺不错的文章  
@@ -259,7 +265,7 @@ https://zhuanlan.zhihu.com/p/154081604
 这个貌似也不错  
 https://www.cnblogs.com/kekec/p/8684068.html  
 
-- UE源码分析的书籍  
+- UE源码分析的书籍《大象无形》  
 https://www.sxpdf.com/wp-content/themes/begin/down.php?id=8737  
 
 - UE渲染概念  
@@ -303,6 +309,11 @@ https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0
 - UE智能指针  
 https://zhuanlan.zhihu.com/p/369974105  
 
+- UE4烘焙(还没看)  
+**简述：**   
+https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
+https://zhuanlan.zhihu.com/p/72086470  
+https://blog.csdn.net/u013412391/article/details/106457631  
 
 ### Unity
 - FBX导入Unity  
@@ -332,6 +343,10 @@ https://math.stackexchange.com/questions/237369/given-this-transformation-matrix
 https://www.bilibili.com/video/BV1vE41187dW/   
 **简述：** 讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针 
 https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576  
+
+- c++11(std::atomic_bool)  
+[C/C++]compare_exchange_strong 
+https://blog.csdn.net/XiaoH0_0/article/details/103690706
 
 ## 工具
 ### IDE
