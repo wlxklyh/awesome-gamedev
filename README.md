@@ -317,6 +317,8 @@ https://zhuanlan.zhihu.com/p/369974105
 https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
 https://zhuanlan.zhihu.com/p/72086470  
 https://blog.csdn.net/u013412391/article/details/106457631  
+**简述：**讲lightmass怎么配置   
+https://zhuanlan.zhihu.com/p/212394171
 
 ### Unity
 - FBX导入Unity  
