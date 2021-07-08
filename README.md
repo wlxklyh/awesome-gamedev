@@ -51,7 +51,7 @@
 |GPULightmass|https://github.com/AlanIWBFT/GPULightmass||
 |Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
 |Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
-
+|shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
 
 ## :rocket:GPU
 - CUDA（未读）：
@@ -252,15 +252,20 @@ https://zhuanlan.zhihu.com/p/81198807
 
 ## 引擎  
 ### Unreal  
-- Trick  
-1. Engine\Config\ConsoleVariables.ini  配置shader编译选项  
-2. 使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可
-mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate 
-mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source
-https://cloud.tencent.com/developer/article/1368057  
-3. 修改buildconfiguration 会导致全部重编
-4. Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程
+ 
+|Trick|简述|链接|状态|
+|-|-|-|-|
+|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/||
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057||
+|UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 |||
+|UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程||
 
+
+|标题|简述|链接|状态|
+|-|-|-|-|
+
+- 系统讲UE的渲染的（没看）
+https://zhuanlan.zhihu.com/p/47075752
 
 - shader编译  
 简述：讲了技巧 还没细看 貌似挺不错的文章  
@@ -319,6 +324,15 @@ https://zhuanlan.zhihu.com/p/72086470
 https://blog.csdn.net/u013412391/article/details/106457631  
 **简述：**讲lightmass怎么配置   
 https://zhuanlan.zhihu.com/p/212394171
+
+- 光源设置没看   
+https://docs.unrealengine.com/4.26/zh-CN/Resources/ContentExamples/Lighting/5_3/
+- 颜色 没看  
+https://zhuanlan.zhihu.com/p/133434457
+
+- UE高级性能剖析技术之RHI 没看  
+https://mp.weixin.qq.com/s/oBISXGsHplTNeqAcRzHtEA
+
 
 ### Unity
 - FBX导入Unity  
