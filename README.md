@@ -54,23 +54,27 @@
 |shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
 
 ## :rocket:GPU
-- CUDA（未读）：
-https://blog.csdn.net/chengyq116/article/details/105919991
-https://zhuanlan.zhihu.com/p/34587739
 
-- CUDA 教程  
-**简述：** 从第七集开始看 前面很多觉得不是很有必要的东西。  
-https://www.bilibili.com/video/BV1kx411m7Fk?p=1  
+|文章|简述|链接|难度|
+|-|-|-|-|
+|CUDA |CUDA的安装和一些基础命令|https://blog.csdn.net/chengyq116/article/details/105919991|:star:|
+|CUDA编程入门极简教程|入门教程|https://zhuanlan.zhihu.com/p/34587739|:star:|
+|CUDA 教程|从第七集开始看 前面很多觉得不是很有必要的东西 到12集就差不多了|https://www.bilibili.com/video/BV1kx411m7Fk?p=1  |:star::star:|
+
 
 ## :mag:Paper
-- Siggraph的一些文章集合  
-**简述：**  Siggraph的一些文章集合
-http://www.ppsloan.org/publications/
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|Siggraph的一些文章集合|Siggraph的一些文章集合|http://www.ppsloan.org/publications/||
+|球谐函数 L2怎么更接近真实| 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing) |http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf|:star::star:|
+|Stupid SH|讲SH（没看）|https://www.ppsloan.org/publications/StupidSH36.pdf|没看|
+|球谐函数||https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf|粗略看了|
+|迪士尼||https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf|没看|
+|State of the Art in Monte Carlo Ray Tracing|蒙特卡洛积分在光追的应用||没看|
 
 
-- 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing)  
-**简述：** It was introduced in a paper at Siggraph 2002 by Sloan, Kautz and Snyder as a technique for ultra realistic lighting of models  
-[http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)  
+## :mount_fuji:图形学
 
 
 - 球谐函数  
@@ -79,30 +83,6 @@ https://zhuanlan.zhihu.com/p/350057737
 UE的shader代码：  
 https://zhuanlan.zhihu.com/p/36031421
 
-
-- Stupid SH  
-**简述：** 讲SH（没看）
-https://www.ppsloan.org/publications/StupidSH36.pdf
-
-- SH生成DirectionalMap：  
-**简述：** 讲述了SH L1怎么可以更加真实 这样就可以只用4个参数  
-https://liye.info/docdownloadv2-reconstructing-diffuse-lighting-from-spherical-harmonic-geomerics-pr_9ab504d8f0a0555e06b42fad4cc3d5b3
-
-- 球谐函数  
-**简述：** 球谐函数  
-https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
-
-- 迪士尼  
-**简述：** 没看  
-https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf
-
-- 蒙特卡洛积分在光追的应用：  
-**简述：** 没看 
-For more, see Siggraph 2001, “State of the Art in Monte Carlo Ray Tracing”, Course 29  Peter Shirley,”Realistic Ray Tracing”, A. K. Peters, 2001 
-
-
-
-## :mount_fuji:图形学
 - 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
 
 - DirectionMap  
@@ -269,11 +249,9 @@ https://zhuanlan.zhihu.com/p/81198807
 |UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |https://zhuanlan.zhihu.com/p/154081604|需要再看|
 |UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |https://www.cnblogs.com/kekec/p/8684068.html|:star:|
 |UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|https://blog.csdn.net/jiangdengc/article/details/59486288|:star:|
-|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 
-
-- UE4 Lightmap从烘焙到渲染  
-https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/    
-
+|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/  |:star::star:|
+|剖析虚幻渲染体系（系列）||https://www.cnblogs.com/timlly/p/13512787.html|没看|
+|UE4渲染引擎导读（系列）||https://zhuanlan.zhihu.com/p/72086470|没看|
 - UE4 继承关系  
 ```cpp
 转载自：https://www.jianshu.com/p/c288d7ee5cfc
@@ -314,7 +292,7 @@ https://zhuanlan.zhihu.com/p/369974105
 https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
 https://zhuanlan.zhihu.com/p/72086470  
 https://blog.csdn.net/u013412391/article/details/106457631  
-**简述：**讲lightmass怎么配置   
+**简述：** 讲lightmass怎么配置   
 https://zhuanlan.zhihu.com/p/212394171
 
 - 光源设置没看   
