@@ -252,32 +252,24 @@ https://zhuanlan.zhihu.com/p/81198807
 
 ## 引擎  
 ### Unreal  
- 
-|Trick|简述|链接|状态|
+
+|Trick|简述|链接|
+|-|-|-|
+|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/ https://zhuanlan.zhihu.com/p/47075752（这里也有提到）|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057|
+|UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
+|UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
+
+
+|文章|简述|链接|难度|
 |-|-|-|-|
-|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/||
-|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057||
-|UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 |||
-|UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程||
-
-
-|标题|简述|链接|状态|
-|-|-|-|-|
-
-- 系统讲UE的渲染的（没看）
-https://zhuanlan.zhihu.com/p/47075752
-
-- shader编译  
-简述：讲了技巧 还没细看 貌似挺不错的文章  
-https://zhuanlan.zhihu.com/p/154081604  
-这个貌似也不错  
-https://www.cnblogs.com/kekec/p/8684068.html  
-
-- UE源码分析的书籍《大象无形》  
-https://www.sxpdf.com/wp-content/themes/begin/down.php?id=8737  
-
-- UE渲染概念  
-https://blog.csdn.net/jiangdengc/article/details/59486288  
+|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|https://zhuanlan.zhihu.com/p/47075752|:star:|
+|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|https://zhuanlan.zhihu.com/p/47105916|:star::star:|
+|UE4渲染部分3：Drawing Policies||https://zhuanlan.zhihu.com/p/47172977|没看|
+|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |https://zhuanlan.zhihu.com/p/154081604|需要再看|
+|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |https://www.cnblogs.com/kekec/p/8684068.html|:star:|
+|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|https://blog.csdn.net/jiangdengc/article/details/59486288|:star:|
+|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 
 
 - UE4 Lightmap从烘焙到渲染  
 https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/    
