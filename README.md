@@ -158,8 +158,13 @@ https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext
 https://www.bilibili.com/video/BV1YK4y1T7yY  
 
 ### 烘焙和离线渲染  
+
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|光线追踪|总结了光线追踪的算法 有一定基础后看|https://zhuanlan.zhihu.com/p/72673165|:star::star::star:|
 - pbrt3  
-**简述：**pbrt3的资源文件  
+**简述：** pbrt3的资源文件  
 https://benedikt-bitterli.me/resources/  
 
 
@@ -196,6 +201,7 @@ https://www.bilibili.com/video/av96889514/
 - 烘焙UV的Filter  
 **简述：** lightmap UV空间不连续 geometry上连续 导致的过度有缝  
 https://zhuanlan.zhihu.com/p/81198807  
+
 
 ### 实时渲染  
 - 光照系统  
@@ -239,7 +245,7 @@ https://zhuanlan.zhihu.com/p/81198807
 |UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057|
 |UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
 |UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
-
+|UE模块 依赖顺序||https://blog.csdn.net/u013412391/article/details/104419789|
 
 |文章|简述|链接|难度|
 |-|-|-|-|
@@ -253,6 +259,9 @@ https://zhuanlan.zhihu.com/p/81198807
 |剖析虚幻渲染体系（系列）||https://www.cnblogs.com/timlly/p/13512787.html|没看|
 |UE4渲染引擎导读（系列）||https://zhuanlan.zhihu.com/p/72086470|没看|
 - UE4 继承关系  
+
+
+
 ```cpp
 转载自：https://www.jianshu.com/p/c288d7ee5cfc
 一级派生Class UActorComponent 角色组件
@@ -303,6 +312,12 @@ https://zhuanlan.zhihu.com/p/133434457
 - UE高级性能剖析技术之RHI 没看  
 https://mp.weixin.qq.com/s/oBISXGsHplTNeqAcRzHtEA
 
+- UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)系列  没看  
+https://zhuanlan.zhihu.com/p/157965866
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)||https://zhuanlan.zhihu.com/p/157965866|:star::star:|
 
 ### Unity
 - FBX导入Unity  
@@ -333,9 +348,23 @@ https://www.bilibili.com/video/BV1vE41187dW/
 **简述：** 讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针 
 https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576  
 
-- c++11(std::atomic_bool)  
+- std::atomic_bool(c++11)  
 [C/C++]compare_exchange_strong 
 https://blog.csdn.net/XiaoH0_0/article/details/103690706
+
+- nodiscard(C++17)  
+**简述：** 
+```cpp
+[[nodiscard]] int func(){return 1;}; // C++17
+[[nodiscard("nodiscard_func_1")]] int func_1(){return 2;};  // C++20
+
+func(); // warning
+func_1(); // warning
+
+warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+```
+https://blog.csdn.net/qq_38617319/article/details/115099855  
+
 
 ## 工具
 ### IDE
