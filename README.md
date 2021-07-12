@@ -52,26 +52,30 @@
 |GPULightmass|https://github.com/AlanIWBFT/GPULightmass||
 |Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
 |Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
-
+|shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
 
 ## :rocket:GPU
-- CUDA（未读）：
-https://blog.csdn.net/chengyq116/article/details/105919991
-https://zhuanlan.zhihu.com/p/34587739
 
-- CUDA 教程  
-**简述：** 从第七集开始看 前面很多觉得不是很有必要的东西。  
-https://www.bilibili.com/video/BV1kx411m7Fk?p=1  
+|文章|简述|链接|难度|
+|-|-|-|-|
+|CUDA |CUDA的安装和一些基础命令|https://blog.csdn.net/chengyq116/article/details/105919991|:star:|
+|CUDA编程入门极简教程|入门教程|https://zhuanlan.zhihu.com/p/34587739|:star:|
+|CUDA 教程|从第七集开始看 前面很多觉得不是很有必要的东西 到12集就差不多了|https://www.bilibili.com/video/BV1kx411m7Fk?p=1  |:star::star:|
+
 
 ## :mag:Paper
-- Siggraph的一些文章集合  
-**简述：**  Siggraph的一些文章集合
-http://www.ppsloan.org/publications/
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|Siggraph的一些文章集合|Siggraph的一些文章集合|http://www.ppsloan.org/publications/||
+|球谐函数 L2怎么更接近真实| 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing) |http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf|:star::star:|
+|Stupid SH|讲SH（没看）|https://www.ppsloan.org/publications/StupidSH36.pdf|没看|
+|球谐函数||https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf|粗略看了|
+|迪士尼||https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf|没看|
+|State of the Art in Monte Carlo Ray Tracing|蒙特卡洛积分在光追的应用||没看|
 
 
-- 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing)  
-**简述：** It was introduced in a paper at Siggraph 2002 by Sloan, Kautz and Snyder as a technique for ultra realistic lighting of models  
-[http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)  
+## :mount_fuji:图形学
 
 
 - 球谐函数  
@@ -80,30 +84,6 @@ https://zhuanlan.zhihu.com/p/350057737
 UE的shader代码：  
 https://zhuanlan.zhihu.com/p/36031421
 
-
-- Stupid SH  
-**简述：** 讲SH（没看）
-https://www.ppsloan.org/publications/StupidSH36.pdf
-
-- SH生成DirectionalMap：  
-**简述：** 讲述了SH L1怎么可以更加真实 这样就可以只用4个参数  
-https://liye.info/docdownloadv2-reconstructing-diffuse-lighting-from-spherical-harmonic-geomerics-pr_9ab504d8f0a0555e06b42fad4cc3d5b3
-
-- 球谐函数  
-**简述：** 球谐函数  
-https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf
-
-- 迪士尼  
-**简述：** 没看  
-https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf
-
-- 蒙特卡洛积分在光追的应用：  
-**简述：** 没看 
-For more, see Siggraph 2001, “State of the Art in Monte Carlo Ray Tracing”, Course 29  Peter Shirley,”Realistic Ray Tracing”, A. K. Peters, 2001 
-
-
-
-## :mount_fuji:图形学
 - 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
 
 - DirectionMap  
@@ -179,8 +159,13 @@ https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext
 https://www.bilibili.com/video/BV1YK4y1T7yY  
 
 ### 烘焙和离线渲染  
+
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|光线追踪|总结了光线追踪的算法 有一定基础后看|https://zhuanlan.zhihu.com/p/72673165|:star::star::star:|
 - pbrt3  
-**简述：**pbrt3的资源文件  
+**简述：** pbrt3的资源文件  
 https://benedikt-bitterli.me/resources/  
 
 
@@ -218,6 +203,7 @@ https://www.bilibili.com/video/av96889514/
 **简述：** lightmap UV空间不连续 geometry上连续 导致的过度有缝  
 https://zhuanlan.zhihu.com/p/81198807  
 
+
 ### 实时渲染  
 - 光照系统  
 ```cpp
@@ -253,32 +239,30 @@ https://zhuanlan.zhihu.com/p/81198807
 
 ## 引擎  
 ### Unreal  
-- Trick  
-1. Engine\Config\ConsoleVariables.ini  配置shader编译选项  
-2. 使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可
-mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate 
-mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source
-https://cloud.tencent.com/developer/article/1368057  
-3. 修改buildconfiguration 会导致全部重编
-4. Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程
 
+|Trick|简述|链接|
+|-|-|-|
+|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/ https://zhuanlan.zhihu.com/p/47075752（这里也有提到）|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057|
+|UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
+|UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
+|UE模块 依赖顺序||https://blog.csdn.net/u013412391/article/details/104419789|
 
-- shader编译  
-简述：讲了技巧 还没细看 貌似挺不错的文章  
-https://zhuanlan.zhihu.com/p/154081604  
-这个貌似也不错  
-https://www.cnblogs.com/kekec/p/8684068.html  
-
-- UE源码分析的书籍《大象无形》  
-https://www.sxpdf.com/wp-content/themes/begin/down.php?id=8737  
-
-- UE渲染概念  
-https://blog.csdn.net/jiangdengc/article/details/59486288  
-
-- UE4 Lightmap从烘焙到渲染  
-https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/    
-
+|文章|简述|链接|难度|
+|-|-|-|-|
+|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|https://zhuanlan.zhihu.com/p/47075752|:star:|
+|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|https://zhuanlan.zhihu.com/p/47105916|:star::star:|
+|UE4渲染部分3：Drawing Policies||https://zhuanlan.zhihu.com/p/47172977|没看|
+|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |https://zhuanlan.zhihu.com/p/154081604|需要再看|
+|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |https://www.cnblogs.com/kekec/p/8684068.html|:star:|
+|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|https://blog.csdn.net/jiangdengc/article/details/59486288|:star:|
+|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/  |:star::star:|
+|剖析虚幻渲染体系（系列）||https://www.cnblogs.com/timlly/p/13512787.html|没看|
+|UE4渲染引擎导读（系列）||https://zhuanlan.zhihu.com/p/72086470|没看|
 - UE4 继承关系  
+
+
+
 ```cpp
 转载自：https://www.jianshu.com/p/c288d7ee5cfc
 一级派生Class UActorComponent 角色组件
@@ -318,6 +302,23 @@ https://zhuanlan.zhihu.com/p/369974105
 https://papalqi.cn/2020/ue4-lightmass%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B/  
 https://zhuanlan.zhihu.com/p/72086470  
 https://blog.csdn.net/u013412391/article/details/106457631  
+**简述：** 讲lightmass怎么配置   
+https://zhuanlan.zhihu.com/p/212394171
+
+- 光源设置没看   
+https://docs.unrealengine.com/4.26/zh-CN/Resources/ContentExamples/Lighting/5_3/
+- 颜色 没看  
+https://zhuanlan.zhihu.com/p/133434457
+
+- UE高级性能剖析技术之RHI 没看  
+https://mp.weixin.qq.com/s/oBISXGsHplTNeqAcRzHtEA
+
+- UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)系列  没看  
+https://zhuanlan.zhihu.com/p/157965866
+
+|文章|简述|链接|难度|
+|-|-|-|-|
+|UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)||https://zhuanlan.zhihu.com/p/157965866|:star::star:|
 
 ### Unity
 - FBX导入Unity  
@@ -348,9 +349,23 @@ https://www.bilibili.com/video/BV1vE41187dW/
 **简述：** 讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针 
 https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576  
 
-- c++11(std::atomic_bool)  
+- std::atomic_bool(c++11)  
 [C/C++]compare_exchange_strong 
 https://blog.csdn.net/XiaoH0_0/article/details/103690706
+
+- nodiscard(C++17)  
+**简述：** 
+```cpp
+[[nodiscard]] int func(){return 1;}; // C++17
+[[nodiscard("nodiscard_func_1")]] int func_1(){return 2;};  // C++20
+
+func(); // warning
+func_1(); // warning
+
+warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+```
+https://blog.csdn.net/qq_38617319/article/details/115099855  
+
 
 ## 工具
 ### IDE
