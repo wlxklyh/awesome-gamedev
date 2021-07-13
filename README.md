@@ -150,7 +150,7 @@ https://zhuanlan.zhihu.com/p/126362480
 https://blog.csdn.net/i_dovelemon/article/details/38342739
 
 - 图形学视频:    
-**简述：**Games101 图形学基础  
+**简述：** Games101 图形学基础  
 https://www.bilibili.com/video/BV1X7411F744  
 **简述：** Games201 物理  
 https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext  
@@ -306,6 +306,9 @@ https://zhuanlan.zhihu.com/p/212394171
 
 - 光源设置没看   
 https://docs.unrealengine.com/4.26/zh-CN/Resources/ContentExamples/Lighting/5_3/
+这个大概讲了EV100 SSR 等影响灯光的UE设置 
+https://zhuanlan.zhihu.com/p/69348892
+
 - 颜色 没看  
 https://zhuanlan.zhihu.com/p/133434457
 
@@ -341,14 +344,19 @@ https://math.stackexchange.com/questions/237369/given-this-transformation-matrix
 
 ## 网络
 
-## C++  
-- C++编译
-**简述：** 预处理生成.i文件(vs可以设置生成) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制   
-https://www.bilibili.com/video/BV1vE41187dW/   
-**简述：** 讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针 
-https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576  
+## C++
 
-- std::atomic_bool(c++11)  
+|C++ Trick|简述|链接|推荐|
+|-|-|-|-|
+|打印Include树|vs里面右键属性->配置属性->C/C++->高级->显示包含文件||:star::star::star:|
+|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|https://www.bilibili.com/video/BV1vE41187dW/|:star::star:|
+|C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576|:star::star:|
+
+|C++11 17 20|简述|链接|推荐|
+|-|-|-|-|
+|std::atomic_bool(c++11)|
+
+-   
 [C/C++]compare_exchange_strong 
 https://blog.csdn.net/XiaoH0_0/article/details/103690706
 
