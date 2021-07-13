@@ -43,6 +43,7 @@
 |博客|地址|介绍|
 |-|-|-|
 |云风博客|http://blog.codingnow.com/||
+|韦一笑博客|http://www.skywind.me/blog/||
 
 
 ## :computer:工程 
