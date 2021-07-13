@@ -21,7 +21,7 @@
     - [C++](#c)
     - [工具](#工具)
         - [IDE](#ide)
-        - [有趣的](#有趣的)
+        - [网址](#网址)
         - [TODO](#todo)
 
 <!-- /TOC -->
@@ -49,10 +49,11 @@
 ## :computer:工程 
 |工程demo|地址|介绍|
 |-|-|-|
-|GPULightmass|https://github.com/AlanIWBFT/GPULightmass||
+|GPULightmass|https://github.com/AlanIWBFT/GPULightmass|Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass|
 |Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
 |Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
 |shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
+|
 
 ## :rocket:GPU
 
@@ -77,35 +78,29 @@
 
 ## :mount_fuji:图形学
 
+|概念|简述|链接|难度|
+|-|-|-|-|
+|球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|https://zhuanlan.zhihu.com/p/350057737 ||
+|SH UE的shader代码||https://zhuanlan.zhihu.com/p/36031421||
+|预计算光照信息（Precomputed Radiance Tranfer,简称PRT）||||
+|方向图(DirectionMap)|方向图在Unity的描述|https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html|
+|梅特罗波利斯 光照传输(Metropolis Light Transport 简称MTL)|
 
-- 球谐函数  
-**简述：** 这里讲解了UE球谐函数的推导 （还没怎么看懂）  
-https://zhuanlan.zhihu.com/p/350057737  
-UE的shader代码：  
-https://zhuanlan.zhihu.com/p/36031421
 
-- 预计算光照信息（Precomputed Radiance Tranfer,简称PRT）
 
-- DirectionMap  
-**简述：** 方向图在Unity的描述  
-https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html
+https://blog.csdn.net/libing_zeng/article/details/77239332 
+https://zhuanlan.zhihu.com/p/72673165
 
-- Metropolis Light Transport（MTL）  
-**简述：** 这里讲了Basic PT、monte carlo light tracing、bidirectional path tracing、original metropoli light Transport、 PSSMLT  
-https://blog.csdn.net/libing_zeng/article/details/77239332  
-详细：
-    |类别|介绍|缺点|光线出发||
-    |-|-|-|-|-|
-    |basic path tracing:|视口射线 然后不断反射 射中光源则为有效| 效率很低 很多无效射线|视口出发||
-    |whitted style ray tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
-    |Monte Carlo Path Tracing|从光源出发 在场景中反弹 每次击中场景中的物体表面 判断下能否跟视口连线成为有效路径 | 视口只是场景的一小部分的时候 光源出发的射线很多都浪费了 小光源有优势|光源出发|[1.Monte Carlo Path Tracing](http://www.graphics.stanford.edu/courses/cs348b-01/course29.hanrahan.pdf)|
-    |bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
-    |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
-    |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
+|光追类别|介绍|缺点|光线出发||
+|-|-|-|-|-|
+|basic path tracing:|视口射线 然后不断反射 射中光源则为有效| 效率很低 很多无效射线|视口出发||
+|whitted style ray tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
+|Monte Carlo Path Tracing|从光源出发 在场景中反弹 每次击中场景中的物体表面 判断下能否跟视口连线成为有效路径 | 视口只是场景的一小部分的时候 光源出发的射线很多都浪费了 小光源有优势|光源出发|[1.Monte Carlo Path Tracing](http://www.graphics.stanford.edu/courses/cs348b-01/course29.hanrahan.pdf)|
+|bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
+|metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
+|PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
     
-- GPULightmass  
-**简述：** Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass  
-https://github.com/AlanIWBFT/GPULightmass
+
 - mitsuba2  
 **简述：** 开源渲染器 知乎说几个小时可以看懂代码
 
@@ -324,21 +319,20 @@ https://zhuanlan.zhihu.com/p/157965866
 |UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)||https://zhuanlan.zhihu.com/p/157965866|:star::star:|
 
 ### Unity
-- FBX导入Unity  
-**简述：** 这里介绍了Unity怎么导入FBX和一些注意事项  
-https://zhuanlan.zhihu.com/p/56413668
+|Unity|简述|链接|推荐|
+|-|-|-|-|
+|FBX导入Unity  |这里介绍了Unity怎么导入FBX和一些注意事项|https://zhuanlan.zhihu.com/p/56413668|
+
 
 ## 数学
-- 坐标系变换（未读）  
-https://blog.csdn.net/pkxpp/article/details/100109480  
 
-- M矩阵还原Pos Rot Scale  
-**简述：** 这个作者找过一些链接可以看下  
-https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8
-**简述：** 讲了几个解法    
-https://zhuanlan.zhihu.com/p/35117630
-**简述：** 说了一种错误的做法   
-https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813
+|数学|简述|链接|推荐|
+|-|-|-|-|
+|M矩阵还原Pos Rot Scale|这个作者找过一些链接可以看下|https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8||
+|M矩阵还原Pos Rot Scale|讲了几个解法|https://zhuanlan.zhihu.com/p/35117630|
+|M矩阵还原Pos Rot Scale|说了一种错误的做法 |https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813|
+|坐标系变换|XYZ > YZX|https://blog.csdn.net/pkxpp/article/details/100109480 |没细看|
+
 ## 性能优化
 
 ## GamePlay
@@ -353,52 +347,32 @@ https://math.stackexchange.com/questions/237369/given-this-transformation-matrix
 |预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|https://www.bilibili.com/video/BV1vE41187dW/|:star::star:|
 |C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576|:star::star:|
 
+
+
 |C++11 17 20|简述|链接|推荐|
-|-|-|-|-|
-|std::atomic_bool(c++11)|
-
--   
-[C/C++]compare_exchange_strong 
-https://blog.csdn.net/XiaoH0_0/article/details/103690706
-
-- nodiscard(C++17)  
-**简述：** 
-```cpp
-[[nodiscard]] int func(){return 1;}; // C++17
-[[nodiscard("nodiscard_func_1")]] int func_1(){return 2;};  // C++20
-
-func(); // warning
-func_1(); // warning
-
-warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
-```
-https://blog.csdn.net/qq_38617319/article/details/115099855  
-
+|-|-|-|--|
+|std::atomic_bool(C++11)|
+memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
+|compare_exchange_strong(C++11)||[链接](https://blog.csdn.net/XiaoH0_0/article/details/103690706)|
+|nondiscard(C++17)|\[[nodiscard]]int func(){return 1;};会报warning UE里面是error|[链接](https://blog.csdn.net/qq_38617319/article/details/115099855)|:star:|
 
 ## 工具
 ### IDE
-- vs2017的resharper插件：  
-https://www.jianshu.com/p/494bdde2a431  
-
-- GPU -Z：  
-![](Img/2021-06-14-21-18-11.png)
-
-- shaderred：  
-**简述：** shader调试工具  
-https://shadered.org/docs/debugger.html  
-
-- Substance Painter ？？  
-
-- 截帧  
-renderdoc  
-https://renderdoc.org/docs/getting_started/quick_start.html  
+|名字|简述|链接|推荐|
+|-|-|-|--|
+|vs2017的resharper插件|比VA好用|https://www.jianshu.com/p/494bdde2a431|:star::star:|  
+|GPU -Z|粗略查看GPU情况|
+|shaderred|shader调试工具|https://shadered.org/docs/debugger.html|没用过|
+|renderdoc|截帧|https://renderdoc.org/docs/getting_started/quick_start.html  |:star::star:|
 
 
-### 有趣的  
-https://www.thisfaner.com/o/git-emoji/  
 
-GLSL查询：  
-https://github.com/wshxbqq/GLSL-Card/blob/master/README.md  
+
+### 网址
+|名字|链接|推荐|
+|-|-|-|--|
+|GLSL查询|https://github.com/wshxbqq/GLSL-Card/blob/master/README.md|:star:|
+
 
 
 ### TODO
