@@ -376,3 +376,12 @@ memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
 
 
 ### TODO
+
+
+
+- GTAO 做SSAO的算法    
+https://zhuanlan.zhihu.com/p/145339736
+-  其他各种SSAO：  
+http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/
+- GTAO：  
+http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-Occlusion.pdf
