@@ -385,3 +385,6 @@ https://zhuanlan.zhihu.com/p/145339736
 http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/
 - GTAO：  
 http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-Occlusion.pdf
+
+- pbrt笔记系列  
+https://zhuanlan.zhihu.com/p/48092442
