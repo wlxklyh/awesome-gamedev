@@ -170,23 +170,23 @@
 
 |Trick|简述|链接|
 |-|-|-|
-|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/ https://zhuanlan.zhihu.com/p/47075752（这里也有提到）|
-|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057|
+|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|[文章链接](http://aicdg.com/renderdoc-hlsl/) [文章链接](https://zhuanlan.zhihu.com/p/47075752)（这里也有提到）|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
 |UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
 |UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
-|UE模块 依赖顺序||https://blog.csdn.net/u013412391/article/details/104419789|
+|UE模块 依赖顺序||[文章链接](https://blog.csdn.net/u013412391/article/details/104419789)|
 
 |文章|简述|链接|难度|
 |-|-|-|-|
-|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|https://zhuanlan.zhihu.com/p/47075752|:star:|
-|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|https://zhuanlan.zhihu.com/p/47105916|:star::star:|
-|UE4渲染部分3：Drawing Policies||https://zhuanlan.zhihu.com/p/47172977|没看|
-|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |https://zhuanlan.zhihu.com/p/154081604|需要再看|
-|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |https://www.cnblogs.com/kekec/p/8684068.html|:star:|
-|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|https://blog.csdn.net/jiangdengc/article/details/59486288|:star:|
-|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/  |:star::star:|
-|剖析虚幻渲染体系（系列）||https://www.cnblogs.com/timlly/p/13512787.html|没看|
-|UE4渲染引擎导读（系列）||https://zhuanlan.zhihu.com/p/72086470|没看|
+|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|[文章链接](https://zhuanlan.zhihu.com/p/47075752)|:star:|
+|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|[文章链接](https://zhuanlan.zhihu.com/p/47105916)|:star::star:|
+|UE4渲染部分3：Drawing Policies||[文章链接](https://zhuanlan.zhihu.com/p/47172977)|没看|
+|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |[文章链接](https://zhuanlan.zhihu.com/p/154081604)|需要再看|
+|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |[文章链接](https://www.cnblogs.com/kekec/p/8684068.html)|:star:|
+|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|[文章链接](https://blog.csdn.net/jiangdengc/article/details/59486288)|:star:|
+|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|[文章链接](https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/)  |:star::star:|
+|剖析虚幻渲染体系（系列）||[文章链接](https://www.cnblogs.com/timlly/p/13512787.html)|没看|
+|UE4渲染引擎导读（系列）||[文章链接](https://zhuanlan.zhihu.com/p/72086470)|没看|
 - UE4 继承关系  
 
 
@@ -261,10 +261,10 @@ https://zhuanlan.zhihu.com/p/157965866
 
 |数学|简述|链接|推荐|
 |-|-|-|-|
-|M矩阵还原Pos Rot Scale|这个作者找过一些链接可以看下|https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8||
-|M矩阵还原Pos Rot Scale|讲了几个解法|https://zhuanlan.zhihu.com/p/35117630|
-|M矩阵还原Pos Rot Scale|说了一种错误的做法 |https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813|
-|坐标系变换|XYZ > YZX|https://blog.csdn.net/pkxpp/article/details/100109480 |没细看|
+|M矩阵还原Pos Rot Scale|这个作者找过一些链接可以看下|[文章链接](https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8)||
+|M矩阵还原Pos Rot Scale|讲了几个解法|[文章链接](https://zhuanlan.zhihu.com/p/35117630)|
+|M矩阵还原Pos Rot Scale|说了一种错误的做法 |[文章链接](https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813)|
+|坐标系变换|XYZ > YZX|[文章链接](https://blog.csdn.net/pkxpp/article/details/100109480) |没细看|
 
 ## 性能优化
 
@@ -277,8 +277,8 @@ https://zhuanlan.zhihu.com/p/157965866
 |C++ Trick|简述|链接|推荐|
 |-|-|-|-|
 |打印Include树|vs里面右键属性->配置属性->C/C++->高级->显示包含文件||:star::star::star:|
-|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|https://www.bilibili.com/video/BV1vE41187dW/|:star::star:|
-|C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576|:star::star:|
+|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|[视频链接](https://www.bilibili.com/video/BV1vE41187dW/)|:star::star:|
+|C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|[视频链接](https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576)|:star::star:|
 
 
 
