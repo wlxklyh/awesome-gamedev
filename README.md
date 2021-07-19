@@ -9,6 +9,8 @@
     - [:rocket:GPU](#rocketgpu)
     - [:mag:Paper](#magpaper)
     - [:mount_fuji:图形学](#mount_fuji图形学)
+            - [光追](#光追)
+            - [图形学名词](#图形学名词)
         - [烘焙和离线渲染](#烘焙和离线渲染)
         - [实时渲染](#实时渲染)
     - [引擎](#引擎)
@@ -78,16 +80,7 @@
 
 ## :mount_fuji:图形学
 
-|概念|简述|链接|难度|
-|-|-|-|-|
-|球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|https://zhuanlan.zhihu.com/p/350057737 ||
-|SH UE的shader代码||https://zhuanlan.zhihu.com/p/36031421||
-|预计算光照信息（Precomputed Radiance Tranfer,简称PRT）||||
-|方向图(DirectionMap)|方向图在Unity的描述|https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html|
-|梅特罗波利斯 光照传输(Metropolis Light Transport 简称MTL)|
-
-
-
+#### 光追
 https://blog.csdn.net/libing_zeng/article/details/77239332 
 https://zhuanlan.zhihu.com/p/72673165
 
@@ -99,6 +92,19 @@ https://zhuanlan.zhihu.com/p/72673165
 |bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
 |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
 |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
+
+#### 图形学名词
+
+|概念|简述|链接|难度|
+|-|-|-|-|
+|球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|[文章链接](https://zhuanlan.zhihu.com/p/350057737) ||
+|SH UE的shader代码||[文章链接](https://zhuanlan.zhihu.com/p/36031421)||
+|预计算光照信息（Precomputed Radiance Tranfer,简称PRT）||||
+|方向图(DirectionMap)|方向图在Unity的描述|[文章链接](https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html)|
+|梅特罗波利斯 光照传输(Metropolis Light Transport 简称MTL)|
+
+
+
     
 
 - mitsuba2  
