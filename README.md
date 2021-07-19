@@ -38,6 +38,7 @@
 |![](Img/2021-06-29-20-32-42.png)|链接：https://share.weiyun.com/wM7ukZeM 密码：wlxk|《Programming in Lua-中文》|
 |![](Img/2021-06-29-20-48-43.png)|链接：https://share.weiyun.com/Rmqx41B1 密码：wlxk|《Objective-C基础教程》|
 |![](Img/2021-06-29-21-03-47.png)|链接：https://share.weiyun.com/YilKye1n 密码：wlxk|《程序员的自我修养》|
+|GAMES01课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk|GAMES01课件|
 
 ## :computer:博客 
 |博客|地址|介绍|
@@ -68,12 +69,11 @@
 
 |文章|简述|链接|难度|
 |-|-|-|-|
-|Siggraph的一些文章集合|Siggraph的一些文章集合|http://www.ppsloan.org/publications/||
-|球谐函数 L2怎么更接近真实| 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing) |http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf|:star::star:|
-|Stupid SH|讲SH（没看）|https://www.ppsloan.org/publications/StupidSH36.pdf|没看|
-|球谐函数||https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf|粗略看了|
-|迪士尼||https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf|没看|
-|State of the Art in Monte Carlo Ray Tracing|蒙特卡洛积分在光追的应用||没看|
+|Siggraph的一些文章集合|Siggraph的一些文章集合|[文章链接](http://www.ppsloan.org/publications/)||
+|球谐函数 L2怎么更接近真实| 这里介绍了L2的球谐函数怎么更加接近真实 避免ringing(例如一个光和一个球 球背光面应该是漫反射 但是全黑了就叫ringing) |[文章链接](http://www.cse.chalmers.se/~uffe/xjobb/Readings/GlobalIllumination/Spherical%20Harmonic%20Lighting%20-%20the%20gritty%20details.pdf)|:star::star:|
+|Stupid SH|讲SH（没看）|[文章链接](https://www.ppsloan.org/publications/StupidSH36.pdf)|没看|
+|球谐函数||[文章链接](https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf)|粗略看了|
+|迪士尼||[文章链接](https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf)|没看|
 
 
 ## :mount_fuji:图形学
