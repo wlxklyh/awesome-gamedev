@@ -11,8 +11,8 @@
     - [:mount_fuji:图形学](#mount_fuji图形学)
             - [光追](#光追)
             - [图形学名词](#图形学名词)
-        - [烘焙和离线渲染](#烘焙和离线渲染)
-        - [实时渲染](#实时渲染)
+            - [烘焙和离线渲染](#烘焙和离线渲染)
+            - [实时渲染](#实时渲染)
     - [引擎](#引擎)
         - [Unreal](#unreal)
         - [Unity](#unity)
@@ -41,6 +41,11 @@
 |![](Img/2021-06-29-20-48-43.png)|链接：https://share.weiyun.com/Rmqx41B1 密码：wlxk01|《Objective-C基础教程》|
 |![](Img/2021-06-29-21-03-47.png)|链接：https://share.weiyun.com/YilKye1n 密码：wlxk01|《程序员的自我修养》|
 |GAMES01课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk01|GAMES01课件|
+|Games101 图形学基础 |https://www.bilibili.com/video/BV1X7411F744 |Games101 图形学基础|
+|Games201 物理|https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext |
+|Games202 实时渲染|https://www.bilibili.com/video/BV1YK4y1T7yY |
+
+
 
 ## :computer:博客 
 |博客|地址|介绍|
@@ -56,7 +61,12 @@
 |Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
 |Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
 |shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
-|
+|mitsuba|https://github.com/mitsuba-renderer/mitsuba|学术界开源光追渲染器 推荐看1|
+|mitsuba2|https://github.com/mitsuba-renderer/mitsuba2|学术界开源光追渲染器|
+|pbrt-v3|https://github.com/mmp/pbrt-v3|pbr书的工程|
+|光追渲染器|https://github.com/Mike-Leo-Smith|清华学生的github 写了光追的渲染器|
+|2U生成仓库|https://github.com/jpcy/xatlas |生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  |
+
 
 ## :rocket:GPU
 
@@ -76,135 +86,56 @@
 |Stupid SH|讲SH（没看）|[文章链接](https://www.ppsloan.org/publications/StupidSH36.pdf)|没看|
 |球谐函数||[文章链接](https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf)|粗略看了|
 |迪士尼||[文章链接](https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf)|没看|
+|辐射度算法(radiosity)）|非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识 |[文章链接](https://blog.csdn.net/kuangben2000/article/details/82955658)|:star:|  
 
 
 ## :mount_fuji:图形学
 
 #### 光追
-https://blog.csdn.net/libing_zeng/article/details/77239332 
-https://zhuanlan.zhihu.com/p/72673165
+从下面两篇文章总结下光追的方法
+- 基础点：https://blog.csdn.net/libing_zeng/article/details/77239332   
+- 进阶点（后面的PSSMLT ME等没看）：https://zhuanlan.zhihu.com/p/72673165
 
 |光追类别|介绍|缺点|光线出发||
 |-|-|-|-|-|
+|Ray Casting|视口出发 碰撞到物体就停止 然后通过eye ray 和 light ray计算着色 可以看到阴影。||[1968 论文](https://graphics.stanford.edu/courses/Appel.pdf)|
+|whitted style ray tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色，漫反射|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
+|Distributed Ray traing|视口出发 碰撞到物体继续投射 |大量射线||
 |basic path tracing:|视口射线 然后不断反射 射中光源则为有效| 效率很低 很多无效射线|视口出发||
-|whitted style ray tracing|视口出发 碰撞到物体 如果是反射则反射光线 折射则折射光线 否则跟所有光源做着色（这里跟材质有关吗）|比basic提高了效率 直接跟光源做着色|视口出发|[1.论文 ](https://dl.acm.org/doi/pdf/10.1145/1198555.1198743?casa_token=4_Nc6cE-x3sAAAAA:H3FMuWi6Gqrf2K9vMKoeBUBDzgMtSh--aTxobWfk2em89HwusQ4HwYJx1DZ-jM9gptUk_icWionfS78) [2. 论文](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted) [3. 代码强烈推荐](https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview)|
 |Monte Carlo Path Tracing|从光源出发 在场景中反弹 每次击中场景中的物体表面 判断下能否跟视口连线成为有效路径 | 视口只是场景的一小部分的时候 光源出发的射线很多都浪费了 小光源有优势|光源出发|[1.Monte Carlo Path Tracing](http://www.graphics.stanford.edu/courses/cs348b-01/course29.hanrahan.pdf)|
-|bidirectional path tracing|综合前面的从光源和视口发出射线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
+|bidirectional path tracing|综合前面的从光源和视口发出射线，E=0 L=0连线 E=0 L=1连线 E=1 L=0连线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
 |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
 |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
 
 #### 图形学名词
 |概念|简述|链接|难度|
 |-|-|-|-|
-|球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|[文章链接](https://zhuanlan.zhihu.com/p/350057737) ||
+|球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|[文章链接](https://zhuanlan.zhihu.com/p/350057737) |:star::star::star::star:|
 |SH UE的shader代码||[文章链接](https://zhuanlan.zhihu.com/p/36031421)||
-|预计算光照信息（Precomputed Radiance Tranfer,简称PRT）||||
-|方向图(DirectionMap)|方向图在Unity的描述|[文章链接](https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html)|
+|预计算光照信息（Precomputed Radiance Tranfer,简称PRT）|||:star:|
+|方向图(DirectionMap)|方向图在Unity的描述|[文章链接](https://docs.unity3d.com/530/Documentation/Manual/LightmappingDirectional.html)|:star:|
 |梅特罗波利斯 光照传输(Metropolis Light Transport 简称MTL)|
-
-
-
-    
-
-- mitsuba2  
-**简述：** 开源渲染器 知乎说几个小时可以看懂代码
-
-- 光追github   
-**简述：** 清华学生的github 写了光追的渲染器  
-https://github.com/Mike-Leo-Smith
-- optix7 官方demo
-**简述：** 没看
-  
-- lightprobe  
-**简述：** 文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数  
-https://www.jianshu.com/p/6dfe403f75f6  
-简述：Unity里面内置函数ShadeSH9 也解释了光照探针原理  
-https://gameinstitute.qq.com/community/detail/124147  
-- 距离场？？（后面看光追 路径追踪再看）：
-**简述：** 没查  
-
-- ray matching？？（后面看光追 路径追踪再看）：
-**简述：** 没查  
-
-- 2U展开：  
-**简述：** 从Unity的角度来解释2U 展开 然后说了怎么解决黑边问题  
-https://www.jianshu.com/p/8e98414d601c  
-**简述：** Unreal里面怎么只是2U  
-https://docs.unrealengine.com/zh-CN/WorkingWithContent/Types/StaticMeshes/LightmapUnwrapping/index.html  
-**简述：** 生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  
-https://github.com/jpcy/xatlas  
-
-- 层次包围盒（BVH）：  
-**简述：** 大致了解BVH 公式推导还是要看game101里面的讲解
-https://zhuanlan.zhihu.com/p/36439822
-
-- 全局光照初步认识（Global illumination，简称GI）：  
-**简述**: 初学者看理解一些概念比较合适 这篇比较简单和比较应用类型   
-https://zhuanlan.zhihu.com/p/126362480
-
-- 球面高斯（(Spherical Gaussian, 简称SG）（未读）： 
-**翻译：** https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/     
-英文：https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
+|光照探针(lightprobe)|文章末尾数了Unity的光照探针 然后提到了ShadeSH9这个函数 |[文章链接](https://www.jianshu.com/p/6dfe403f75f6) [文章链接](https://gameinstitute.qq.com/community/detail/124147  )|:star:|
+|距离场(DF)|||没看|
+|ray matching|一般指在Screen space 做步长射线||:star:|
+|2U展开|从Unity的角度来解释2U 展开 然后说了怎么解决黑边问题 |[文章链接](https://www.jianshu.com/p/8e98414d601c  )|:star:|
+|层次包围盒（BVH）|大致了解BVH 公式推导还是要看game101里面的讲解|[链接](https://zhuanlan.zhihu.com/p/36439822)|:star:|
+|全局光照初步认识（Global illumination，简称GI）|初学者看理解一些概念比较合适 这篇比较简单和比较应用类型 |[](https://zhuanlan.zhihu.com/p/126362480)|:star:|
+|球面高斯（(Spherical Gaussian, 简称SG）||[中文文章](https://cuihongzhi1991.github.io/blog/2020/05/05/sg05/ ) [英文文章](https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/)|没看|
+|烘焙UV的Filter|lightmap UV空间不连续 geometry上连续 导致的过度有缝|[文章链接](https://zhuanlan.zhihu.com/p/81198807)|:star::star:|  
  
-- 3D空间中射线与轴向包围盒AABB的交叉检测算法  
-**简述：** 初学者看 GAMES101里面也讲的很好 
-https://blog.csdn.net/i_dovelemon/article/details/38342739
 
-- 图形学视频:    
-**简述：** Games101 图形学基础  
-https://www.bilibili.com/video/BV1X7411F744  
-**简述：** Games201 物理  
-https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext  
-**简述：** Games202 实时渲染  
-https://www.bilibili.com/video/BV1YK4y1T7yY  
+#### 烘焙和离线渲染  
 
-### 烘焙和离线渲染  
+|烘焙器和工具|简述|
+|-|-|
+|Bakery|Unity 烘焙插件 要60美元 不过挺多项目使用|
+|Enlighten|Unity 旧版本 CPU烘焙器|
+|Progressive|Unity 5.6开始 [CPU版本教程](https://www.bilibili.com/video/BV1At411172s) [GPU烘焙器](https://www.bilibili.com/video/BV1j4411U7KB)|
+|Blender|建模工具 https://zhuanlan.zhihu.com/p/146665394 |
 
 
-|文章|简述|链接|难度|
-|-|-|-|-|
-|光线追踪|总结了光线追踪的算法 有一定基础后看|https://zhuanlan.zhihu.com/p/72673165|:star::star::star:|
-- pbrt3  
-**简述：** pbrt3的资源文件  
-https://benedikt-bitterli.me/resources/  
-
-
-- 各种烘焙器：  
-    - Bakery   
-    **简述：** 这个是插件 要60美元 不过挺多项目使用 
-    - Enlighten   
-    **简述：** 这个就是旧版本的Progressive   
-    - Progressive Unity5.6开始   
-    Progressive UV空间的Filter  
-    **简述：** lightmap在uv空间做filter可以看下源码   
-    CPU Progressive 教程：https://www.bilibili.com/video/BV1At411172s  
-    GPU Progressive 教程：https://www.bilibili.com/video/BV1j4411U7KB  
-
- 
-- Blender  建模工具
-https://zhuanlan.zhihu.com/p/146665394  
-
-
-
-- Unity 烘焙学习  
-https://zhuanlan.zhihu.com/p/78706246  
-
-- 辐射度算法(radiosity)）：  
-**简述：** 非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识  
-https://blog.csdn.net/kuangben2000/article/details/82955658  
-
-- 烘焙漏光：  
-**简述：** 这里就是说加大lightmap分辨率  
-https://www.bilibili.com/video/av96889514/  
-
-
-
-- 烘焙UV的Filter  
-**简述：** lightmap UV空间不连续 geometry上连续 导致的过度有缝  
-https://zhuanlan.zhihu.com/p/81198807  
-
-
-### 实时渲染  
+#### 实时渲染  
 - 光照系统  
 ```cpp
 传统光照系统 
@@ -232,33 +163,29 @@ https://zhuanlan.zhihu.com/p/81198807
 ```
 
 
-- Radiosity Normal Mapping  
-    - avoid flat Ambient.   
-    - three full RGB lighting values in three directions in TS  
-    - ok with rough spec not with low roughness
 
 ## 引擎  
 ### Unreal  
 
 |Trick|简述|链接|
 |-|-|-|
-|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|http://aicdg.com/renderdoc-hlsl/ https://zhuanlan.zhihu.com/p/47075752（这里也有提到）|
-|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|https://cloud.tencent.com/developer/article/1368057|
+|UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|[文章链接](http://aicdg.com/renderdoc-hlsl/) [文章链接](https://zhuanlan.zhihu.com/p/47075752)（这里也有提到）|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
 |UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
 |UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
-|UE模块 依赖顺序||https://blog.csdn.net/u013412391/article/details/104419789|
+|UE模块 依赖顺序||[文章链接](https://blog.csdn.net/u013412391/article/details/104419789)|
 
 |文章|简述|链接|难度|
 |-|-|-|-|
-|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|https://zhuanlan.zhihu.com/p/47075752|:star:|
-|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|https://zhuanlan.zhihu.com/p/47105916|:star::star:|
-|UE4渲染部分3：Drawing Policies||https://zhuanlan.zhihu.com/p/47172977|没看|
-|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |https://zhuanlan.zhihu.com/p/154081604|需要再看|
-|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |https://www.cnblogs.com/kekec/p/8684068.html|:star:|
-|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|https://blog.csdn.net/jiangdengc/article/details/59486288|:star:|
-|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/  |:star::star:|
-|剖析虚幻渲染体系（系列）||https://www.cnblogs.com/timlly/p/13512787.html|没看|
-|UE4渲染引擎导读（系列）||https://zhuanlan.zhihu.com/p/72086470|没看|
+|UE4渲染部分1：介绍|大致了解一下 还有讲了点技巧 简略|[文章链接](https://zhuanlan.zhihu.com/p/47075752)|:star:|
+|UE4渲染部分2: Shaders和Vertex Data|1️⃣大致介绍c++部分如何实例化shader并将他们链接到正确的HLSL代码2️⃣大致介绍Unreal如何将顶点数据传递给GPU。（很简略 只能知道朦胧的样子）|[文章链接](https://zhuanlan.zhihu.com/p/47105916)|:star::star:|
+|UE4渲染部分3：Drawing Policies||[文章链接](https://zhuanlan.zhihu.com/p/47172977)|没看|
+|UE4 Shader 编译以及变种实现|大致看了 还挺详细 但是还没了解到细节 |[文章链接](https://zhuanlan.zhihu.com/p/154081604)|需要再看|
+|UE4游戏开发基础命令|刚开始接触的可以看 有一些技巧 我也还没使用过 |[文章链接](https://www.cnblogs.com/kekec/p/8684068.html)|:star:|
+|UE4 渲染基础概念|刚开始接触的可以看 挺好的 对于一些类、名词的理解|[文章链接](https://blog.csdn.net/jiangdengc/article/details/59486288)|:star:|
+|UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|[文章链接](https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/)  |:star::star:|
+|剖析虚幻渲染体系（系列）||[文章链接](https://www.cnblogs.com/timlly/p/13512787.html)|没看|
+|UE4渲染引擎导读（系列）||[文章链接](https://zhuanlan.zhihu.com/p/72086470)|没看|
 - UE4 继承关系  
 
 
@@ -333,24 +260,24 @@ https://zhuanlan.zhihu.com/p/157965866
 
 |数学|简述|链接|推荐|
 |-|-|-|-|
-|M矩阵还原Pos Rot Scale|这个作者找过一些链接可以看下|https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8||
-|M矩阵还原Pos Rot Scale|讲了几个解法|https://zhuanlan.zhihu.com/p/35117630|
-|M矩阵还原Pos Rot Scale|说了一种错误的做法 |https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813|
-|坐标系变换|XYZ > YZX|https://blog.csdn.net/pkxpp/article/details/100109480 |没细看|
+|M矩阵还原Pos Rot Scale|这个作者找过一些链接可以看下|[文章链接](https://community.khronos.org/t/is-it-possible-to-extract-rotation-translation-scale-given-a-matrix/49221/8)||
+|M矩阵还原Pos Rot Scale|讲了几个解法|[文章链接](https://zhuanlan.zhihu.com/p/35117630)|
+|M矩阵还原Pos Rot Scale|说了一种错误的做法 |[文章链接](https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813)|
+|坐标系变换|XYZ > YZX|[文章链接](https://blog.csdn.net/pkxpp/article/details/100109480) |没细看|
 
 ## 性能优化
 
 ## GamePlay
 
-## 网络
+## 网络 
 
 ## C++
 
 |C++ Trick|简述|链接|推荐|
 |-|-|-|-|
 |打印Include树|vs里面右键属性->配置属性->C/C++->高级->显示包含文件||:star::star::star:|
-|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|https://www.bilibili.com/video/BV1vE41187dW/|:star::star:|
-|C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576|:star::star:|
+|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|[视频链接](https://www.bilibili.com/video/BV1vE41187dW/)|:star::star:|
+|C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|[视频链接](https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576)|:star::star:|
 
 
 
