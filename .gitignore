@@ -1,0 +1,4 @@
+# Ignore intermediate folders
+Intermediate/
+Saved/
+DerivedDataCache/
