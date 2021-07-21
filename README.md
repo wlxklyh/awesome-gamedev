@@ -33,15 +33,15 @@
 ## 📚书籍
 |书名|地址|介绍|
 |-|-|-|
-|![](Img/2021-05-18-15-40-48.png)|链接：https://share.weiyun.com/57krWlgp 密码：wlxk|《Physically Based Rendering Third Edition》离线渲染必读|
-|![](Img/2021-06-29-20-23-05.png)|链接：https://share.weiyun.com/uZXkQaGz 密码：wlxk |《大象无形》从事Unreal源码相关工作 初学者可以看下|
-|![](Img/2021-06-29-20-27-41.png)|链接：https://share.weiyun.com/6pd557VZ 密码：wlxk|《垃圾回收的算法与实现》从事Java、C#、lua、python等带有GC的语言开发 可以读此书来了解GC|
-|![](Img/2021-06-29-20-31-37.png)|链接：https://share.weiyun.com/WjeOnX7T 密码：wlxk|《readinglua》|
-|![](Img/2021-06-29-20-32-42.png)|链接：https://share.weiyun.com/wM7ukZeM 密码：wlxk|《Programming in Lua-中文》|
-|![](Img/2021-06-29-20-48-43.png)|链接：https://share.weiyun.com/Rmqx41B1 密码：wlxk|《Objective-C基础教程》|
-|![](Img/2021-06-29-21-03-47.png)|链接：https://share.weiyun.com/YilKye1n 密码：wlxk|《程序员的自我修养》|
-|GAMES01课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk|GAMES01课件|
-|Games101 图形学基础 |https://www.bilibili.com/video/BV1X7411F744 ||
+|![](Img/2021-05-18-15-40-48.png)|链接：https://share.weiyun.com/57krWlgp 密码：wlxk01|《Physically Based Rendering Third Edition》离线渲染必读|
+|![](Img/2021-06-29-20-23-05.png)|链接：https://share.weiyun.com/uZXkQaGz 密码：wlxk01|《大象无形》从事Unreal源码相关工作 初学者可以看下|
+|![](Img/2021-06-29-20-27-41.png)|链接：https://share.weiyun.com/6pd557VZ 密码：wlxk01|《垃圾回收的算法与实现》从事Java、C#、lua、python等带有GC的语言开发 可以读此书来了解GC|
+|![](Img/2021-06-29-20-31-37.png)|链接：https://share.weiyun.com/WjeOnX7T 密码：wlxk01|《readinglua》|
+|![](Img/2021-06-29-20-32-42.png)|链接：https://share.weiyun.com/wM7ukZeM 密码：wlxk01|《Programming in Lua-中文》|
+|![](Img/2021-06-29-20-48-43.png)|链接：https://share.weiyun.com/Rmqx41B1 密码：wlxk01|《Objective-C基础教程》|
+|![](Img/2021-06-29-21-03-47.png)|链接：https://share.weiyun.com/YilKye1n 密码：wlxk01|《程序员的自我修养》|
+|GAMES01课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk01|GAMES01课件|
+|Games101 图形学基础 |https://www.bilibili.com/video/BV1X7411F744 |Games101 图形学基础|
 |Games201 物理|https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext |
 |Games202 实时渲染|https://www.bilibili.com/video/BV1YK4y1T7yY |
 
@@ -110,7 +110,6 @@
 |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
 
 #### 图形学名词
-
 |概念|简述|链接|难度|
 |-|-|-|-|
 |球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|[文章链接](https://zhuanlan.zhihu.com/p/350057737) |:star::star::star::star:|
@@ -272,7 +271,7 @@ https://zhuanlan.zhihu.com/p/157965866
 
 ## GamePlay
 
-## 网络
+## 网络 
 
 ## C++
 
