@@ -87,6 +87,8 @@
 |球谐函数||[文章链接](https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf)|粗略看了|
 |迪士尼||[文章链接](https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf)|没看|
 |辐射度算法(radiosity)）|非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识 |[文章链接](https://blog.csdn.net/kuangben2000/article/details/82955658)|:star:|  
+|6种AO算法的介绍||[](http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/)|:star:|
+
 
 
 ## :mount_fuji:图形学
@@ -309,13 +311,12 @@ memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
 
 
 ### TODO
-
+:coffee: 
 
 
 - GTAO 做SSAO的算法    
 https://zhuanlan.zhihu.com/p/145339736
--  其他各种SSAO：  
-http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/
+
 - GTAO：  
 http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-Occlusion.pdf
 
