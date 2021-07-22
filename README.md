@@ -320,3 +320,19 @@ http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-
 
 - pbrt笔记系列  
 https://zhuanlan.zhihu.com/p/48092442
+
+
+UE SOC 参照的库
+https://github.com/GameTechDev/OcclusionCulling
+
+
+Intel SOC的论文 
+software-occlusion-culling
+https://software.intel.com/content/www/us/en/develop/articles/software-occlusion-culling.html
+masked-software-occlusion-culling
+https://software.intel.com/content/www/us/en/develop/articles/masked-software-occlusion-culling.html
+UE OC 主题
+https://www.youtube.com/watch?v=6WtE3CoFMXU
+
+SSE指令集 SIMD优化  
+https://blog.csdn.net/qq_27825451/article/details/103934359
