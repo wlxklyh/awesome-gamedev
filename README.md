@@ -332,8 +332,16 @@ software-occlusion-culling
 https://software.intel.com/content/www/us/en/develop/articles/software-occlusion-culling.html
 masked-software-occlusion-culling
 https://software.intel.com/content/www/us/en/develop/articles/masked-software-occlusion-culling.html
+上面论文对应的知乎  
+https://zhuanlan.zhihu.com/p/69287128
+
 UE OC 主题
 https://www.youtube.com/watch?v=6WtE3CoFMXU
 
 SSE指令集 SIMD优化  
 https://blog.csdn.net/qq_27825451/article/details/103934359
+
+
+
+PPM 渐进式PM 每次一定的光子100k 100k
+SPPM 视口和光子渐进 视口10 光子100k ....
