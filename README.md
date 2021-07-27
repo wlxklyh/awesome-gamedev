@@ -21,7 +21,8 @@
     - [GamePlay](#gameplay)
     - [网络](#网络)
     - [C++](#c)
-    - [工具](#工具)
+    - [工具和库](#工具和库)
+        - [C++库](#c库)
         - [IDE](#ide)
         - [网址](#网址)
         - [TODO](#todo)
@@ -289,8 +290,14 @@ https://zhuanlan.zhihu.com/p/157965866
 memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
 |compare_exchange_strong(C++11)||[链接](https://blog.csdn.net/XiaoH0_0/article/details/103690706)|
 |nondiscard(C++17)|\[[nodiscard]]int func(){return 1;};会报warning UE里面是error|[链接](https://blog.csdn.net/qq_38617319/article/details/115099855)|:star:|
+|constexpr(C++11 14)|C++11中的指定的函数返回值和参数必须要保证是字面值，而且必须有且只有一行return代码，这给函数的设计者带来了更多的限制  而C++14中只要保证返回值和参数是字面值就行了||:star:|
+## 工具和库
+### C++库
 
-## 工具
+|名字|简述|链接|推荐|
+|-|-|-|--|
+|EasyX Graphics Library |VS C++ 图形库|https://zhuanlan.zhihu.com/p/331454570|:star::star:|
+
 ### IDE
 |名字|简述|链接|推荐|
 |-|-|-|--|
@@ -335,13 +342,50 @@ https://software.intel.com/content/www/us/en/develop/articles/masked-software-oc
 上面论文对应的知乎  
 https://zhuanlan.zhihu.com/p/69287128
 
+Opegnl ES Android OC with hiZ  
+https://arm-software.github.io/opengl-es-sdk-for-android/occlusion_culling.html
+
 UE OC 主题
 https://www.youtube.com/watch?v=6WtE3CoFMXU
 
-SSE指令集 SIMD优化  
+SSE指令集 SIMD优化 和 内文    
 https://blog.csdn.net/qq_27825451/article/details/103934359
 
+so
+https://software.intel.com/sites/landingpage/IntrinsicsGuide/
 
 
 PPM 渐进式PM 每次一定的光子100k 100k
 SPPM 视口和光子渐进 视口10 光子100k ....
+
+C++内联  
+https://blog.csdn.net/u012999985/article/details/85759127
+https://zhuanlan.zhihu.com/p/48021301
+
+
+C++11 新特性  
+template<typename T1, typename T2> using ZBMap = typename std::map<T1, T2>;
+using…typename… 特性
+
+
+很多数学库会在头文件里面申明和定义 如果定义不是inline的 不能用static成员 link错误  
+如果使用的内联函数是在.CPP文件内定义的，而不是在头文件内定义将导致LNK2001错误。  
+
+
+ C99  restrict  
+ ```cpp 
+ //Pointer aliasing 指两个或以上的指针指向同一数据
+ //如果我们确保两个指针不指向同一数据，就可以用 restrict 修饰指针类型
+ // restrict修饰a 和 b会使得更优化 
+ int add (int* a, int* b)
+{
+    *a = 10;
+    *b = 12;
+    return *a + *b;
+}
+ ```
+https://jzwdsb.github.io/2018/03/restrict_in_cpp/  
+
+
+
+
