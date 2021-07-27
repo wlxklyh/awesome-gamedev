@@ -339,7 +339,7 @@ https://zhuanlan.zhihu.com/p/157965866
 ### 网址  
 
 |名字|链接|推荐|
-|-|-|-|--|
+|-|-|--|
 |GLSL查询|https://github.com/wshxbqq/GLSL-Card/blob/master/README.md|:star:|
 |SSE-SSE4 AVX-AVX2等指令集查询（我没访问成功过）|https://software.intel.com/sites/landingpage/IntrinsicsGuide/|:star:|
 
