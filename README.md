@@ -279,6 +279,11 @@ https://zhuanlan.zhihu.com/p/157965866
 |坐标系变换|XYZ > YZX|[文章链接](https://blog.csdn.net/pkxpp/article/details/100109480) |没细看|
 
 ## 性能优化
+|SIMD|简述|链接|推荐|
+|-|-|-|--|
+|SIMD优化|介绍的文章 入门|[介绍的文章 入门](https://blog.csdn.net/qq_27825451/article/details/103934359)| :star:|
+|ispc|介绍|[文章链接](https://zhuanlan.zhihu.com/p/138030072)|:star:|
+
 
 ## GamePlay
 
@@ -311,7 +316,7 @@ https://zhuanlan.zhihu.com/p/157965866
 |C++|简述|链接|推荐|
 |-|-|-|--|
 |C++内联| 这里不用那么深入 真正有问题再查 |[s](https://blog.csdn.net/u012999985/article/details/85759127) [链接](https://zhuanlan.zhihu.com/p/48021301) [视频有点深度](https://www.youtube.com/watch?v=Qq_WaiwzOtI)|:star:|
-|SIMD优化|介绍的文章 入门|[介绍的文章 入门](https://blog.csdn.net/qq_27825451/article/details/103934359)| :star:|
+
 
 
 
