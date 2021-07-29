@@ -30,7 +30,7 @@
 <!-- /TOC -->
 ## :loudspeaker:说明
  收集游戏进阶的、paper、demo、教程等等
-
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=wlxklyh.awe-gdev&title=Visitors)
 ## 📚书籍
 |书名|地址|介绍|
 |-|-|-|
