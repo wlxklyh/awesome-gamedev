@@ -88,7 +88,13 @@
 |球谐函数||[文章链接](https://community.arm.com/cfs-file/__key/telligent-evolution-components-attachments/01-2066-00-00-00-01-27-70/Simplifying_2D00_Spherical_2D00_Harmonics_2D00_for_2D00_Lighting.pdf)|粗略看了|
 |迪士尼||[文章链接](https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf)|没看|
 |辐射度算法(radiosity)）|非常易懂介绍了辐照度算法 但是没有细节到算法推导 就是感光的认识 |[文章链接](https://blog.csdn.net/kuangben2000/article/details/82955658)|:star:|  
-|6种AO算法的介绍||[](http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/)|:star:|
+|6种AO算法的介绍||[文章链接](http://frederikaalund.com/a-comparative-study-of-screen-space-ambient-occlusion-methods/)|:star:|
+|GTAO 做SSAO的算法 ||[知乎链接](https://zhuanlan.zhihu.com/p/145339736) [文章链接](http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-Occlusion.pdf)|:star:|
+|software-occlusion-culling|Intel SOC的论文|[文章链接](https://software.intel.com/content/www/us/en/develop/articles/software-occlusion-culling.html)|:star:|
+|masked-software-occlusion-culling|Intel SOC的论文|[文章链接](https://software.intel.com/content/www/us/en/develop/articles/masked-software-occlusion-culling.html) [知乎文章](https://zhuanlan.zhihu.com/p/69287128) [github](https://github.com/GameTechDev/OcclusionCulling)|:star::star: 再精读下 |
+
+
+
 
 
 
@@ -109,6 +115,8 @@
 |bidirectional path tracing|综合前面的从光源和视口发出射线，E=0 L=0连线 E=0 L=1连线 E=1 L=0连线 |着色位置跟光源间隔了几个房间 那么还是很难搜索到有效路径|光源和视口出发||
 |metropolis Light transport|如果已经有一条有效路径 那么相邻位置大概率也是有效||光源和视口出发||
 |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
+|PPM| 渐进式PM 每次一定的光子100k 100k||||
+|SPPM| 视口和光子渐进 视口10 光子100k ....|||
 
 #### 图形学名词
 |概念|简述|链接|难度|
@@ -189,6 +197,8 @@
 |UE4 Lightmap从烘焙到渲染|搞烘焙的可以看 讲了lightmap的量化 还有怎么传数据到GPU的|[文章链接](https://honghuafu.site/post/ue4/ue4-lightmap%E4%BB%8E%E7%83%98%E7%84%99%E5%88%B0%E6%B8%B2%E6%9F%93/)  |:star::star:|
 |剖析虚幻渲染体系（系列）||[文章链接](https://www.cnblogs.com/timlly/p/13512787.html)|没看|
 |UE4渲染引擎导读（系列）||[文章链接](https://zhuanlan.zhihu.com/p/72086470)|没看|
+|UE4 遮挡剔除|介绍了OC 也可以直接看ppt和官方文档|[视频](https://www.youtube.com/watch?v=6WtE3CoFMXU)|:star:|
+
 - UE4 继承关系  
 
 
@@ -269,12 +279,19 @@ https://zhuanlan.zhihu.com/p/157965866
 |坐标系变换|XYZ > YZX|[文章链接](https://blog.csdn.net/pkxpp/article/details/100109480) |没细看|
 
 ## 性能优化
+|SIMD|简述|链接|推荐|
+|-|-|-|--|
+|SIMD优化|介绍的文章 入门|[介绍的文章 入门](https://blog.csdn.net/qq_27825451/article/details/103934359)| :star:|
+|ispc|介绍|[文章链接](https://zhuanlan.zhihu.com/p/138030072)|:star:|
+
 
 ## GamePlay
 
 ## 网络 
 
 ## C++
+- Link错误 
+很多数学库会在头文件里面申明和定义 如果定义的函数不是inline的 不能调用用static成员 不然会link错误。
 
 |C++ Trick|简述|链接|推荐|
 |-|-|-|-|
@@ -284,13 +301,28 @@ https://zhuanlan.zhihu.com/p/157965866
 
 
 
-|C++11 17 20|简述|链接|推荐|
+|C++11 17 20|特性|简述|链接|推荐|
+|-|-|-|-|--|
+|C++11|std::atomic_bool|
+|C++11|memory order||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
+|C++11|compare_exchange_strong||[链接](https://blog.csdn.net/XiaoH0_0/article/details/103690706)|
+|C++17|nondiscard|\[[nodiscard]]int func(){return 1;}; 如果调用后没有赋值给变量 会报warning UE里面是error|[链接](https://blog.csdn.net/qq_38617319/article/details/115099855)|:star:|
+|C++11 14|constexpr|constexpr int func(){return 1;};指定的函数返回值和参数必须要保证是字面值，而且必须有且只有一行return代码  C++14中只要保证返回值和参数是字面值就行了||:star:|
+|C99|\__restrict__| int add (int* __restrict__ a, int* __restrict__ b){*a = 10; *b = 12; return *a + *b;} __restrict__修饰指针类型  __restrict__修饰a 和 b会使得更优化 例如上面例子会被优化返回22|[链接](https://jzwdsb.github.io/2018/03/restrict_in_cpp/ )|:star:|
+|C++11|using|跟typedef一样 另外可以模版特化 template<typename T1, typename T2> using ZBMap = typename std::map<T1, T2>;  using ULL = unsigned long long;|[链接](https://blog.csdn.net/toby54king/article/details/105330715)|:star::star:|
+|C++11|namespace|namespace OldN = OldNameSpace;|[链接](https://blog.csdn.net/toby54king/article/details/105330715)|:star::star:|
+
+
+|C++|简述|链接|推荐|
 |-|-|-|--|
-|std::atomic_bool(C++11)|
-memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
-|compare_exchange_strong(C++11)||[链接](https://blog.csdn.net/XiaoH0_0/article/details/103690706)|
-|nondiscard(C++17)|\[[nodiscard]]int func(){return 1;};会报warning UE里面是error|[链接](https://blog.csdn.net/qq_38617319/article/details/115099855)|:star:|
-|constexpr(C++11 14)|C++11中的指定的函数返回值和参数必须要保证是字面值，而且必须有且只有一行return代码，这给函数的设计者带来了更多的限制  而C++14中只要保证返回值和参数是字面值就行了||:star:|
+|C++内联| 这里不用那么深入 真正有问题再查 |[s](https://blog.csdn.net/u012999985/article/details/85759127) [链接](https://zhuanlan.zhihu.com/p/48021301) [视频有点深度](https://www.youtube.com/watch?v=Qq_WaiwzOtI)|:star:|
+
+
+
+
+ 
+
+
 ## 工具和库
 ### C++库
 
@@ -309,82 +341,17 @@ memory order(C++11))||[链接](https://zhuanlan.zhihu.com/p/31386431)|没细看|
 
 
 
-### 网址
-|名字|链接|推荐|
-|-|-|-|--|
-|GLSL查询|https://github.com/wshxbqq/GLSL-Card/blob/master/README.md|:star:|
+### 网址  
 
+|名字|链接|推荐|
+|-|-|--|
+|GLSL查询|https://github.com/wshxbqq/GLSL-Card/blob/master/README.md|:star:|
+|SSE-SSE4 AVX-AVX2等指令集查询（我没访问成功过）|https://software.intel.com/sites/landingpage/IntrinsicsGuide/|:star:|
 
 
 ### TODO
 :coffee: 
 
-
-- GTAO 做SSAO的算法    
-https://zhuanlan.zhihu.com/p/145339736
-
-- GTAO：  
-http://iryoku.com/downloads/Practical-Realtime-Strategies-for-Accurate-Indirect-Occlusion.pdf
-
-- pbrt笔记系列  
-https://zhuanlan.zhihu.com/p/48092442
-
-
-UE SOC 参照的库
-https://github.com/GameTechDev/OcclusionCulling
-
-
-Intel SOC的论文 
-software-occlusion-culling
-https://software.intel.com/content/www/us/en/develop/articles/software-occlusion-culling.html
-masked-software-occlusion-culling
-https://software.intel.com/content/www/us/en/develop/articles/masked-software-occlusion-culling.html
-上面论文对应的知乎  
-https://zhuanlan.zhihu.com/p/69287128
-
-Opegnl ES Android OC with hiZ  
-https://arm-software.github.io/opengl-es-sdk-for-android/occlusion_culling.html
-
-UE OC 主题
-https://www.youtube.com/watch?v=6WtE3CoFMXU
-
-SSE指令集 SIMD优化 和 内文    
-https://blog.csdn.net/qq_27825451/article/details/103934359
-
-so
-https://software.intel.com/sites/landingpage/IntrinsicsGuide/
-
-
-PPM 渐进式PM 每次一定的光子100k 100k
-SPPM 视口和光子渐进 视口10 光子100k ....
-
-C++内联  
-https://blog.csdn.net/u012999985/article/details/85759127
-https://zhuanlan.zhihu.com/p/48021301
-
-
-C++11 新特性  
-template<typename T1, typename T2> using ZBMap = typename std::map<T1, T2>;
-using…typename… 特性
-
-
-很多数学库会在头文件里面申明和定义 如果定义不是inline的 不能用static成员 link错误  
-如果使用的内联函数是在.CPP文件内定义的，而不是在头文件内定义将导致LNK2001错误。  
-
-
- C99  restrict  
- ```cpp 
- //Pointer aliasing 指两个或以上的指针指向同一数据
- //如果我们确保两个指针不指向同一数据，就可以用 restrict 修饰指针类型
- // restrict修饰a 和 b会使得更优化 
- int add (int* a, int* b)
-{
-    *a = 10;
-    *b = 12;
-    return *a + *b;
-}
- ```
-https://jzwdsb.github.io/2018/03/restrict_in_cpp/  
 
 
 
