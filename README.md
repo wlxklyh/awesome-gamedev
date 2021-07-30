@@ -181,7 +181,7 @@
 |Trick|简述|链接|
 |-|-|-|
 |UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|[文章链接](http://aicdg.com/renderdoc-hlsl/) [文章链接](https://zhuanlan.zhihu.com/p/47075752)（这里也有提到）|
-|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\ue_4.25\Engine\Intermediate C:\UEBuild\Intermediate  mklink /J E:\ue_4.25\Engine\Source C:\UEBuild\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\UnrealEngine-4.26\Engine\Intermediate C:\UE4Build\Intermediate  mklink /J C:\UE4Build\Source E:\ue_4.25\Engine\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
 |UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
 |UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
 |UE模块 依赖顺序||[文章链接](https://blog.csdn.net/u013412391/article/details/104419789)|
@@ -353,6 +353,22 @@ https://zhuanlan.zhihu.com/p/157965866
 :coffee: 
 
 
+微软官方DX12光追demo：
+https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12Raytracing
+NVIDIA官方教程：
+https://github.com/NVIDIAGameWorks/DxrTutorials
+
+
+https://developer.nvidia.com/rtxdi
+https://github.com/philcn/DXRExperiments
+https://github.com/TheRealMJP/DXRPathTracer
+
+刚才那个nv的就是那篇论文的实现代码：
+https://github.com/Apress/ray-tracing-gems/tree/master/Ch_18_Importance_Sampling_of_Many_Lights_on_the_GPU
+
+nv那个
+这个PT的：https://github.com/TheRealMJP/DXRPathTracer
+还有UE5的
 
 
 
