@@ -23,15 +23,16 @@
 
 <!-- /TOC -->
 ## 一、概述
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=wlxklyh.uesoc&title=Visitors)
 剔除在游戏引擎里面很常见，就是将一些摄像机看不到的东西剔除掉，减少性能的消耗。
 常见的剔除有距离剔除（[UE demo](https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unreal/CullDistance)）、视锥剔除、Hardware occlusion culling、potentially visible set、Hiz occlusion culling、software occlusion culling。
 这些UE都有，本文是讲SOC，我把UE的SOC部分抽离成一个工程，这样可以比较方便的调试和阅读。
 
-通过下面两个图对剔除有个认知：
-下面是视锥剔除，不在视锥范围内不渲染
+通过下面两个图对剔除有个认知：  
+下面是视锥剔除，不在视锥范围内不渲染  
 ![](Img/2021-07-30-14-20-47.png)
 
-下面包括视锥剔除 遮挡剔除
+下面包括视锥剔除 遮挡剔除  
 ![](Img/2021-07-30-11-32-21.png)
 
 ### 为什么要软光栅剔除？
