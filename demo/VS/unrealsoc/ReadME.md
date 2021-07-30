@@ -41,8 +41,10 @@
 |视锥剔除|将物件的包围盒做一个坐标变换 变换到裁剪坐标系 然后如果不在视锥范围 则剔除|在视锥范围内 但是被遮挡了 这种剔除不了|
 |potentially visible set|对场景分格 预先计算好每个格子的可见集 游戏runtime的时候 查下PVS的数据结构 不可见的就不渲染|预先计算的 所以不能剔除动态物件|
 |Hardware occlusion culling|通过DX Opengl的遮挡查询接口 查询物件是否被遮挡|CPU GPU之间的查询 比较久 需要等待 也给GPU带来额外的压力|
-|Hiz occlusion culling|通过||
-|software occlusion culling|||
+|Hiz occlusion culling|通过上一帧的深度buffer 生成hiz 通过hiz 来查询到遮挡情况||
+|software occlusion culling|在CPU走一遍简单的光栅化来 得到哪些物件要被剔除|CPU 消耗|
+
+软光栅是一种可以剔除动态物件的runtime方法。
 
 ### 1. Demo的环境和运行结果
 要安装这个 https://easyx.cn/ 用了easyx来做UI显示。
