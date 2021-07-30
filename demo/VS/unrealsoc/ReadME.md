@@ -22,8 +22,10 @@
         - [6. SIMD优化](#6-simd优化)
 
 <!-- /TOC -->
-## 一、概述
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=wlxklyh.uesoc&title=Visitors)
+
+
+## 一、概述
 剔除在游戏引擎里面很常见，就是将一些摄像机看不到的东西剔除掉，减少性能的消耗。
 常见的剔除有距离剔除（[UE demo](https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unreal/CullDistance)）、视锥剔除、Hardware occlusion culling、potentially visible set、Hiz occlusion culling、software occlusion culling。
 这些UE都有，本文是讲SOC，我把UE的SOC部分抽离成一个工程，这样可以比较方便的调试和阅读。
@@ -49,15 +51,15 @@
 
 ### 1. Demo的环境和运行结果
 要安装这个 https://easyx.cn/ 用了easyx来做UI显示。
-下面是demo运行后的结果，将屏幕水平分割成6个桶，有一个正方形遮挡物显示在了第四个桶上面。先有个大致的了解。
+下面是demo运行后的结果，将屏幕水平分割成6个桶，有一个正方形遮挡物显示在了第四个桶上面。先有个大致的了解。  
 ![Run结果](Img/2021-07-29-11-38-02.png)
 
 ### 2. 代码流程图
-下面是代码流程图（矢量图可以放大来看），如果可以看懂就不用往下面看了，后面会把一些关键点拿出来讲解。
+下面是代码流程图（矢量图可以放大来看），如果可以看懂就不用往下面看了，后面会把一些关键点拿出来讲解。  
 ![代码流程图](UnrealSoc.svg)
 
 ### 3. 类图
-下面是类图，这里分了4个部分：输入的数据、输入的数据处理成SOC需要的数据、几何阶段之后形成三角形数据、输出数据（光栅化结果和可见集） 这部分可以稍微看下，下面讲到具体的内容再来查阅。
+下面是类图，这里分了4个部分：输入的数据、输入的数据处理成SOC需要的数据、几何阶段之后形成三角形数据、输出数据（光栅化结果和可见集） 这部分可以稍微看下，下面讲到具体的内容再来查阅。  
 ![类图](UESOC.drawio.png)
 
 
