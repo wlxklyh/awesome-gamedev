@@ -519,7 +519,11 @@ static bool ClippedVertexToScreen(const FVector4& XFV, FScreenPosition& OutSP, f
 	return false;
 }
 
-//
+//投影矩阵的推导是： 
+//-Z < x1 x Z < Z
+//-Z < y1 x Z < Z
+//-Z < z1 x Z < Z 
+// => 1/aspect cot(FOV/2) 0   0   0  所以推导出来的应该跟Z比较  而Z是存在W里面的 这个要理解得看下投影矩阵的推导。所以下面都是跟w做比较 
 static uint8 ProcessXFormVertex(const FVector4& XFV, float W_CLIP)
 {
 	uint8 Flags = 0;
