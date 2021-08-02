@@ -8,18 +8,17 @@
 #include "SceneSoftwareOcclusion.h"
 #include"Library/Math/Matrix.h"
 
-//计算包围盒屏幕空间的大小
+//计算包围盒屏幕空间的大小 拿这个大小去作为遮挡物的权重 然后裁剪掉一些遮挡物的数量
 float ComputeBoundsScreenSize(const FVector4& BoundsOrigin, const float SphereRadius, const FVector4& ViewOrigin, const FMatrix& ProjMatrix)
 {
+	//包围盒中心和相机的距离
 	const float Dist = FVector::Dist(BoundsOrigin, ViewOrigin);
 
-	// Get projection multiple accounting for view scaling.
+	// M[0][0] = 1.0f / FMath::Tan(HalfFOV)  M[1][1] = Width / FMath::Tan(HalfFOV) / Height,
 	const float ScreenMultiple = FMath::Max(0.5f * ProjMatrix.M[0][0], 0.5f * ProjMatrix.M[1][1]);
 
-	// Calculate screen-space projected radius
 	const float ScreenRadius = ScreenMultiple * SphereRadius / FMath::Max(1.0f, Dist);
 
-	// For clarity, we end up comparing the diameter
 	return ScreenRadius * 2.0f;
 }
 
@@ -32,8 +31,11 @@ float ComputeBoundsScreenSize(const FVector4& Origin, const float SphereRadius, 
 // 得到桶里面每一行（一行就是一条扫描线）的mask
 inline uint64 ComputeBinRowMask(int32 BinMinX, float fX0, float fX1)
 {
+	//计算出fX0 fX1在所在的64bit里面的bt的位置 x0 x1
 	int32 X0 = FMath::RoundToInt(fX0) - BinMinX;
 	int32 X1 = FMath::RoundToInt(fX1) - BinMinX;
+
+	//x0 x1 要在0-63之间
 	if (X0 >= BIN_WIDTH || X1 < 0)
 	{
 		// not in bin
@@ -41,27 +43,49 @@ inline uint64 ComputeBinRowMask(int32 BinMinX, float fX0, float fX1)
 	}
 	else
 	{
+		//x0 x1 要在0-63之间
 		X0 = FMath::Max(0, X0);
 		X1 = FMath::Min(BIN_WIDTH-1, X1);
 		int32 Num = (X1 - X0) + 1;
+		//(1) 如果跟宽度一样 那么就是 11111111.... 64bit
+		//(2) 如果跟宽度不一样  假设x0=1 Num3 那么就是 （用8bit举例）
+		// 00000001 << 3 -> 00001000
+		// 00001000 - 1  -> 00000111
+		// 00000111 << 1 -> 00001110
+		// 同理去计算64bit的
 		return (Num == BIN_WIDTH) ? ~0ull : ((1ull << Num) - 1) << X0;
 	}
 }
 
-//光栅化半个三角形 扫描线会把三角形分层两个
+
+/* 光栅化半个三角形 扫描线会把三角形分层两个
+*  下图是一个half DX0 DX1是步伐
+*  Row1         /\
+*              /  \
+*             /    \
+*            /      \
+*           /        \
+*          /          \
+*        x0------------x1
+*        /              \
+*  Row0 /----------------\
+*/   
 inline void RasterizeHalf(float X0, float X1, float DX0, float DX1, int32 Row0, int32 Row1, uint64* BinData, int32 BinMinX)
 {
-	checkSlow(Row0 <= Row1);
-	checkSlow(Row0 >= 0 && Row1 < FRAMEBUFFER_HEIGHT);
-	
+	//遍历每一行 X0向上一行就DX0的差异 同理X1
 	for (int32 Row = Row0; Row <= Row1; Row++, X0+=DX0, X1+=DX1)
 	{
+		//当前行的mask数据
 		uint64 FrameBufferMask = BinData[Row];
+		//如果完全光栅化了则不用再光栅化了
 		if (FrameBufferMask != ~0ull) // whether this row is already fully rasterized
 		{
+			//得到这个这一行的mask数据
 			uint64 RowMask = ComputeBinRowMask(BinMinX, X0, X1);
+			//如果是有1的
 			if (RowMask)
 			{
+				//mask 或 运算
 				BinData[Row] = (FrameBufferMask | RowMask);
 			}
 		}
@@ -71,21 +95,23 @@ inline void RasterizeHalf(float X0, float X1, float DX0, float DX1, int32 Row0, 
 //光栅化遮挡物的三角形
 static void RasterizeOccluderTri(const FScreenTriangle& Tri, uint64* BinData, int32 BinMinX)
 {
+	//遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
 	FScreenPosition A = Tri.V[0];
 	FScreenPosition B = Tri.V[1];
 	FScreenPosition C = Tri.V[2];
-
+	//最小行号 最大行号
 	int32 RowMin = FMath::Max<int32>(A.Y, 0);
 	int32 RowMax = FMath::Min<int32>(FRAMEBUFFER_HEIGHT-1, C.Y);
 
 	bool bRasterized = false;
 
 	int32 RowS = RowMin;
+	//如果中的点大于最小的 那么光栅化三角形的下部分 A->B 这部分
 	if ((B.Y - RowMin) > 0)
 	{
 		// A -> B
 		int32 RowE = FMath::Min<int32>(RowMax, B.Y);
-		// Edge gradients
+		// 两条边的梯度
 		float dX0 = float(B.X - A.X)/(B.Y - A.Y);
 		float dX1 = float(C.X - A.X)/(C.Y - A.Y);
 		if (dX0 > dX1)
@@ -95,11 +121,13 @@ static void RasterizeOccluderTri(const FScreenTriangle& Tri, uint64* BinData, in
 		float X0 = A.X + dX0*(RowS - A.Y);
 		float X1 = A.X + dX1*(RowS - A.Y);
 		ensure(X0 <= X1);
+		//光栅化这个half
 		RasterizeHalf(X0, X1, dX0, dX1, RowS, RowE, BinData, BinMinX);
 		bRasterized|= true;
 		RowS = RowE + 1;
 	}
-		
+
+	//如果中的点大于最小的 那么光栅化三角形的上部分 B -> C
 	if ((RowMax - RowS) > 0)
 	{
 		// B -> C
@@ -117,7 +145,7 @@ static void RasterizeOccluderTri(const FScreenTriangle& Tri, uint64* BinData, in
 		bRasterized|= true;
 	}
 
-	// one line triangle
+	// 还没被光栅化 那么是一条线
 	if (!bRasterized)
 	{
 		float X0 = FMath::Min3(A.X, B.X, C.X);
@@ -127,22 +155,26 @@ static void RasterizeOccluderTri(const FScreenTriangle& Tri, uint64* BinData, in
 }
 
 //光栅化被遮挡物的Quad
+//	
+//  +----+ V1 RowMax
+//  |    |
+//  |    |
+//  +----+ V0 RowMin
+// 
 static bool RasterizeOccludeeQuad(const FScreenTriangle& Tri, uint64* BinData, int32 BinMinX)
 {
-	int32 RowMin = Tri.V[0].Y; // Quad MinY
-	int32 RowMax = Tri.V[2].Y; // Quad MaxY
-	// occludee expected to be clipped to screen
-	checkSlow(RowMin >= 0);
-	checkSlow(RowMax < FRAMEBUFFER_HEIGHT);
+	int32 RowMin = Tri.V[0].Y; 
+	int32 RowMax = Tri.V[2].Y; 
 
 	// clip X to bin bounds
 	int32 X0 =  FMath::Max(Tri.V[0].X - BinMinX, 0);
 	int32 X1 =  FMath::Min(Tri.V[1].X - BinMinX, BIN_WIDTH - 1);
-	checkSlow(X0 <= X1);
-	
+
+	// 得到这个quad 的行mask  没一行都一样 
 	int32 NumBits = (X1 - X0) + 1;
 	uint64 RowMask = (NumBits == BIN_WIDTH) ? ~0ull : ((1ull << NumBits) - 1) << X0;
 
+	// 遍历每一行 做mask 查询
 	for (int32 Row = RowMin; Row <= RowMax; ++Row)
 	{
 		uint64 FrameBufferMask = BinData[Row];
@@ -170,32 +202,35 @@ inline bool AddTriangle(FScreenTriangle& Tri, float TriDepth, FPrimitiveComponen
 {
 	if (MeshFlags == 1) // occluder tri
 	{
-		// Sort vertices by Y, assumed in rasterization
+		// 排序一下
 		if (Tri.V[0].Y > Tri.V[1].Y) Swap(Tri.V[0], Tri.V[1]);
 		if (Tri.V[1].Y > Tri.V[2].Y) Swap(Tri.V[1], Tri.V[2]);
 		if (Tri.V[0].Y > Tri.V[1].Y) Swap(Tri.V[0], Tri.V[1]);
-	
+		//如果屏幕三角形不在屏幕中 则剔除
 		if (Tri.V[0].Y >= FRAMEBUFFER_HEIGHT || Tri.V[2].Y < 0)
 		{
 			return false;
 		}
 	}
 
+	// 三角形数据
 	InData.ScreenTriangles.push_back(Tri);
 	int32 TriangleID = InData.ScreenTriangles.size() - 1;
 	InData.ScreenTrianglesPrimID.push_back(PrimitiveId);
 	InData.ScreenTrianglesFlags.push_back(MeshFlags);
 	
-	// bin
+	// 计算这个三角形跨越了哪些桶 BinMin ----> BinMax
 	int32 MinX = FMath::Min3(Tri.V[0].X, Tri.V[1].X, Tri.V[2].X) / BIN_WIDTH; 
 	int32 MaxX = FMath::Max3(Tri.V[0].X, Tri.V[1].X, Tri.V[2].X) / BIN_WIDTH;
 	int32 BinMin = FMath::Max(MinX, 0);
 	int32 BinMax = FMath::Min(MaxX, BIN_NUM-1);
-	
+
+	// 计算三角形的深度
 	FSortedIndexDepth SortedIndexDepth;
 	SortedIndexDepth.Index = TriangleID;
 	SortedIndexDepth.Depth = TriDepth;
-			
+
+	// 塞入桶里面
 	for (int32 BinIdx = BinMin; BinIdx <= BinMax; ++BinIdx)
 	{
 		InData.SortedTriangles[BinIdx].push_back(SortedIndexDepth);
@@ -204,6 +239,7 @@ inline bool AddTriangle(FScreenTriangle& Tri, float TriDepth, FPrimitiveComponen
 	return true;
 }
 
+// 有clip空间 转到buffer 里面
 static const VectorRegister vFramebufferBounds = MakeVectorRegister(FRAMEBUFFER_WIDTH-1, FRAMEBUFFER_HEIGHT-1, 1.0f, 1.0f);
 static const VectorRegister vXYHalf = MakeVectorRegister(0.5f, 0.5f, 0.0f, 0.0f);
 
@@ -239,7 +275,7 @@ static void ProcessOccludeeGeomSIMD(const FMatrix& InMat, const FVector* InMinMa
 		yRow[1] = VectorMultiply(VectorLoadFloat1(&BoxMax.Y), mRow1);
 		zRow[0] = VectorMultiply(VectorLoadFloat1(&BoxMin.Z), mRow2);
 		zRow[1] = VectorMultiply(VectorLoadFloat1(&BoxMax.Z), mRow2);
-				
+		
 		VectorRegister vClippedFlag = VectorZero();	
 		VectorRegister vScreenMin = GlobalVectorConstants::BigNumber;
 		VectorRegister vScreenMax = VectorNegate(vScreenMin);
@@ -282,9 +318,17 @@ static void ProcessOccludeeGeomSIMD(const FMatrix& InMat, const FVector* InMinMa
 	}
 }
 
-// 被遮挡物的软光栅的几何阶段 
+// 被遮挡物的软光栅的几何阶段
+// 512个一组
+//InMat : WorldToFB
+//InMinMax : 包围盒
+//Num : 数量
+//OutQuads ：输出
+//OutQuadDepth ： 输出
+//OutQuadClipped ： 输出
 static void ProcessOccludeeGeomScalar(const FMatrix& InMat, const FVector* InMinMax, int32 Num, int32* RESTRICT OutQuads, float* RESTRICT OutQuadDepth, int32* RESTRICT OutQuadClipped)
 {
+	// 世界坐标 转到 FBO坐标的矩阵
 	const float W_CLIP =  InMat.M[3][2];
 	FVector4 AX = FVector4(InMat.M[0][0], InMat.M[0][1], InMat.M[0][2], InMat.M[0][3]);
 	FVector4 AY = FVector4(InMat.M[1][0], InMat.M[1][1], InMat.M[1][2], InMat.M[1][3]);
@@ -292,6 +336,7 @@ static void ProcessOccludeeGeomScalar(const FMatrix& InMat, const FVector* InMin
 	FVector4 AW = FVector4(InMat.M[3][0], InMat.M[3][1], InMat.M[3][2], InMat.M[3][3]);
 	FVector4 xRow[2], yRow[2], zRow[2];
 
+	// 遍历512为一组的包围盒
 	for (int32 k = 0; k < Num; ++k)
 	{
 		FVector BoxMin = *(InMinMax++);
@@ -383,14 +428,15 @@ static bool ProcessOccludeeGeom(const FOcclusionSceneData& SceneData, FOcclusion
 
 	FMatrix WorldToFB = SceneData.ViewProj * FramebufferMat;
 	
-	// on stack mem for each run output
+	// 这里要看下？？
 	MS_ALIGN(SIMD_ALIGNMENT) int32 Quads[RUN_SIZE*4] GCC_ALIGN(SIMD_ALIGNMENT);
 	float QuadDepths[RUN_SIZE];
 	int32 QuadClipFlags[RUN_SIZE];
 
 	int32 NumRuns = NumBoxes/RUN_SIZE + 1;
 	int32 NumBoxesProcessed = 0;
-	
+
+	// 512个为一个Runs 
 	for (int32 RunIdx = 0; RunIdx < NumRuns; ++RunIdx)
 	{
 		int32 RunSize = FMath::Min(NumBoxes - NumBoxesProcessed, RUN_SIZE);
@@ -405,7 +451,7 @@ static bool ProcessOccludeeGeom(const FOcclusionSceneData& SceneData, FOcclusion
 			ProcessOccludeeGeomScalar(WorldToFB, MinMax, RunSize, Quads, QuadDepths, QuadClipFlags);
 		}
 							
-		// Triangulate generated quads
+		// 被遮挡物的Quads
 		int32 QuadIdx = 0;
 		for (int32 i = 0; i < RunSize; ++i)
 		{
@@ -433,7 +479,7 @@ static bool ProcessOccludeeGeom(const FOcclusionSceneData& SceneData, FOcclusion
 						
 			float Depth = QuadDepths[i];
 						
-			// add only first tri, rasterizer will figure out to render a quad
+			// Quad存储一个三角形就可以
 			FScreenTriangle ST;
 			ST.V[0] = {MinX, MinY};
 			ST.V[1] = {MaxX, MaxY};
@@ -454,7 +500,6 @@ static bool ProcessOccludeeGeom(const FOcclusionSceneData& SceneData, FOcclusion
 static void CollectOccludeeGeom(const FBoxSphereBounds& Bounds, FPrimitiveComponentId PrimitiveId, FOcclusionSceneData& SceneData)
 {
 	const FBox Box = Bounds.GetBox();
-
 	SceneData.OccludeeBoxMinMax.push_back(Box.Min);
 	SceneData.OccludeeBoxMinMax.push_back(Box.Max);
 	SceneData.OccludeeBoxPrimId.push_back(PrimitiveId);
@@ -463,8 +508,7 @@ static void CollectOccludeeGeom(const FBoxSphereBounds& Bounds, FPrimitiveCompon
 //裁剪
 static bool ClippedVertexToScreen(const FVector4& XFV, FScreenPosition& OutSP, float& OutDepth)
 {
-	checkSlow(XFV.W >= 0.f);
-
+	//透视校正后除以w 归一化 然后得到屏幕坐标
 	FVector4 FSP = XFV / XFV.W;
 	int32 X = FMath::RoundToInt((FSP.X + 1.f) * FRAMEBUFFER_WIDTH/2.0);
 	int32 Y = FMath::RoundToInt((FSP.Y + 1.f) * FRAMEBUFFER_HEIGHT/2.0);
@@ -475,6 +519,7 @@ static bool ClippedVertexToScreen(const FVector4& XFV, FScreenPosition& OutSP, f
 	return false;
 }
 
+//
 static uint8 ProcessXFormVertex(const FVector4& XFV, float W_CLIP)
 {
 	uint8 Flags = 0;
@@ -531,9 +576,12 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 		FVector4* MeshClipVertices = ClipVertexBuffer.data();
 		uint8*	MeshClipVertexFlags = ClipVertexFlagsBuffer.data();
 		
-		// Transform mesh to clip space
+		
 		{
 			const FMatrix LocalToClip = Mesh.LocalToWorld * SceneData.ViewProj;
+			// 向量(4) x 矩阵(4x4) 的SIMD优化
+			// 非SIMD:16 mul,12 add
+			// SIMD: 4 laod, 4 Mul,3add 原来的1/4
 			VectorRegister mRow0  = VectorLoadAligned(LocalToClip.M[0]);
 			VectorRegister mRow1  = VectorLoadAligned(LocalToClip.M[1]);
 			VectorRegister mRow2  = VectorLoadAligned(LocalToClip.M[2]);
@@ -556,7 +604,7 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 				VTempX = VectorAdd(VTempX, VTempZ);
 				// Store
 				VectorStoreAligned(VTempX, &MeshClipVertices[i]);
-						
+				//在齐次裁剪坐标系里面用w来裁剪
 				uint8 VertexFlags = ProcessXFormVertex(MeshClipVertices[i], W_CLIP);
 				MeshClipVertexFlags[i] = VertexFlags;
 			}
@@ -566,7 +614,7 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 		int32 NumTris = Mesh.IndicesSP.size()/3;
 		int32 NumDataTris = OutData.ScreenTriangles.size();
 
-		// Create triangles
+		// 创建三角形
 		for (int32 i = 0; i < NumTris; ++i)
 		{
 			uint16 I0 = MeshIndices[i*3 + 0];
@@ -579,7 +627,7 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 
 			if ((F0 & F1) & F2)
 			{
-				// fully clipped
+				// 如果三个点有一个点在外面就裁掉 不作为遮挡物了 会遮挡少了一点
 				continue;
 			}
 
@@ -592,6 +640,7 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 
 			uint8 TriFlags = F0 | F1 | F2;
 
+			//近平面的裁剪
 			if (TriFlags & EScreenVertexFlags::ClippedNear)
 			{
 				static const int32 Edges[3][2] = {{0,1}, {1,2}, {2,0}};
@@ -643,7 +692,7 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 			{
 				FScreenTriangle Tri;
 				float Depths[3];
-				bool bShouldDiscard = false;
+				bool bShouldDiscard = false;	//貌似没什么作用
 						
 				for (int32 j = 0; j < 3 && !bShouldDiscard; ++j)
 				{
@@ -664,17 +713,15 @@ static void ProcessOccluderGeom(const FOcclusionSceneData& SceneData, FOcclusion
 static void ProcessOcclusionFrame(const FOcclusionSceneData& InSceneData, FOcclusionFrameResults& OutResults)
 {
 	FOcclusionFrameData FrameData;
-	int32 NumExpectedTriangles = InSceneData.NumOccluderTriangles + InSceneData.OccludeeBoxPrimId.size(); // one triangle for each occludee
+	//遮挡物三角形 在收集的时候计算  被遮挡物则是一个box一个三角形
+	int32 NumExpectedTriangles = InSceneData.NumOccluderTriangles + InSceneData.OccludeeBoxPrimId.size(); 
 	FrameData.ReserveBuffers(NumExpectedTriangles);
 
 	{
-		SCOPE_CYCLE_COUNTER(STAT_SoftwareOcclusionProcessOccluder)
 		ProcessOccluderGeom(InSceneData, FrameData);
 	}
 
 	{
-		SCOPE_CYCLE_COUNTER(STAT_SoftwareOcclusionProcessOccludee)
-		// Generate screen quads from all collected occludee bboxes
 		ProcessOccludeeGeom(InSceneData, FrameData, OutResults.VisibilityMap);
 	}
 
@@ -733,7 +780,6 @@ FSceneSoftwareOcclusion::FSceneSoftwareOcclusion()
 
 FSceneSoftwareOcclusion::~FSceneSoftwareOcclusion()
 {
-	// FlushResults();
 }
 
 

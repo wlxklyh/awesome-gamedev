@@ -13,7 +13,10 @@
 #define FORCENOINLINE 
 #define FORCEINLINE_DEBUGGABLE
 #define MS_ALIGN(x) 
-#define GCC_ALIGN(x)  
+#define GCC_ALIGN(x)
+// android
+// #define GCC_PACK(n)			__attribute__((packed,aligned(n)))
+// #define GCC_ALIGN(n)		__attribute__((aligned(n)))
 #define check(expr)
 #define TEXT(x) x
 #define checkSlow(exp) 
