@@ -187,10 +187,13 @@
 |Trick|简述|链接|
 |-|-|-|
 |UE shader编译选项|UE配置ConsoleVariable.ini之后就可以在renderdoc里面看到非汇编的shader 三个选项：r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1 r.DisableEngineAndAppRegistration=1|[文章链接](http://aicdg.com/renderdoc-hlsl/) [文章链接](https://zhuanlan.zhihu.com/p/47075752)（这里也有提到）|
-|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  mklink /J E:\UnrealEngine-4.26\Engine\Intermediate C:\UE4Build\Intermediate  mklink /J C:\UE4Build\Source E:\ue_4.25\Engine\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
+|UE编译加速|使用SSD链接 正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可  <br>（1）mklink /J E:\UnrealEngine-4.25\Engine\Intermediate  C:\UE4Build\Intermediate <br>（2）mklink /J C:\UE4Build\Source E:\ue_4.25\Engine\Source|[文章链接](https://cloud.tencent.com/developer/article/1368057)|
 |UE编译 重编|修改buildconfiguration会导致全部重编 修改头文件会导致大量重编 ||
 |UE编译 联合编译|Incrediblebuild 200个CPU一起跑 SSD固态硬盘 20分钟可以编完UE4工程|
 |UE模块 依赖顺序||[文章链接](https://blog.csdn.net/u013412391/article/details/104419789)|
+|UE Setup.bat|(1)SetUp加速 下一次读缓存 cache目录可以放SSD里面去 后面可以研究用局域网共享 <br>Setup.bat -exclude=WinRT -exclude=Linux -exclude=Linux32 -exclude=osx64 -exclude=IOS --cache=F:\UE4SetUpCache<br>(2)这些东西在:.ue4dependencies 这里可以看到<br>(3)UnrealEngine\Engine\Source\Programs\GitDependencies\Program.cs |[文章链接](https://forums.unrealengine.com/t/tutorial-how-to-use-setup-bat-and-how-to-reduce-download-size/17640)||
+|UE编译设置忽略|- 设置编译   VCToolChain.cs里面设置忽略告警 Arguments.Add("/ignore:4199");||
+
 
 |文章|简述|链接|难度|
 |-|-|-|-|
@@ -378,3 +381,10 @@ nv那个
 
 
 
+
+UE4博客 
+https://papalqi.cn/
+UBT系列
+https://zhuanlan.zhihu.com/p/157965866
+
+Boost.Asio 中Coroutine
