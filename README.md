@@ -42,7 +42,8 @@
 |![](Img/2021-06-29-20-32-42.png)|链接：https://share.weiyun.com/wM7ukZeM 密码：wlxk01|《Programming in Lua-中文》|
 |![](Img/2021-06-29-20-48-43.png)|链接：https://share.weiyun.com/Rmqx41B1 密码：wlxk01|《Objective-C基础教程》|
 |![](Img/2021-06-29-21-03-47.png)|链接：https://share.weiyun.com/YilKye1n 密码：wlxk01|《程序员的自我修养》|
-|GAMES01课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk01|GAMES01课件|
+|GAMES101课件|链接：https://share.weiyun.com/CZsIDYuA 密码：wlxk01|GAMES101课件|
+|GAMES202课件|链接：https://share.weiyun.com/m64jcfSO 密码：wlxk01|GAMES202课件|
 |Games101 图形学基础 |https://www.bilibili.com/video/BV1X7411F744 |Games101 图形学基础|
 |Games201 物理|https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext |
 |Games202 实时渲染|https://www.bilibili.com/video/BV1YK4y1T7yY |
@@ -320,6 +321,7 @@ https://zhuanlan.zhihu.com/p/157965866
 |C99|\__restrict__| int add (int* __restrict__ a, int* __restrict__ b){*a = 10; *b = 12; return *a + *b;} __restrict__修饰指针类型  __restrict__修饰a 和 b会使得更优化 例如上面例子会被优化返回22|[链接](https://jzwdsb.github.io/2018/03/restrict_in_cpp/ )|:star:|
 |C++11|using|跟typedef一样 另外可以模版特化 template<typename T1, typename T2> using ZBMap = typename std::map<T1, T2>;  using ULL = unsigned long long;|[链接](https://blog.csdn.net/toby54king/article/details/105330715)|:star::star:|
 |C++11|namespace|namespace OldN = OldNameSpace;|[链接](https://blog.csdn.net/toby54king/article/details/105330715)|:star::star:|
+|C++11|右值引用(&&) 移动构造函数 移动复制运算符 std::move|符号的左右 右值不能修改|[链接](https://zhuanlan.zhihu.com/p/335994370)|:star::star: 再看一遍|
 
 
 |C++|简述|链接|推荐|
@@ -363,7 +365,7 @@ https://zhuanlan.zhihu.com/p/157965866
 
 
 微软官方DX12光追demo：
-https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12Raytracing
+https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12Raytracing=
 NVIDIA官方教程：
 https://github.com/NVIDIAGameWorks/DxrTutorials
 
@@ -388,3 +390,13 @@ UBT系列
 https://zhuanlan.zhihu.com/p/157965866
 
 Boost.Asio 中Coroutine
+
+
+由于 emplace_back() 是 C++ 11 标准新增加的，如果程序要兼顾之前的版本，还是应该使用 push_back()。
+emplace_back() 和 push_back() 的区别，就在于底层实现的机制不同。push_back() 向容器尾部添加元素时，首先会创建这个元素，然后再将这个元素拷贝或者移动到容器中（如果是拷贝的话，事后会自行销毁先前创建的这个元素）；而 emplace_back() 在实现时，则是直接在容器尾部创建这个元素，省去了拷贝或移动元素的过程。
+
+--expt-relaxed-constexpr
+
+
+AOI算法 大世界里面使用的 Area of Interset
+
