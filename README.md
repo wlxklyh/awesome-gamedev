@@ -2,37 +2,40 @@
 <!-- TOC -->
 
 - [awesome-gamedev](#awesome-gamedev)
-    - [:loudspeaker:说明](#loudspeaker说明)
-    - [📚书籍](#📚书籍)
-    - [:computer:博客](#computer博客)
-    - [:computer:工程](#computer工程)
-    - [:rocket:GPU](#rocketgpu)
-    - [:mag:Paper](#magpaper)
-    - [:mount_fuji:图形学](#mount_fuji图形学)
-            - [光追](#光追)
-            - [光栅化](#光栅化)
-            - [图形学名词](#图形学名词)
-            - [烘焙和离线渲染](#烘焙和离线渲染)
-            - [实时渲染](#实时渲染)
-    - [引擎](#引擎)
-        - [Unreal](#unreal)
-        - [Unity](#unity)
-    - [数学](#数学)
-    - [性能优化](#性能优化)
-    - [GamePlay](#gameplay)
-    - [网络](#网络)
-    - [C++](#c)
-    - [工具和库](#工具和库)
-        - [C++库](#c库)
-        - [IDE](#ide)
-        - [网址](#网址)
-        - [TODO](#todo)
+  - [:loudspeaker:说明](#loudspeaker说明)
+  - [📚书籍](#书籍)
+  - [:computer:博客](#computer博客)
+  - [:computer:工程](#computer工程)
+  - [:rocket:GPU](#rocketgpu)
+  - [:mag:Paper](#magpaper)
+  - [:mount_fuji:图形学](#mount_fuji图形学)
+      - [光追](#光追)
+      - [光栅化](#光栅化)
+      - [图形学名词](#图形学名词)
+      - [烘焙和离线渲染](#烘焙和离线渲染)
+      - [实时渲染](#实时渲染)
+  - [引擎](#引擎)
+    - [Unreal](#unreal)
+    - [Unity](#unity)
+  - [数学](#数学)
+  - [性能优化](#性能优化)
+  - [GamePlay](#gameplay)
+  - [网络](#网络)
+  - [C++](#c)
+  - [工具和库](#工具和库)
+    - [C++库](#c库)
+    - [IDE](#ide)
+    - [网址](#网址)
+    - [TODO](#todo)
 
 <!-- /TOC -->
 ## :loudspeaker:说明
+
  收集游戏进阶的、paper、demo、教程等等
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=wlxklyh.awe-gdev&title=Visitors)
+
 ## 📚书籍
+
 |书名|地址|介绍|
 |-|-|-|
 |![](Img/2021-05-18-15-40-48.png)|链接：https://share.weiyun.com/57krWlgp 密码：wlxk01|《Physically Based Rendering Third Edition》离线渲染必读|
@@ -48,16 +51,16 @@
 |Games201 物理|https://www.bilibili.com/video/BV1ZK411H7Hc/?spm_id_from=autoNext |
 |Games202 实时渲染|https://www.bilibili.com/video/BV1YK4y1T7yY |
 
+## :computer:博客
 
-
-## :computer:博客 
 |博客|地址|介绍|
 |-|-|-|
 |云风博客|http://blog.codingnow.com/||
-|韦一笑博客|http://www.skywind.me/blog/||
+|韦一笑博客|<http://www.skywind.me/blog/>||
 
 
-## :computer:工程 
+## :computer:工程
+
 |工程demo|地址|介绍|
 |-|-|-|
 |GPULightmass|https://github.com/AlanIWBFT/GPULightmass|Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass|
@@ -103,6 +106,7 @@
 ## :mount_fuji:图形学
 
 #### 光追
+
 从下面两篇文章总结下光追的方法
 - 基础点：https://blog.csdn.net/libing_zeng/article/details/77239332   
 - 进阶点（后面的PSSMLT ME等没看）：https://zhuanlan.zhihu.com/p/72673165
@@ -121,11 +125,13 @@
 |SPPM| 视口和光子渐进 视口10 光子100k ....|||
 
 #### 光栅化
+
 |概念|简述|链接|难度|
 |-|-|-|-|
 |投影矩阵推导||[文章链接](https://zhuanlan.zhihu.com/p/74510058)|:star::star:|
 
 #### 图形学名词
+
 |概念|简述|链接|难度|
 |-|-|-|-|
 |球谐函数|这里讲解了UE球谐函数的推导 （还没怎么看懂）|[文章链接](https://zhuanlan.zhihu.com/p/350057737) |:star::star::star::star:|
@@ -399,4 +405,8 @@ emplace_back() 和 push_back() 的区别，就在于底层实现的机制不同�
 
 
 AOI算法 大世界里面使用的 Area of Interset
+
+万物皆有菲涅耳fresnel
+<https://zhuanlan.zhihu.com/p/58550300>
+<http://filmicworlds.com/blog/everything-has-fresnel>
 
