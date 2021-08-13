@@ -99,6 +99,9 @@
 |masked-software-occlusion-culling|Intel SOC的论文|[文章链接](https://software.intel.com/content/www/us/en/develop/articles/masked-software-occlusion-culling.html) [知乎文章](https://zhuanlan.zhihu.com/p/69287128) [github](https://github.com/GameTechDev/OcclusionCulling)|:star::star: 再精读下 |
 
 
+|GDC|简述|链接|难度|
+|-|-|-|-|
+|寒霜烘焙Precomputed Global Illumination in Frostbite|寒霜烘焙|[文章链接](https://media.contentapi.ea.com/content/dam/eacom/frostbite/files/gdc2018-precomputedgiobalilluminationinfrostbite.pdf)|:star::star:|
 
 
 
@@ -154,7 +157,7 @@
 |烘焙器和工具|简述|
 |-|-|
 |Bakery|Unity 烘焙插件 要60美元 不过挺多项目使用|
-|Enlighten|Unity 旧版本 CPU烘焙器|
+|Enlighten|Unity 旧版本 CPU烘焙器 是一个商业的烘焙器，frostbite用来做展2u[链接](https://www.siliconstudio.co.jp/middleware/enlighten/en/)|
 |Progressive|Unity 5.6开始 [CPU版本教程](https://www.bilibili.com/video/BV1At411172s) [GPU烘焙器](https://www.bilibili.com/video/BV1j4411U7KB)|
 |Blender|建模工具 https://zhuanlan.zhihu.com/p/146665394 |
 
@@ -409,4 +412,36 @@ AOI算法 大世界里面使用的 Area of Interset
 万物皆有菲涅耳fresnel
 <https://zhuanlan.zhihu.com/p/58550300>
 <http://filmicworlds.com/blog/everything-has-fresnel>
+
+git 使用  
+https://learngitbranching.js.org/?locale=zh_CN
+
+虚幻4渲染编程（重写渲染管线篇）【第三卷：在虚幻中搭建渲染器】 
+https://zhuanlan.zhihu.com/p/46700275
+
+寒霜链接
+[](magnet:?xt=urn:btih:e2590b077baeacf73a8a3a151cfbc950deaf8fe1&dn=FIFATest.tar&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fopenbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=https%3A%2F%2Ftrakx.herokuapp.com%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fopenbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive)
+
+UnrealEnigne源码构建&Perforce&（UnrealGameSync）开发版本控制基础部署
+https://zhuanlan.zhihu.com/p/362276094
+https://forums.unrealengine.com/t/build-from-source-and-distribute-it-in-our-studio/134766/3
+https://imzlp.com/posts/11956/
+
+
+深入材质的材质必读 论文  
+Heitz E. Understanding the masking-shadowing function in microfacet-based BRDFs[J]. 2014.
+
+GAS文档  
+https://github.com/tranek/GASDocumentation
+
+
+虚幻4渲染编程（重写渲染管线篇）【第三卷：在虚幻中搭建渲染器】 
+https://zhuanlan.zhihu.com/p/46700275
+
+
+译：UE4是如何渲染一帧的（1）
+https://zhuanlan.zhihu.com/p/33865743
+
+
+
 
