@@ -443,5 +443,16 @@ https://zhuanlan.zhihu.com/p/46700275
 https://zhuanlan.zhihu.com/p/33865743
 
 
+论文复现（非常推荐）  
+https://zhuanlan.zhihu.com/p/357265599
 
 
+SIGGRAPH视频预览  
+https://www.bilibili.com/video/BV154411Y75D?p=8
+
+这个人也翻译了一些图形学论文
+https://www.jianshu.com/u/e2b54829dd21
+
+
+论文 Dynamic Occlusion with Signed Distance Fields  
+https://www.jianshu.com/p/b4525ec2fd41
