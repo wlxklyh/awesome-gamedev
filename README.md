@@ -72,7 +72,7 @@
 |pbrt-v3|https://github.com/mmp/pbrt-v3|pbr书的工程|
 |光追渲染器|https://github.com/Mike-Leo-Smith|清华学生的github 写了光追的渲染器|
 |2U生成仓库|https://github.com/jpcy/xatlas |生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  |
-
+|Uniuty UE 自动调整lightmap scale|https://github.com/alexismorin/Auto-Lightmap-Adjuster|Unity Unreal 插件去调整lightmap size|
 
 ## :rocket:GPU
 
@@ -456,3 +456,16 @@ https://www.jianshu.com/u/e2b54829dd21
 
 论文 Dynamic Occlusion with Signed Distance Fields  
 https://www.jianshu.com/p/b4525ec2fd41
+
+
+静态库 动态的三种调用方式 windows ios ado都一样
+windows https://www.cnblogs.com/nxopen2018/p/11188329.html
+ios https://juejin.cn/post/6844903619393749000
+
+
+多线程渲染   
+https://zhuanlan.zhihu.com/p/44116722
+
+
+延迟渲染
+https://zhuanlan.zhihu.com/p/388808393
