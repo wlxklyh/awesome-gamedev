@@ -54,7 +54,8 @@
 ![20210614235251](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614235251.png)  
 
 
-- **动态物体**  
+- **动态物体**
+-   
 添加了一个Cube 因为会动所以不参与烘焙 然后是黑色的没有lightmap信息  
 ![20210614235859](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210614235859.png)  
 用light probe来照亮动态物体 然后烘焙  
@@ -62,11 +63,16 @@
 烘焙结果  
 ![GIF](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/GIF.gif)
 
-- **全局光照模式**    
+- **全局光照模式**
+
 ![20210615002636](https://raw.githubusercontent.com/wlxklyh/imagebed/master/imageforvscode/20210615002636.png)  
 Shadowmask: 阴影烘焙到shadow mask贴图里面 直接光间接光都烘焙 （？？不知道）  
 Baked Indirect：需要改成Mixed的灯光 烘焙间接光 没有阴影 没有直接光 要用实时光来烘焙阴影和直接光（感觉用于灯光会动的场景）  
 Subtractive： 静态物体 直接光和间接光都烘焙到光照贴图 动态物件可以投射阴影 （感觉是用于灯光不动 人物动的场景）  
+
+## 测试  
+
+
 
 ## 参考
 - FBX导入Unity  
