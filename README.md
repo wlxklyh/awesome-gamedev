@@ -39,6 +39,7 @@
 |书名|地址|介绍|
 |-|-|-|
 |![](Img/2021-05-18-15-40-48.png)|链接：https://share.weiyun.com/57krWlgp 密码：wlxk01|《Physically Based Rendering Third Edition》离线渲染必读|
+|![](Img/2021-08-26-11-32-10.png)||虎书 闫令琪Games101推荐的书籍|
 |![](Img/2021-06-29-20-23-05.png)|链接：https://share.weiyun.com/uZXkQaGz 密码：wlxk01|《大象无形》从事Unreal源码相关工作 初学者可以看下|
 |![](Img/2021-06-29-20-27-41.png)|链接：https://share.weiyun.com/6pd557VZ 密码：wlxk01|《垃圾回收的算法与实现》从事Java、C#、lua、python等带有GC的语言开发 可以读此书来了解GC|
 |![](Img/2021-06-29-20-31-37.png)|链接：https://share.weiyun.com/WjeOnX7T 密码：wlxk01|《readinglua》|
