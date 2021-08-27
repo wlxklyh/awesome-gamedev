@@ -3,3 +3,8 @@ Intermediate/
 Saved/
 DerivedDataCache/
 StarterContent/
+
+#VS proj
+x64/
+Debug/
+.vs/
