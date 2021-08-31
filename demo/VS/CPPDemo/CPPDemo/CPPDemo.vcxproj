@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Extract.h" />
     <ClInclude Include="RVO.h" />
     <ClInclude Include="Struct2Class.h" />
   </ItemGroup>

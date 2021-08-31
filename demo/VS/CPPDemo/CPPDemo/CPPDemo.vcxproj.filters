@@ -26,5 +26,8 @@
     <ClInclude Include="Struct2Class.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Extract.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

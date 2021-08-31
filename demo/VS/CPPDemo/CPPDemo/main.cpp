@@ -1,10 +1,10 @@
+#include"Struct2Class.h"
 #include"RVO.h"
-
+#include"Extract.h"
 
 int main()
 {
-    RVO::RVOMain();
-
-
+    //RVO::RVOMain();
+    Extract::ExtractMain();
     return 0;
 }

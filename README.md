@@ -474,3 +474,17 @@ https://zhuanlan.zhihu.com/p/44116722
 
 延迟渲染
 https://zhuanlan.zhihu.com/p/388808393
+
+
+为什么SIMD要16字节对齐  
+https://www.zhihu.com/question/323890604
+
+
+打印类的内存布局 
+https://blog.csdn.net/ywcpig/article/details/52550584
+/d1 reportSingleClassLayoutXXX
+
+![](Img/2021-08-31-10-46-19.png)
+
+C++萃取  
+https://blog.csdn.net/lalu58/article/details/53150240
