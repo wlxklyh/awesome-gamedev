@@ -68,14 +68,13 @@
 
 |工程demo|地址|介绍|
 |-|-|-|
-|GPULightmass|https://github.com/AlanIWBFT/GPULightmass|Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass|
+|GPULightmass|https://github.com/AlanIWBFT/GPULightmass|Luoshuang's GPULightmass for UE4 用辐照度算法、CUDA做的GPU Lightmass 工程较为混乱 用了一些全局变量 但是cuda不支持external 导致编译依赖头文件顺序|
 |Unity后处理|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/postprocess|wlxklyh 的后处理demo工程|
 |Unity Progressive|https://github.com/wlxklyh/awesome-gamedev/tree/main/demo/Unity/progressive|wlxklyh 的progressive 烘焙demo工程|
 |shadertoy里面写pt|https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/||
 |mitsuba|https://github.com/mitsuba-renderer/mitsuba|学术界开源光追渲染器 推荐看1|
 |mitsuba2|https://github.com/mitsuba-renderer/mitsuba2|学术界开源光追渲染器|
 |pbrt-v3|https://github.com/mmp/pbrt-v3|pbr书的工程|
-|光追渲染器|https://github.com/Mike-Leo-Smith|清华学生的github 写了光追的渲染器|
 |2U生成仓库|https://github.com/jpcy/xatlas |生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  |
 |Uniuty UE 自动调整lightmap scale|https://github.com/alexismorin/Auto-Lightmap-Adjuster|Unity Unreal 插件去调整lightmap size|
 
@@ -488,3 +487,4 @@ https://blog.csdn.net/ywcpig/article/details/52550584
 
 C++萃取  
 https://blog.csdn.net/lalu58/article/details/53150240
+https://blog.csdn.net/Dawn_sf/article/details/70038126
