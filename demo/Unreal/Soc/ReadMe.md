@@ -2,6 +2,19 @@
 
 https://docs.unrealengine.com/4.26/zh-CN/RenderingAndGraphics/VisibilityCulling/SoftwareOcclusionQueries/
 
+0、demo 要先运行这三个命令
+先按"~"这个按键  然后出现下面的输入框
+![](Img/2021-09-03-15-12-16.png)
+
+然后在这个输入框里面输入下面三个命令
+r.mobile.AllowSoftwareOcclusion 1
+r.SO.VisualizeBuffer 1
+stat softwareocclusion
+
+之后就可以看到
+![](Img/2021-09-03-15-16-06.png)
+
+
 1、项目设置
 ![](Img/2021-08-25-10-36-50.png)
 或者这里设置 r.mobile.AllowSoftwareOcclusion 1
