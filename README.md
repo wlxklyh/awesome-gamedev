@@ -488,3 +488,10 @@ https://blog.csdn.net/ywcpig/article/details/52550584
 C++萃取  
 https://blog.csdn.net/lalu58/article/details/53150240
 https://blog.csdn.net/Dawn_sf/article/details/70038126
+
+Z-fighting  
+https://zhuanlan.zhihu.com/p/78769570
+
+投影矩阵推导  
+https://zhuanlan.zhihu.com/p/104768669
+
