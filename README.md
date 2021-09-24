@@ -495,3 +495,15 @@ https://zhuanlan.zhihu.com/p/78769570
 投影矩阵推导  
 https://zhuanlan.zhihu.com/p/104768669
 
+dx11教程
+https://www.braynzarsoft.net/?p=DX11Lessons
+
+
+UE的Nanite
+https://zhuanlan.zhihu.com/p/376267968
+Brief Analysis of Nanite
+https://www.notion.so/Brief-Analysis-of-Nanite-94be60f292434ba3ae62fa4bcf7d9379
+【UE5】Nanite解析
+https://www.jianshu.com/p/bace3fdc4a68
+UE5渲染技术简介：Nanite篇
+https://zhuanlan.zhihu.com/p/382687738#ref_4
