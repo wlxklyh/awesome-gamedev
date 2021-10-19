@@ -507,3 +507,14 @@ https://www.notion.so/Brief-Analysis-of-Nanite-94be60f292434ba3ae62fa4bcf7d9379
 https://www.jianshu.com/p/bace3fdc4a68
 UE5渲染技术简介：Nanite篇
 https://zhuanlan.zhihu.com/p/382687738#ref_4
+
+lightprobe
+https://www.cnblogs.com/murongxiaopifu/p/8997720.html
+https://zhuanlan.zhihu.com/p/194198670
+
+FSR 
+https://zhuanlan.zhihu.com/p/401030221
+https://www.shadertoy.com/view/stXSWB
+
+计算FPS
+https://blog.csdn.net/weixin_39663378/article/details/111674587
