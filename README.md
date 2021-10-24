@@ -62,7 +62,7 @@
 |-|-|-|
 |云风博客|http://blog.codingnow.com/||
 |韦一笑博客|<http://www.skywind.me/blog/>||
-
+|Kostas Anagnostou|interplayoflight.wordpress.com|
 
 ## :computer:工程
 
@@ -518,3 +518,16 @@ https://www.shadertoy.com/view/stXSWB
 
 计算FPS
 https://blog.csdn.net/weixin_39663378/article/details/111674587
+
+Hiz
+https://arm-software.github.io/opengl-es-sdk-for-android/occlusion_culling.html
+https://www.rastergrid.com/blog/2010/10/hierarchical-z-map-based-occlusion-culling/
+https://zhuanlan.zhihu.com/p/74936111
+
+
+UE4Editor开发
+https://blog.csdn.net/qjh5606/article/details/118021112
+https://blog.csdn.net/qjh5606/article/details/118034556
+
+99行的光追
+http://www.kevinbeason.com/smallpt/

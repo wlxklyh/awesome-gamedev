@@ -2,5 +2,11 @@
 	"FileVersion": 3,
 	"EngineAssociation": "{A0C4FA60-4F2A-6BDB-0AA1-AD9B7D5975BA}",
 	"Category": "",
-	"Description": ""
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "RenderDocPlugin",
+			"Enabled": true
+		}
+	]
 }
