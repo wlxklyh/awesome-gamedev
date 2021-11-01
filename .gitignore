@@ -8,3 +8,7 @@ StarterContent/
 x64/
 Debug/
 .vs/
+
+#clion
+.idea
+cmake-build-debug
