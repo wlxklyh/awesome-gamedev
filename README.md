@@ -77,6 +77,8 @@
 |pbrt-v3|https://github.com/mmp/pbrt-v3|pbr书的工程|
 |2U生成仓库|https://github.com/jpcy/xatlas |生成唯一UV坐标的纹理 适合lightmap的烘焙的一个github仓库  |
 |Uniuty UE 自动调整lightmap scale|https://github.com/alexismorin/Auto-Lightmap-Adjuster|Unity Unreal 插件去调整lightmap size|
+|99行的光追|http://www.kevinbeason.com/smallpt/|非常精简的PT|
+|光追渲染器教程|https://wjakob.github.io/nori/| |
 
 ## :rocket:GPU
 
@@ -130,6 +132,8 @@
 |PSSMLT|针对变异函数进行改进 对随机数扰动 减少噪点||光源和视口出发||
 |PPM| 渐进式PM 每次一定的光子100k 100k||||
 |SPPM| 视口和光子渐进 视口10 光子100k ....|||
+
+
 
 #### 光栅化
 
@@ -224,8 +228,6 @@
 
 - UE4 继承关系  
 
-
-
 ```cpp
 转载自：https://www.jianshu.com/p/c288d7ee5cfc
 一级派生Class UActorComponent 角色组件
@@ -281,6 +283,11 @@ https://mp.weixin.qq.com/s/oBISXGsHplTNeqAcRzHtEA
 
 - UE4 源码剖析 - 1.1.1 类型系统构建 - 编译系统(UBT之Generate)系列  没看  
 https://zhuanlan.zhihu.com/p/157965866
+
+- UE4Editor开发
+https://blog.csdn.net/qjh5606/article/details/118021112
+https://blog.csdn.net/qjh5606/article/details/118034556
+
 
 |文章|简述|链接|难度|
 |-|-|-|-|
@@ -525,9 +532,6 @@ https://www.rastergrid.com/blog/2010/10/hierarchical-z-map-based-occlusion-culli
 https://zhuanlan.zhihu.com/p/74936111
 
 
-UE4Editor开发
-https://blog.csdn.net/qjh5606/article/details/118021112
-https://blog.csdn.net/qjh5606/article/details/118034556
 
-99行的光追
-http://www.kevinbeason.com/smallpt/
+
+

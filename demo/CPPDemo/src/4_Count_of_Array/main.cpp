@@ -31,6 +31,7 @@ int main() {
     int x[10];
     std::cout << _countof_1(x) << std::endl;
     int* p;
+
     p = x;
     std::cout << _countof_1(p) << std::endl;
 
