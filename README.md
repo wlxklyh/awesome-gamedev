@@ -531,7 +531,8 @@ https://arm-software.github.io/opengl-es-sdk-for-android/occlusion_culling.html
 https://www.rastergrid.com/blog/2010/10/hierarchical-z-map-based-occlusion-culling/
 https://zhuanlan.zhihu.com/p/74936111
 
-
-
+DXBC翻译
+https://github.com/luxuia/dxbc_reader
+http://xiaopengyou.fun/public/2021/01/16/DXBC%E6%8C%87%E4%BB%A4/
 
 
