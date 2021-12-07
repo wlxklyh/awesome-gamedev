@@ -1,116 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="源文件\Library">
-      <UniqueIdentifier>{3480c6aa-cac9-4e2d-baf6-cbb2c4199cd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Library\Math">
-      <UniqueIdentifier>{bd4f45dd-032d-401b-88f4-c1b3f8d6fb4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Library\Core">
-      <UniqueIdentifier>{c00580f3-e00a-4b15-8685-b09f2d5feae9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Library\Windows">
-      <UniqueIdentifier>{bb2a9353-3d37-4ae5-a8dd-6df6cd1fba9f}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Main\Main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneSoftwareOcclusion.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="UEMaskSoc\SceneSoftwareOcclusion.cpp">
+      <Filter>UEMaskSoc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Main\Library\Math\Matrix.h">
-      <Filter>源文件\Library\Math</Filter>
+    <Filter Include="UEMaskSoc">
+      <UniqueIdentifier>{c2d99baa-1eb8-4a06-81d3-8fc2df02d0d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UEMaskSoc\Math">
+      <UniqueIdentifier>{67cbbf77-027a-4c31-a590-557d5fbb5a05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UEMaskSoc\Windows">
+      <UniqueIdentifier>{cb2f5743-1990-42f0-b551-d98567e4f209}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UEMaskSoc\Windows\WindowsPlatformMath.h">
+      <Filter>UEMaskSoc\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\Plane.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Box.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealMathFPU.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\BoxSphereBounds.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealMathNeon.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\GenericPlatformMath.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealMathSSE.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\IntPoint.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Core\CoreMiscDefines.h">
-      <Filter>源文件\Library\Core</Filter>
+    <ClInclude Include="UEMaskSoc\Math\IntVector.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneSoftwareOcclusion.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Matrix.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\UEAdapter.h">
-      <Filter>源文件\Library</Filter>
+    <ClInclude Include="UEMaskSoc\Math\NumericLimits.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\IntPoint.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Plane.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealMathUtility.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Sphere.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealPlatformMathSSE4.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\sse_mathfun.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\Vector.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathFPU.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\Vector2D.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathNeon.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\Vector4.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathSSE.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealPlatformMathSSE.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathUtility.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Windows\WindowsPlatformMath.h">
-      <Filter>源文件\Library\Windows</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathVectorConstants.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\GenericPlatformMath.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealPlatformMathSSE.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\IntVector.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\UnrealPlatformMathSSE4.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\NumericLimits.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Vector.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\sse_mathfun.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Vector2D.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\UnrealMathVectorConstants.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\Math\Vector4.h">
+      <Filter>UEMaskSoc\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\Box.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\SceneSoftwareOcclusion.h">
+      <Filter>UEMaskSoc</Filter>
     </ClInclude>
-    <ClInclude Include="Main\Library\Math\BoxSphereBounds.h">
-      <Filter>源文件\Library\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\Library\Math\Sphere.h">
-      <Filter>源文件\Library\Math</Filter>
+    <ClInclude Include="UEMaskSoc\UEAdapter.h">
+      <Filter>UEMaskSoc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Main\Library\Math\Matrix.inl">
-      <Filter>源文件\Library\Math</Filter>
+    <None Include="UEMaskSoc\Math\Matrix.inl">
+      <Filter>UEMaskSoc\Math</Filter>
     </None>
   </ItemGroup>
 </Project>

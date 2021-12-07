@@ -78,15 +78,19 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\Intermediate\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\Intermediate\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_VS_SLN_PROJ;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -100,7 +104,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_VS_SLN_PROJ;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -114,13 +118,18 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_VS_SLN_PROJ;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../ThirdParty/easyx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ShowIncludes>true</ShowIncludes>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <AdditionalOptions>/d1 reportSingleClassLayoutFSceneSoftwareOcclusion %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../ThirdParty/easyx/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>EasyXa.lib;EasyXw.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -129,49 +138,50 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_VS_SLN_PROJ;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../ThirdParty/easyx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../ThirdParty/easyx/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>EasyXa.lib;EasyXw.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main\Main.cpp" />
-    <ClCompile Include="Main\SceneSoftwareOcclusion.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="UEMaskSoc\SceneSoftwareOcclusion.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Main\Library\Core\CoreMiscDefines.h" />
-    <ClInclude Include="Main\Library\Math\Box.h" />
-    <ClInclude Include="Main\Library\Math\BoxSphereBounds.h" />
-    <ClInclude Include="Main\Library\Math\GenericPlatformMath.h" />
-    <ClInclude Include="Main\Library\Math\IntPoint.h" />
-    <ClInclude Include="Main\Library\Math\IntVector.h" />
-    <ClInclude Include="Main\Library\Math\Matrix.h" />
-    <ClInclude Include="Main\Library\Math\NumericLimits.h" />
-    <ClInclude Include="Main\Library\Math\Plane.h" />
-    <ClInclude Include="Main\Library\Math\Sphere.h" />
-    <ClInclude Include="Main\Library\Math\sse_mathfun.h" />
-    <ClInclude Include="Main\Library\Math\UnrealMathFPU.h" />
-    <ClInclude Include="Main\Library\Math\UnrealMathNeon.h" />
-    <ClInclude Include="Main\Library\Math\UnrealMathSSE.h" />
-    <ClInclude Include="Main\Library\Math\UnrealMathUtility.h" />
-    <ClInclude Include="Main\Library\Math\UnrealMathVectorConstants.h" />
-    <ClInclude Include="Main\Library\Math\UnrealPlatformMathSSE.h" />
-    <ClInclude Include="Main\Library\Math\UnrealPlatformMathSSE4.h" />
-    <ClInclude Include="Main\Library\Math\Vector.h" />
-    <ClInclude Include="Main\Library\Math\Vector2D.h" />
-    <ClInclude Include="Main\Library\Math\Vector4.h" />
-    <ClInclude Include="Main\Library\UEAdapter.h" />
-    <ClInclude Include="Main\Library\Windows\WindowsPlatformMath.h" />
-    <ClInclude Include="Main\SceneSoftwareOcclusion.h" />
+    <ClInclude Include="UEMaskSoc\Math\Box.h" />
+    <ClInclude Include="UEMaskSoc\Math\BoxSphereBounds.h" />
+    <ClInclude Include="UEMaskSoc\Math\GenericPlatformMath.h" />
+    <ClInclude Include="UEMaskSoc\Math\IntPoint.h" />
+    <ClInclude Include="UEMaskSoc\Math\IntVector.h" />
+    <ClInclude Include="UEMaskSoc\Math\Matrix.h" />
+    <ClInclude Include="UEMaskSoc\Math\NumericLimits.h" />
+    <ClInclude Include="UEMaskSoc\Math\Plane.h" />
+    <ClInclude Include="UEMaskSoc\Math\Sphere.h" />
+    <ClInclude Include="UEMaskSoc\Math\sse_mathfun.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathFPU.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathNeon.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathSSE.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathUtility.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealMathVectorConstants.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealPlatformMathSSE.h" />
+    <ClInclude Include="UEMaskSoc\Math\UnrealPlatformMathSSE4.h" />
+    <ClInclude Include="UEMaskSoc\Math\Vector.h" />
+    <ClInclude Include="UEMaskSoc\Math\Vector2D.h" />
+    <ClInclude Include="UEMaskSoc\Math\Vector4.h" />
+    <ClInclude Include="UEMaskSoc\SceneSoftwareOcclusion.h" />
+    <ClInclude Include="UEMaskSoc\UEAdapter.h" />
+    <ClInclude Include="UEMaskSoc\Windows\WindowsPlatformMath.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Main\Library\Math\Matrix.inl" />
+    <None Include="UEMaskSoc\Math\Matrix.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

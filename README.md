@@ -5,6 +5,7 @@
   - [:loudspeaker:说明](#loudspeaker说明)
   - [📚书籍](#书籍)
   - [:computer:博客](#computer博客)
+  - [:computer:gdc](#computergdc)
   - [:computer:工程](#computer工程)
   - [:rocket:GPU](#rocketgpu)
   - [:mag:Paper](#magpaper)
@@ -62,7 +63,14 @@
 |-|-|-|
 |云风博客|http://blog.codingnow.com/||
 |韦一笑博客|<http://www.skywind.me/blog/>||
-|Kostas Anagnostou|interplayoflight.wordpress.com|
+|Kostas Anagnostou|interplayoflight.wordpress.com||
+|MJP 教团1886工作室|https://therealmjp.github.io/posts/||
+
+## :computer:gdc
+
+1. LowLevelThinking(shader优化相关)
+![](Img/2021-11-29-10-45-28.png)
+
 
 ## :computer:工程
 
@@ -446,7 +454,7 @@ GAS文档
 https://github.com/tranek/GASDocumentation
 
 
-虚幻4渲染编程（重写渲染管线篇）【第三卷：在虚幻中搭建渲染器】 
+虚幻4渲染编程（重写渲染管线篇）【第三卷：在虚幻中搭建渲染器】
 https://zhuanlan.zhihu.com/p/46700275
 
 
@@ -536,4 +544,11 @@ DXBC翻译
 https://github.com/luxuia/dxbc_reader
 http://xiaopengyou.fun/public/2021/01/16/DXBC%E6%8C%87%E4%BB%A4/
 
+shader优化减少if
+https://cloud.tencent.com/developer/article/1370101
 
+metal解决手机端延迟渲染带宽问题
+依赖硬件TBDR框架，完成了软件延迟渲染配合硬件分块，使用on-chip memory减少带宽压力，在此基础上，使用metal2的新特性Raster Order Group以及Image Blocks
+
+metal相关的WWDC
+https://developer.apple.com/videos/play/wwdc2019/611/

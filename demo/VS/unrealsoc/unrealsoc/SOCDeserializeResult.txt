@@ -1,0 +1,12 @@
+SOCFrameTime:1
+SOCGeomTime:1
+SOCRasterizeTime:0
+OccluderGeomTime:1
+OccludeeGeomTime:0
+OccluderRasterizeTime:0
+OccludeeRasterizeTime:0
+OccluderNum:1
+OccludeeNum:1
+OccluderTriNum:3
+OccludeeTriNum:2
+OccludeeCullNum:0
