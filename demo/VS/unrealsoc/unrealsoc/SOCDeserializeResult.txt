@@ -1,7 +1,7 @@
-SOCFrameTime:1
-SOCGeomTime:1
+SOCFrameTime:0
+SOCGeomTime:0
 SOCRasterizeTime:0
-OccluderGeomTime:1
+OccluderGeomTime:0
 OccludeeGeomTime:0
 OccluderRasterizeTime:0
 OccludeeRasterizeTime:0
