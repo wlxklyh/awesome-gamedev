@@ -552,3 +552,17 @@ metal解决手机端延迟渲染带宽问题
 
 metal相关的WWDC
 https://developer.apple.com/videos/play/wwdc2019/611/
+
+
+
+|变换前坐标|变换前空间|矩阵|变换后坐标|变换后空间|
+|-|-|-|-|-|
+|模型坐标|本地空间 模型空间？|M矩阵|世界坐标|世界空间|
+|世界坐标|世界空间|V矩阵|相机空间的坐标|相机空间、View空间|
+|相机空间的坐标|相机空间、View空间|P矩阵|投影后的坐标 CVV空间的坐标 坐标的范围是[-Zv,Zv](相机空间的Zv) W分量是等于Zv|CVV空间|
+|CVV空间的坐标|CVV空间|W分量归一化|NDC [-1,1]|NDC|
+
+
+restir：
+<https://github.com/tatran5/Reservoir-Spatio-Temporal-Importance-Resampling-ReSTIR>
+<https://github.com/lindayukeyi/ReSTIR_DX12>
