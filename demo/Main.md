@@ -19,6 +19,17 @@
 <http://candycat1992.github.io/2016/11/28/blend-terrain-textures/>
 ![](Img/2022-02-19-19-24-31.png)
 
+
+### 5、
+
+Repeate
+![](Img/2022-02-19-20-21-49.png)
+
+texture systhesis
+![](Img/2022-02-19-20-42-58.png)
+
+![](Img/2022-02-19-20-43-31.png)
+
 ## 2️⃣、Unreal
 
 ### 1. CullDistance
