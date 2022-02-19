@@ -566,3 +566,6 @@ https://developer.apple.com/videos/play/wwdc2019/611/
 restir：
 <https://github.com/tatran5/Reservoir-Spatio-Temporal-Importance-Resampling-ReSTIR>
 <https://github.com/lindayukeyi/ReSTIR_DX12>
+
+vs2019 越界检测
+AddressSanitizer
