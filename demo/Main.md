@@ -23,12 +23,11 @@
 ### 5、
 
 Repeate
-![](Img/2022-02-19-20-21-49.png)
-
-texture systhesis
-![](Img/2022-02-19-20-42-58.png)
-
-![](Img/2022-02-19-20-43-31.png)
+![](Img/texturerepeate.png)
+texturenorepeate1
+![](Img/texturenorepeate1.png)
+texturenorepeate2
+![](Img/texturenorepeate2.png)
 
 ## 2️⃣、Unreal
 
