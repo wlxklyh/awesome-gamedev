@@ -67,18 +67,18 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RippleDensity: 0.5
+    - _RippleDensity: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - _distanceFactor: 10
-    - _maxWaveDis: 0.55
+    - _maxWaveDis: 0.4
     - _timeFactor: 100
     - _totalFactor: 0.005
     - _waveSpeed: 25
-    - _waveWidth: 0.03
+    - _waveWidth: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -18,12 +18,15 @@
 ### 4.Unity\ShaderEffect\Asset\TerrainMultiTexture
 
 <http://candycat1992.github.io/2016/11/28/blend-terrain-textures/>
+![](Img/2022-02-20-19-57-11.png)
 ![](Img/2022-02-19-19-24-31.png)
 
 
 ### 5、Unity\ShaderEffect\Asset\TerrainTextureRepeate
 
 <http://candycat1992.github.io/2016/11/29/texture-repetition/>
+
+![](Img/2022-02-20-20-13-00.png)
 1.拿噪声纹理得到随机tile的随机方向 和 随机平移 
 2.模糊交界处
 Repeate
@@ -39,6 +42,12 @@ uunity trick Editor模式下看材质动态
 ![](Img/2022-02-20-15-34-17.png)
 
 <https://github.com/kb824999404/Unity_Shader/blob/master/Shader/Test/Water/SimpleWater.shader>
+
+1. 简单的水
+![](Img/2022-02-20-20-22-09.png)
+
+2. 水波纹
+![](Img/2022-02-20-20-43-08.png)
 
 ![](Img/water.gif)
 
