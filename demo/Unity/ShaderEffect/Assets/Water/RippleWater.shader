@@ -7,15 +7,15 @@
         _Intensity("intensity", float) = 0.1
         _XSpeed("Flow Speed", float) = -0.2
 
-        _RippleColor("RippleColor",Color)=(0,0,0,0) //水波颜色
-        _GridNum("GridNum",Float)=10                //细分网格数量
+        _RippleColor("RippleColor",Color)=(1.0,1.0,1.0,1.0) //水波颜色
+        _GridNum("GridNum",Float)=8                //细分网格数量
         _RippleDensity("RippleDensity",Range(0,1))=0.5   //水波密度
         _distanceFactor("distanceFactor",Float)=10      //波纹波峰波谷数量
         _totalFactor("totalFactor",Float)=0.005         //波纹拉伸强度
-        _timeFactor("timeFactor",Float)=10              //波纹运动速度
+        _timeFactor("timeFactor",Float)=100              //波纹拉伸变化
         _waveWidth("waveWidth",Float)=0.03             //波纹宽度
-        _maxWaveDis("maxWaveDis",Float)=0.3            //水波最大扩散半径
-        _waveSpeed("waveSpeed",Float)=1.0               //水波扩散速度
+        _maxWaveDis("maxWaveDis",Float)=0.55            //水波最大扩散半径
+        _waveSpeed("waveSpeed",Float)=25               //水波扩散速度
     }
     SubShader
     {

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SimpleWaterMat
-  m_Shader: {fileID: 4800000, guid: 167640ea3c6eb194f885374203320377, type: 3}
+  m_Name: RippleWaterMat
+  m_Shader: {fileID: 4800000, guid: 001485a4fe90d714fb00394b22d5c635, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -66,17 +66,26 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GridNum: 10
     - _Intensity: 0.1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RippleDensity: 0.564
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _XSpeed: -0.2
+    - _XSpeed: -0.15
     - _ZWrite: 1
+    - _distanceFactor: 10
+    - _maxWaveDis: 0.3
+    - _timeFactor: 10
+    - _totalFactor: 0.005
+    - _waveSpeed: 1
+    - _waveWidth: 0.03
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RippleColor: {r: 0, g: 0, b: 0, a: 0}

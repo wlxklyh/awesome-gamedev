@@ -3,15 +3,15 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}       //水纹理
-        _RippleColor("RippleColor",Color)=(0,0,0,0) //水波颜色
-        _GridNum("GridNum",Float)=10                //细分网格数量
+        _RippleColor("RippleColor",Color)=(1.0,1.0,1.0,1.0) //水波颜色
+        _GridNum("GridNum",Float)=8                //细分网格数量
         _RippleDensity("RippleDensity",Range(0,1))=0.5   //水波密度
         _distanceFactor("distanceFactor",Float)=10      //波纹波峰波谷数量
         _totalFactor("totalFactor",Float)=0.005         //波纹拉伸强度
-        _timeFactor("timeFactor",Float)=10              //波纹拉伸变化
+        _timeFactor("timeFactor",Float)=100              //波纹拉伸变化
         _waveWidth("waveWidth",Float)=0.03             //波纹宽度
-        _maxWaveDis("maxWaveDis",Float)=0.3            //水波最大扩散半径
-        _waveSpeed("waveSpeed",Float)=1.0               //水波扩散速度
+        _maxWaveDis("maxWaveDis",Float)=0.55            //水波最大扩散半径
+        _waveSpeed("waveSpeed",Float)=25               //水波扩散速度
     }
     SubShader
     {
@@ -90,7 +90,7 @@
                 //计算每个像素uv的偏移值
                 float2 offset = dv1  * sinFactor*discardFactor*flag_ripple;
                 //水波颜色
-                fixed rippleColor=fixed4(_RippleColor.rgb*_RippleColor.a*discardFactor*flag_ripple,0);
+                fixed rippleColor=fixed4(_RippleColor.rgb*_RippleColor.a*discardFactor*flag_ripple,0.0);
                 //像素采样时偏移offset
                 float2 uv = offset+ i.uv;
                 return tex2D(_MainTex, uv)+rippleColor;	

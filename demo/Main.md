@@ -39,6 +39,8 @@ uunity trick Editor模式下看材质动态
 ![](Img/2022-02-20-15-34-17.png)
 
 <https://github.com/kb824999404/Unity_Shader/blob/master/Shader/Test/Water/SimpleWater.shader>
+![](Img/water.gif)
+
 
 
 todo 水花
