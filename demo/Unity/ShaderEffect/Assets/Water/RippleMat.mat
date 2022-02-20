@@ -62,7 +62,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GridNum: 10
+    - _GridNum: 8
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -74,10 +74,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _distanceFactor: 10
-    - _maxWaveDis: 0.3
+    - _maxWaveDis: 0.55
     - _timeFactor: 100
     - _totalFactor: 0.005
-    - _waveSpeed: 50
+    - _waveSpeed: 25
     - _waveWidth: 0.03
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
