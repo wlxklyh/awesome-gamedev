@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.57 93a4d346">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2022-03-13T13:47:36Z"/>
+
+  <node id="74524442" lat="23.1097523" lon="113.3284630"/>
+  <node id="74592490" lat="23.1100864" lon="113.3291931"/>
+  <node id="75270491" lat="23.1102862" lon="113.3296408"/>
+  <node id="76045881" lat="23.1091270" lon="113.3270552"/>
+  <node id="76082627" lat="23.1099578" lon="113.3289193"/>
+  <node id="76203555" lat="23.1108285" lon="113.3308703"/>
+  <node id="77051425" lat="23.1092984" lon="113.3273799"/>
+  <node id="82432385" lat="32.7104134" lon="-97.0975519"/>
+  <node id="82485855" lat="32.7105478" lon="-97.0894831"/>
+  <node id="82489675" lat="32.7105006" lon="-97.0853797"/>
+  <node id="82558448" lat="32.7103759" lon="-97.0940900"/>
+  <node id="82685756" lat="32.7103587" lon="-97.0935948"/>
+  <node id="82685757" lat="32.7103549" lon="-97.0933951"/>
+  <node id="82685758" lat="32.7103606" lon="-97.0932573">
+    <tag k="curve_geometry" v="yes"/>
+  </node>
+  <node id="82685759" lat="32.7103628" lon="-97.0931393"/>
+  <node id="82685760" lat="32.7103831" lon="-97.0929649"/>
+  <node id="82685761" lat="32.7105411" lon="-97.0923910"/>
+  <node id="82685762" lat="32.7105682" lon="-97.0922434">
+    <tag k="curve_geometry" v="yes"/>
+  </node>
+  <node id="82685763" lat="32.7105727" lon="-97.0919377"/>
+  <way id="10061851">
+    <nd ref="82432385"/>
+    <nd ref="82558448"/>
+    <nd ref="82685756"/>
+    <nd ref="82685757"/>
+    <nd ref="82685758"/>
+    <nd ref="82685759"/>
+    <nd ref="82685760"/>
+    <nd ref="82685761"/>
+    <nd ref="82685762"/>
+    <nd ref="82685763"/>
+    <nd ref="82485855"/>
+    <nd ref="82489675"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Darlene Lane"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Tarrant, TX"/>
+    <tag k="tiger:name_base" v="Darlene"/>
+    <tag k="tiger:name_type" v="Ln"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:zip_left" v="76010"/>
+    <tag k="tiger:zip_right" v="76010"/>
+  </way>
+  <way id="467773224">
+    <nd ref="76203555"/>
+    <nd ref="75270491"/>
+    <nd ref="74592490"/>
+    <nd ref="76082627"/>
+    <nd ref="74524442"/>
+    <nd ref="77051425"/>
+    <nd ref="76045881"/>
+  </way>
+
+</osm>

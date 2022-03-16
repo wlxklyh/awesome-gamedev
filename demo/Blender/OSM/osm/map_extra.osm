@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.57 93a4d346">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2022-03-13T13:43:30Z"/>
+
+  <node id="267481906" lat="51.3373205" lon="12.3731321"/>
+  <node id="267481907" lat="51.3372590" lon="12.3728358"/>
+  <node id="392064934" lat="51.3365054" lon="12.3818029"/>
+  <node id="392064935" lat="51.3364278" lon="12.3817157"/>
+  <node id="392064936" lat="51.3364450" lon="12.3816766"/>
+  <node id="392064937" lat="51.3361882" lon="12.3813593"/>
+  <node id="392064938" lat="51.3361969" lon="12.3813426"/>
+  <node id="392064939" lat="51.3360124" lon="12.3810800"/>
+  <node id="392064989" lat="51.3365535" lon="12.3815603"/>
+  <node id="392064990" lat="51.3363069" lon="12.3812411"/>
+  <node id="392064991" lat="51.3360875" lon="12.3808943"/>
+  <node id="392290394" lat="51.3357554" lon="12.3802028"/>
+  <node id="392290395" lat="51.3360133" lon="12.3806615"/>
+  <node id="923425179" lat="51.3373553" lon="12.3732728"/>
+  <node id="1221256433" lat="51.3373410" lon="12.3734027"/>
+  <node id="1449135515" lat="51.3374342" lon="12.3789749"/>
+  <node id="1449136956" lat="51.3374062" lon="12.3791500"/>
+  <node id="1449136958" lat="51.3374965" lon="12.3791904"/>
+  <node id="1449189626" lat="51.3359786" lon="12.3807073"/>
+  <node id="1449189627" lat="51.3365674" lon="12.3816615"/>
+  <node id="1449189628" lat="51.3357947" lon="12.3801657"/>
+  <node id="1449189629" lat="51.3365299" lon="12.3816195"/>
+  <node id="1449190122" lat="51.3359408" lon="12.3805172"/>
+  <node id="1449190123" lat="51.3358550" lon="12.3803224"/>
+  <node id="1450217185" lat="51.3373852" lon="12.3752484"/>
+  <node id="1450217186" lat="51.3374522" lon="12.3752162"/>
+  <node id="1450217187" lat="51.3374807" lon="12.3753906"/>
+  <node id="1450217188" lat="51.3374170" lon="12.3754201"/>
+  <node id="1983067546" lat="51.3356595" lon="12.3799304"/>
+  <node id="1983067550" lat="51.3356634" lon="12.3799270"/>
+  <node id="1983067552" lat="51.3356814" lon="12.3799794"/>
+  <node id="1983067553" lat="51.3356891" lon="12.3799726"/>
+  <node id="1983067556" lat="51.3357220" lon="12.3800985"/>
+  <node id="1983067558" lat="51.3357300" lon="12.3800915"/>
+  <node id="1983067559" lat="51.3357377" lon="12.3801528"/>
+  <node id="1983067561" lat="51.3357399" lon="12.3801508"/>
+  <node id="1983067573" lat="51.3358884" lon="12.3808317"/>
+  <node id="1983067575" lat="51.3359061" lon="12.3808883"/>
+  <node id="1983067576" lat="51.3359132" lon="12.3808783"/>
+  <node id="1983067580" lat="51.3360026" lon="12.3807513"/>
+  <node id="1983067581" lat="51.3360057" lon="12.3807469"/>
+  <node id="1983067582" lat="51.3360189" lon="12.3810706"/>
+  <node id="1983067584" lat="51.3360402" lon="12.3811354"/>
+  <node id="1983067587" lat="51.3360299" lon="12.3807907"/>
+  <node id="1983067589" lat="51.3360363" lon="12.3807817"/>
+  <node id="1983067592" lat="51.3360495" lon="12.3811202"/>
+  <node id="1983067594" lat="51.3360938" lon="12.3808854"/>
+  <node id="1983067596" lat="51.3361095" lon="12.3809419"/>
+  <node id="1983067598" lat="51.3361120" lon="12.3809384"/>
+  <node id="1983067600" lat="51.3361327" lon="12.3812796"/>
+  <node id="1983067602" lat="51.3361419" lon="12.3812644"/>
+  <node id="1983067604" lat="51.3361642" lon="12.3810324"/>
+  <node id="1983067606" lat="51.3361932" lon="12.3810772"/>
+  <node id="1983067608" lat="51.3362861" lon="12.3814911"/>
+  <node id="1983067610" lat="51.3362949" lon="12.3814744"/>
+  <node id="1983067612" lat="51.3363389" lon="12.3812806"/>
+  <node id="1983067614" lat="51.3363435" lon="12.3815612"/>
+  <node id="1983067615" lat="51.3363518" lon="12.3815427"/>
+  <node id="1983067616" lat="51.3364576" lon="12.3814305"/>
+  <node id="1983067617" lat="51.3364599" lon="12.3814258"/>
+  <node id="1983067627" lat="51.3364948" lon="12.3814657"/>
+  <node id="1983067631" lat="51.3364860" lon="12.3814869"/>
+  <node id="2023670973" lat="51.3357096" lon="12.3800320">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="10"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="2023670975" lat="51.3359592" lon="12.3809842"/>
+  <node id="2023670976" lat="51.3360659" lon="12.3808351">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="7"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="3421259033" lat="51.3374358" lon="12.3789678"/>
+  <node id="3421259035" lat="51.3375187" lon="12.3791062"/>
+  <node id="3421259038" lat="51.3375424" lon="12.3790116"/>
+  <node id="4246467536" lat="51.3363943" lon="12.3816189">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="4"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="yes"/>
+  </node>
+  <node id="4246467537" lat="51.3364773" lon="12.3814458">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="4"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="4246467538" lat="51.3362372" lon="12.3814252">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="5"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="yes"/>
+  </node>
+  <node id="4246467539" lat="51.3363252" lon="12.3812560">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="5"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="4246467540" lat="51.3360865" lon="12.3812075">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="6"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="yes"/>
+  </node>
+  <node id="4246467541" lat="51.3361810" lon="12.3810510">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="6"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="4246467543" lat="51.3359743" lon="12.3805876">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="8"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="4246467545" lat="51.3358246" lon="12.3802453">
+    <tag k="addr:city" v="Leipzig"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="9"/>
+    <tag k="addr:postcode" v="04103"/>
+    <tag k="addr:street" v="Roßplatz"/>
+    <tag k="entrance" v="main"/>
+  </node>
+  <node id="4246467568" lat="51.3358967" lon="12.3804205"/>
+  <node id="4246467569" lat="51.3361665" lon="12.3810286"/>
+  <node id="4246467570" lat="51.3361955" lon="12.3810734"/>
+  <node id="4246467571" lat="51.3363092" lon="12.3812362"/>
+  <node id="4246467572" lat="51.3363413" lon="12.3812757"/>
+  <node id="6335950388" lat="51.3372614" lon="12.3728472">
+    <tag k="entrance" v="yes"/>
+  </node>
+  <node id="7123928824" lat="51.3372647" lon="12.3739193"/>
+  <node id="7123928825" lat="51.3372488" lon="12.3738750"/>
+  <node id="7124121570" lat="51.3374069" lon="12.3738766"/>
+  <node id="7124121571" lat="51.3373281" lon="12.3739632"/>
+  <node id="7124165287" lat="51.3372501" lon="12.3738832"/>
+  <node id="7124165288" lat="51.3372432" lon="12.3738419"/>
+  <node id="7124165289" lat="51.3372446" lon="12.3737994"/>
+  <node id="7124165290" lat="51.3372542" lon="12.3737596"/>
+  <node id="7124165291" lat="51.3372710" lon="12.3737264"/>
+  <node id="7124165292" lat="51.3372934" lon="12.3737032"/>
+  <node id="7124165293" lat="51.3373191" lon="12.3736923"/>
+  <node id="7124165294" lat="51.3373457" lon="12.3736945"/>
+  <node id="7124165295" lat="51.3373706" lon="12.3737099"/>
+  <node id="7124165296" lat="51.3374058" lon="12.3737726"/>
+  <node id="7124165297" lat="51.3374126" lon="12.3738138"/>
+  <node id="7124165298" lat="51.3374112" lon="12.3738564"/>
+  <node id="7124165299" lat="51.3374016" lon="12.3738962"/>
+  <node id="7124165300" lat="51.3373848" lon="12.3739293"/>
+  <node id="7124165301" lat="51.3373625" lon="12.3739525"/>
+  <node id="7124165302" lat="51.3373367" lon="12.3739635"/>
+  <node id="7124165303" lat="51.3373101" lon="12.3739612"/>
+  <node id="7124165304" lat="51.3372852" lon="12.3739458"/>
+  <node id="7124165305" lat="51.3374047" lon="12.3737686"/>
+  <node id="7124165306" lat="51.3373867" lon="12.3737305"/>
+  <node id="7124165307" lat="51.3372489" lon="12.3738752"/>
+  <node id="7124165308" lat="51.3372649" lon="12.3739198"/>
+  <node id="7124165309" lat="51.3373912" lon="12.3737375"/>
+  <node id="7124165311" lat="51.3372645" lon="12.3739190"/>
+  <node id="7125478666" lat="51.3373986" lon="12.3737521"/>
+  <node id="7125478667" lat="51.3373797" lon="12.3737194"/>
+  <node id="8195989669" lat="51.3359920" lon="12.3807318">
+    <tag k="entrance" v="yes"/>
+    <tag k="name" v="Birgit's Freizeit &amp; ReiseTreff im Ring Café"/>
+    <tag k="shop" v="travel_agency"/>
+  </node>
+  <node id="8682514375" lat="51.3365651" lon="12.3816666">
+    <tag k="historic" v="memorial"/>
+    <tag k="inscription" v="In diesem Bereich der Ringbebauung stand bis zu seiner Zerstörung im 2. Weltkrieg das Hotel Hentschel. Der Komponist, Universitätsmusikdirektor und Professor am Königlichen Konservatorium in Leipzig Max Reger verstarb in jenem Haus am 11. Mai 1916"/>
+    <tag k="material" v="plastic"/>
+    <tag k="memorial" v="plaque"/>
+    <tag k="name" v="Max Reger"/>
+    <tag k="subject:wikidata" v="Q57139"/>
+  </node>
+  <node id="9530723481" lat="51.3372688" lon="12.3728129"/>
+  <node id="9530723482" lat="51.3373695" lon="12.3731429"/>
+  <way id="131697996">
+    <nd ref="1449136958"/>
+    <nd ref="1449136956"/>
+    <nd ref="1449135515"/>
+    <nd ref="3421259033"/>
+    <nd ref="3421259038"/>
+    <nd ref="3421259035"/>
+    <nd ref="1449136958"/>
+  </way>
+  <way id="131703387">
+    <nd ref="392064989"/>
+    <nd ref="1983067631"/>
+    <nd ref="1983067627"/>
+    <nd ref="4246467537"/>
+    <nd ref="1983067617"/>
+    <nd ref="1983067616"/>
+    <nd ref="1983067612"/>
+    <nd ref="4246467572"/>
+    <nd ref="4246467539"/>
+    <nd ref="4246467571"/>
+    <nd ref="392064990"/>
+    <nd ref="1983067606"/>
+    <nd ref="4246467570"/>
+    <nd ref="4246467541"/>
+    <nd ref="4246467569"/>
+    <nd ref="1983067604"/>
+    <nd ref="1983067596"/>
+    <nd ref="1983067598"/>
+    <nd ref="392064991"/>
+    <nd ref="1983067594"/>
+    <nd ref="2023670976"/>
+    <nd ref="1983067589"/>
+    <nd ref="1983067587"/>
+    <nd ref="1983067581"/>
+    <nd ref="1983067580"/>
+    <nd ref="8195989669"/>
+    <nd ref="1449189626"/>
+    <nd ref="392290395"/>
+    <nd ref="4246467543"/>
+    <nd ref="1449190122"/>
+    <nd ref="4246467568"/>
+    <nd ref="1449190123"/>
+    <nd ref="4246467545"/>
+    <nd ref="1449189628"/>
+    <nd ref="392290394"/>
+    <nd ref="1983067559"/>
+    <nd ref="1983067561"/>
+    <nd ref="1983067556"/>
+    <nd ref="1983067558"/>
+    <nd ref="2023670973"/>
+    <nd ref="1983067553"/>
+    <nd ref="1983067552"/>
+    <nd ref="1983067550"/>
+    <nd ref="1983067546"/>
+  </way>
+  <way id="131826268">
+    <nd ref="1450217186"/>
+    <nd ref="1450217187"/>
+    <nd ref="1450217188"/>
+    <nd ref="1450217185"/>
+    <nd ref="1450217186"/>
+  </way>
+  <way id="762442624">
+    <nd ref="7124165311"/>
+    <nd ref="7123928824"/>
+    <nd ref="7124165308"/>
+    <nd ref="7124165304"/>
+    <nd ref="7124165303"/>
+    <nd ref="7124121571"/>
+    <nd ref="7124165302"/>
+    <nd ref="7124165301"/>
+    <nd ref="7124165300"/>
+    <nd ref="7124165299"/>
+    <nd ref="7124121570"/>
+    <nd ref="7124165298"/>
+    <nd ref="7124165297"/>
+    <nd ref="7124165296"/>
+    <nd ref="7124165305"/>
+    <nd ref="7125478666"/>
+    <nd ref="7124165309"/>
+    <nd ref="7124165306"/>
+    <nd ref="7125478667"/>
+    <nd ref="7124165295"/>
+    <nd ref="7124165294"/>
+    <nd ref="7124165293"/>
+    <nd ref="7124165292"/>
+    <nd ref="7124165291"/>
+    <nd ref="7124165290"/>
+    <nd ref="7124165289"/>
+    <nd ref="7124165288"/>
+    <nd ref="7123928825"/>
+    <nd ref="7124165307"/>
+    <nd ref="7124165287"/>
+    <nd ref="7124165311"/>
+  </way>
+  <way id="936303737">
+    <nd ref="1983067573"/>
+    <nd ref="1983067576"/>
+    <nd ref="1983067575"/>
+    <nd ref="2023670975"/>
+    <nd ref="392064939"/>
+    <nd ref="1983067582"/>
+    <nd ref="1983067592"/>
+    <nd ref="1983067584"/>
+    <nd ref="4246467540"/>
+    <nd ref="1983067600"/>
+    <nd ref="1983067602"/>
+    <nd ref="392064938"/>
+    <nd ref="392064937"/>
+    <nd ref="4246467538"/>
+    <nd ref="1983067608"/>
+    <nd ref="1983067610"/>
+    <nd ref="1983067615"/>
+    <nd ref="1983067614"/>
+    <nd ref="4246467536"/>
+    <nd ref="392064936"/>
+    <nd ref="392064935"/>
+    <nd ref="392064934"/>
+    <nd ref="8682514375"/>
+    <nd ref="1449189627"/>
+    <nd ref="1449189629"/>
+    <nd ref="392064989"/>
+  </way>
+  <way id="1034594637">
+    <nd ref="9530723481"/>
+    <nd ref="267481907"/>
+    <nd ref="6335950388"/>
+    <nd ref="267481906"/>
+    <nd ref="9530723482"/>
+  </way>
+  <way id="1034594640">
+    <nd ref="9530723482"/>
+    <nd ref="923425179"/>
+    <nd ref="1221256433"/>
+  </way>
+
+</osm>
