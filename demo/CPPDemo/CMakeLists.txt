@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
-# 指定C++17 学习C++
-set(CMAKE_CXX_STANDARD 17)
+# 指定C++20 学习C++
+set(CMAKE_CXX_STANDARD 20)
 set(NAME CPPDemo)
 project(CPPDemo)
 
