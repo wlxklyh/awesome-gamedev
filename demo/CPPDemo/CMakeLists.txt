@@ -18,7 +18,7 @@ set(SRC_DEMO_DIR)
 file(GLOB_RECURSE file_list LIST_DIRECTORIES true src/*)
 foreach (file ${file_list})
     if (NOT file MATCHES "\\.")
-        if(NOT file MATCHES "0_Template")
+        if(NOT file MATCHES "000_Template")
             #文件夹
             set(SRC_DEMO_DIR ${SRC_DEMO_DIR} ${file})
         endif()
