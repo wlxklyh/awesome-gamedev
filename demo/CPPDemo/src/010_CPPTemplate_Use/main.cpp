@@ -7,7 +7,6 @@ int Add(int a,int b){return a+b;}
 int Minus(int a,int b){return a-b;}
 int Mul(int a,int b){return a*b;}
 
-
 class Data
 {
 public:
@@ -44,9 +43,7 @@ int main() {
     //===一般做法
     //（1） 第一处代码
     if(f != NULL){
-        if(f->data != NULL){
-            std::cout << Add(f->data->a,f->data->b) << std::endl;
-        }
+
     }
     //（2） 第二处代码
     if(f != NULL){
