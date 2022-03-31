@@ -3,6 +3,10 @@ using namespace std;
 //描述：模板的一些用法
 
 
+int Add(int a,int b){return a+b;}
+int Minus(int a,int b){return a-b;}
+int Mul(int a,int b){return a*b;}
+
 class Data
 {
 public:
@@ -32,13 +36,6 @@ int CheckAndCall(Formula* f){
 }
 
 
-
-
-int Add(int a,int b){return a+b;}
-int Minus(int a,int b){return a-b;}
-int Mul(int a,int b){return a*b;}
-
-
 int main() {
     Formula *f = new Formula();
     f->data = new Data(2,4);
@@ -46,9 +43,7 @@ int main() {
     //===一般做法
     //（1） 第一处代码
     if(f != NULL){
-        if(f->data != NULL){
-            std::cout << Add(f->data->a,f->data->b) << std::endl;
-        }
+
     }
     //（2） 第二处代码
     if(f != NULL){
