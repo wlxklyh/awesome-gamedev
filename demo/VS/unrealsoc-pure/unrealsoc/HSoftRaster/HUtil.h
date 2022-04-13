@@ -183,9 +183,9 @@ namespace HSoftRaster
     }
 
 
-    static int32 RoundToInt(float F)
+    static int32 RoundToInt(double F)
     {
-        return static_cast<int32>(floorf(F));
+        return static_cast<int32>(floor(F));
     }
 
     //==========End:函数

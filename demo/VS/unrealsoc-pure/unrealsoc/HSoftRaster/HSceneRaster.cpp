@@ -3,7 +3,7 @@
 namespace HSoftRaster
 {
     // 得到桶里面每一行（一行就是一条扫描线）的mask
-    inline uint64 ComputeBinRowBinary(int32 BinMinX, float fX0, float fX1)
+    inline uint64 ComputeBinRowBinary(int32 BinMinX, double fX0, double fX1)
     {
         //计算出fX0 fX1在所在的64bit里面的bt的位置 x0 x1
         int32 X0 = RoundToInt(fX0) - BinMinX;
@@ -28,7 +28,7 @@ namespace HSoftRaster
         return (Num == BIN_WIDTH) ? ~0ull : ((1ull << Num) - 1) << X0;
     }
 
-    inline void RasterizeHalfTri(float X0, float X1, float DX0, float DX1, int32 Row0, int32 Row1, uint64* BinData,
+    inline void RasterizeHalfTri(double X0, double X1, double DX0, double DX1, int32 Row0, int32 Row1, uint64* BinData,
                                  int32 BinMinX)
     {
         //遍历每一行 X0向上一行就DX0的差异 同理X1
@@ -113,13 +113,13 @@ namespace HSoftRaster
     {
         // 提前reserve Triangles 节约性能
 
-        unsigned int NumTris = TilePrimitives.size();
+        unsigned int NumTris = (int)TilePrimitives.size();
         for (unsigned int PriIdx = 0; PriIdx < NumTris; ++PriIdx)
         {
             HPriInfo& priInfo = TilePrimitives.at(PriIdx);
             for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
             {
-                int nowTriSize = Triangles.size();
+                int nowTriSize = (int)Triangles.size();
                 HTileTriID TriID(nowTriSize, false);
                 int vertexIndex0 = priInfo.IndexArray[index];
                 int vertexIndex1 = priInfo.IndexArray[index + 1];
@@ -141,8 +141,8 @@ namespace HSoftRaster
 
 
                 // 计算这个三角形跨越了哪些桶 BinMin ----> BinMax
-                int32 MinX = Min3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
-                int32 MaxX = Max3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 MinX = (int32)Min3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 MaxX = (int32)Max3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
                 int32 BinMin = Max(MinX, 0);
                 int32 BinMax = Min(MaxX, BIN_NUM - 1);
 
@@ -163,7 +163,7 @@ namespace HSoftRaster
             const int32 BinMinX = BinIdx * BIN_WIDTH;
             uint64* BinData = Processing->Bins[BinIdx].Data;
             TArray<HTileTriID>& TriangleIDs = BinTriangleIDs[BinIdx];
-            for (int32 TriIdx = 0; TriIdx < TriangleIDs.size(); ++TriIdx)
+            for (int32 TriIdx = 0; TriIdx < (int)TriangleIDs.size(); ++TriIdx)
             {
                 HTileTri& tileTri = Triangles[TriangleIDs.at(TriIdx).ID];
                 if (TriangleIDs.at(TriIdx).isQuad)
@@ -186,8 +186,8 @@ namespace HSoftRaster
         MVector2& C = tileTri.V[2];
 
         //最小行号 最大行号
-        int32 RowMin = Max<int32>(A.Y, 0);
-        int32 RowMax = Min<int32>(FRAMEBUFFER_HEIGHT - 1, C.Y);
+        int32 RowMin = Max<int32>((int32)A.Y, 0);
+        int32 RowMax = Min<int32>(FRAMEBUFFER_HEIGHT - 1, (int32)C.Y);
 
         bool bRasterized = false;
 
@@ -196,16 +196,16 @@ namespace HSoftRaster
         if ((B.Y - RowMin) > 0)
         {
             // A -> B
-            int32 RowE = Min<int32>(RowMax, B.Y);
+            int32 RowE = Min<int32>(RowMax, (int32)B.Y);
             // 两条边的梯度
-            float dX0 = (B.X - A.X) / (B.Y - A.Y);
-            float dX1 = (C.X - A.X) / (C.Y - A.Y);
+            double dX0 = (B.X - A.X) / (B.Y - A.Y);
+            double dX1 = (C.X - A.X) / (C.Y - A.Y);
             if (dX0 > dX1)
             {
                 Swap(dX0, dX1);
             }
-            float X0 = A.X + dX0 * (RowS - A.Y);
-            float X1 = A.X + dX1 * (RowS - A.Y);
+            double X0 = A.X + dX0 * (RowS - A.Y);
+            double X1 = A.X + dX1 * (RowS - A.Y);
             //光栅化这个half
             RasterizeHalfTri(X0, X1, dX0, dX1, RowS, RowE, BinData, BinMinX);
             bRasterized |= true;
@@ -217,10 +217,10 @@ namespace HSoftRaster
         {
             // B -> C
             // Edge gradients
-            float dX0 = (C.X - A.X) / (C.Y - A.Y);
-            float dX1 = (C.X - B.X) / (C.Y - B.Y);
-            float X0 = A.X + dX0 * (RowS - A.Y);
-            float X1 = B.X + dX1 * (RowS - B.Y);
+            double dX0 = (C.X - A.X) / (C.Y - A.Y);
+            double dX1 = (C.X - B.X) / (C.Y - B.Y);
+            double X0 = A.X + dX0 * (RowS - A.Y);
+            double X1 = B.X + dX1 * (RowS - B.Y);
             if (X0 > X1)
             {
                 Swap(X0, X1);
@@ -233,19 +233,19 @@ namespace HSoftRaster
         // 还没被光栅化 那么是一条线
         if (!bRasterized)
         {
-            float X0 = Min3(A.X, B.X, C.X);
-            float X1 = Max3(A.X, B.X, C.X);
+            double X0 = Min3(A.X, B.X, C.X);
+            double X1 = Max3(A.X, B.X, C.X);
             RasterizeHalfTri(X0, X1, 0.0f, 0.0f, RowS, RowS, BinData, BinMinX);
         }
     }
 
     void HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
     {
-        int32 RowMin = tileTri.V[0].Y;
-        int32 RowMax = tileTri.V[2].Y;
+        int32 RowMin = (int32)tileTri.V[0].Y;
+        int32 RowMax = (int32)tileTri.V[2].Y;
         // clip X to bin bounds
-        int32 X0 = Max(tileTri.V[0].X - BinMinX, 0.0);
-        int32 X1 = Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1.0);
+        int32 X0 = (int32)Max(tileTri.V[0].X - BinMinX, 0.0);
+        int32 X1 = (int32)Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1.0);
         // 得到这个quad 的行mask  没一行都一样 
         int32 NumBits = (X1 - X0) + 1;
         // 遍历每一行 做mask 查询
