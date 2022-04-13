@@ -97,7 +97,6 @@ namespace HSoftRaster
         pri_info_1.IndexArray.push_back(0);
         pri_info_1.IndexArray.push_back(1);
         pri_info_1.IndexArray.push_back(2);
-        pri_info_1.LocalToWorld = HMatrix::GetIdentity();
 
         pri_info_2.VertexArray.push_back(HVector(15, 15, 0));
         pri_info_2.VertexArray.push_back(HVector(10, 15, 0));
@@ -105,7 +104,6 @@ namespace HSoftRaster
         pri_info_2.IndexArray.push_back(0);
         pri_info_2.IndexArray.push_back(1);
         pri_info_2.IndexArray.push_back(2);
-        pri_info_2.LocalToWorld = HMatrix::GetIdentity();
 
         AddPri(pri_info_1);
         AddPri(pri_info_2);

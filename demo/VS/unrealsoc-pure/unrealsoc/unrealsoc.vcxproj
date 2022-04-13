@@ -152,7 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HSoftRaster\HMath\HMatrix.cpp" />
     <ClCompile Include="HSoftRaster\HMath\HPlane.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -277,7 +276,6 @@
     <ClCompile Include="HSoftRaster\HSerializationUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HSoftRaster\HMath\HMatrix.h" />
     <ClInclude Include="HSoftRaster\HMath\HPlane.h" />
     <ClInclude Include="HSoftRaster\HMath\HVector.h" />
     <ClInclude Include="HSoftRaster\HMath\HVector2.h" />

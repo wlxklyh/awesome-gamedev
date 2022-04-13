@@ -31,27 +31,12 @@ namespace HSoftRaster
         HFramebufferBin Bins[BIN_NUM];
     };
 
-    struct HViewInfo
-    {
-    public:
-        HViewInfo()
-        {
-            ViewOrigin = HVector::GetZero();
-            ProjectionMatrix = HMatrix::GetIdentity();
-            ViewMatrix = HMatrix::GetIdentity();
-        }
-
-        HVector ViewOrigin; //相机位置
-        HMatrix ProjectionMatrix; //投影矩阵
-        HMatrix ViewMatrix; //View矩阵 世界坐标转相机空间的矩阵
-    };
 
     class HPriInfo
     {
     public:
         TArray<HVector> VertexArray;
         TArray<uint16> IndexArray;
-        HMatrix LocalToWorld;
     };
 
     struct HTileTri
