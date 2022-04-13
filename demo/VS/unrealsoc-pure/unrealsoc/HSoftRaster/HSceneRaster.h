@@ -1,8 +1,10 @@
 ﻿#pragma once
 #include <memory>
-
+#include <fstream>
+#include <string>
 #include "HUtil.h"
 #include "HMathType.h"
+#include "HSerializationUtil.h"
 
 namespace HSoftRaster
 {
@@ -19,7 +21,7 @@ namespace HSoftRaster
     static const int32 BIN_NUM = 4;
     static const int32 FRAMEBUFFER_WIDTH = BIN_WIDTH * BIN_NUM;
     static const int32 FRAMEBUFFER_HEIGHT = 256;
-
+    const std::string MASKSOC_DATA_FOLDER = "C:\\HSoftRaster\\";
 
     struct HFramebufferBin
     {
@@ -35,13 +37,27 @@ namespace HSoftRaster
     class HPriInfo
     {
     public:
-        TArray<HVector> VertexArray;
+        TArray<MVector> VertexArray;
         TArray<uint16> IndexArray;
+
+        friend std::ostream& operator<<(std::ostream& outputFile, HPriInfo& priInfo)
+        {
+            SerializationTArray(outputFile, priInfo.VertexArray);
+            SerializationTArray(outputFile, priInfo.IndexArray);
+            return outputFile;
+        }
+
+        friend std::istream& operator>>(std::istream& inputFile, HPriInfo& priInfo)
+        {
+            DeserializationTArray(inputFile, priInfo.VertexArray);
+            DeserializationTArray(inputFile, priInfo.IndexArray);
+            return inputFile;
+        }
     };
 
     struct HTileTri
     {
-        HVector2 V[3];
+        MVector2 V[3];
     };
 
     struct HTileTriID
@@ -81,5 +97,26 @@ namespace HSoftRaster
         void RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
         void RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
         void Render();
+
+
+        void Serialization()
+        {
+            std::string strFileName = MASKSOC_DATA_FOLDER + "SOCInput.data";
+            std::ofstream OutputFile;
+            OutputFile.open(strFileName);
+            OutputFile << "FScene:\n";
+            SerializationTArray(OutputFile, TilePrimitives);
+        }
+
+        void Deserialization()
+        {
+            std::string strFileName = MASKSOC_DATA_FOLDER + "SOCInput.data";
+            std::ifstream InputFile;
+            InputFile.open(strFileName);
+            InputFile.ignore();
+            std::string strTmp;
+            getline(InputFile, strTmp);
+            DeserializationTArray(InputFile, TilePrimitives);
+        }
     };
 }

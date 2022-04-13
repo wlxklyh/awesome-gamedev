@@ -53,6 +53,7 @@ int main()
 
     //（2）测试
     raster.InitDataForTest();
+    raster.Serialization();
     raster.Render();
     raster.GetColorResult(colors);
 

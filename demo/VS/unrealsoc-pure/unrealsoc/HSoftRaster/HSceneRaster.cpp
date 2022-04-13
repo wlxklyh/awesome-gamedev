@@ -68,7 +68,7 @@ namespace HSoftRaster
                 const HFramebufferBin& Bin = Results->Bins[i];
                 uint64 RowData = Bin.Data[j];
 
-                colorLine.emplace_back(HVector(0, 0, 255));
+                colorLine.emplace_back(MVector(0, 0, 255));
                 for (int32 k = 1; k < BIN_WIDTH; k++)
                 {
                     uint64 data = RowData & (1ll << k);
@@ -91,16 +91,16 @@ namespace HSoftRaster
     {
         //====================(1)添加一个cube物件
         HPriInfo pri_info_1, pri_info_2;
-        pri_info_1.VertexArray.push_back(HVector(5, 5, 0));
-        pri_info_1.VertexArray.push_back(HVector(0, 5, 0));
-        pri_info_1.VertexArray.push_back(HVector(0, 0, 0));
+        pri_info_1.VertexArray.push_back(MVector(5, 5, 0));
+        pri_info_1.VertexArray.push_back(MVector(0, 5, 0));
+        pri_info_1.VertexArray.push_back(MVector(0, 0, 0));
         pri_info_1.IndexArray.push_back(0);
         pri_info_1.IndexArray.push_back(1);
         pri_info_1.IndexArray.push_back(2);
 
-        pri_info_2.VertexArray.push_back(HVector(15, 15, 0));
-        pri_info_2.VertexArray.push_back(HVector(10, 15, 0));
-        pri_info_2.VertexArray.push_back(HVector(10, 10, 0));
+        pri_info_2.VertexArray.push_back(MVector(15, 15, 0));
+        pri_info_2.VertexArray.push_back(MVector(10, 15, 0));
+        pri_info_2.VertexArray.push_back(MVector(10, 10, 0));
         pri_info_2.IndexArray.push_back(0);
         pri_info_2.IndexArray.push_back(1);
         pri_info_2.IndexArray.push_back(2);
@@ -181,9 +181,9 @@ namespace HSoftRaster
     void HSceneRaster::RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
     {
         //遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
-        HVector2& A = tileTri.V[0];
-        HVector2& B = tileTri.V[1];
-        HVector2& C = tileTri.V[2];
+        MVector2& A = tileTri.V[0];
+        MVector2& B = tileTri.V[1];
+        MVector2& C = tileTri.V[2];
 
         //最小行号 最大行号
         int32 RowMin = Max<int32>(A.Y, 0);

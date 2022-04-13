@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <map>
 
@@ -20,14 +21,13 @@ namespace HSoftRaster
         }
     };
 
-    //模板
     template <class _Tp>
     struct TypeTraits
     {
         using __IsPODType = _FalsePODType;
     };
 
-    //特化
+
     template <>
     struct TypeTraits<char>
     {

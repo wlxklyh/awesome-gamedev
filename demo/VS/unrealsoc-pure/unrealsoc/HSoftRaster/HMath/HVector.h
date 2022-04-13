@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <fstream>
+#include<string>
 
 namespace HSoftRaster
 {
@@ -25,6 +27,18 @@ namespace HSoftRaster
         static HVector GetZero()
         {
             return HVector(0.0, 0.0, 0.0);
+        }
+
+        friend std::ostream& operator<<(std::ostream& outputFile, HVector& vec)
+        {
+            outputFile << vec.X << " " << vec.Y << " " << vec.Z << "\n";
+            return outputFile;
+        }
+
+        friend std::istream& operator>>(std::istream& inputFile, HVector& vec)
+        {
+            inputFile >> vec.X >> vec.Y >> vec.Z;
+            return inputFile;
         }
     };
 }
