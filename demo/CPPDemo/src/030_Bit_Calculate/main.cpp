@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <bitset>
+#include <immintrin.h>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ int main() {
     std::bitset<64> A(0xffffffffffff000f);
     std::bitset<64> LeftBit(0xaaaaaaaaaaaaaaaa);
     std::bitset<64> RightBit(0x5555555555555555);
-    
+    _mm_shuffle_pi8
     long long uint64_A = A.to_ullong();
     long long uint64_LeftBit = LeftBit.to_ullong();
     long long uint64_RightBit = RightBit.to_ullong();

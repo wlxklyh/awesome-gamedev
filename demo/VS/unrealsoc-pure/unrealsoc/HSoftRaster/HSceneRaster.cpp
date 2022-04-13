@@ -1,0 +1,270 @@
+﻿#include "HSceneRaster.h"
+
+namespace HSoftRaster
+{
+    // 得到桶里面每一行（一行就是一条扫描线）的mask
+    inline uint64 ComputeBinRowBinary(int32 BinMinX, float fX0, float fX1)
+    {
+        //计算出fX0 fX1在所在的64bit里面的bt的位置 x0 x1
+        int32 X0 = RoundToInt(fX0) - BinMinX;
+        int32 X1 = RoundToInt(fX1) - BinMinX;
+
+        //x0 x1 要在0-63之间
+        if (X0 >= BIN_WIDTH || X1 < 0)
+        {
+            // not in bin
+            return 0ull;
+        }
+        //x0 x1 要在0-63之间
+        X0 = Max(0, X0);
+        X1 = Min(BIN_WIDTH - 1, X1);
+        int32 Num = (X1 - X0) + 1;
+        //(1) 如果跟宽度一样 那么就是 11111111.... 64bit
+        //(2) 如果跟宽度不一样  假设x0=1 Num3 那么就是 （用8bit举例）
+        // 00000001 << 3 -> 00001000
+        // 00001000 - 1  -> 00000111
+        // 00000111 << 1 -> 00001110
+        // 同理去计算64bit的
+        return (Num == BIN_WIDTH) ? ~0ull : ((1ull << Num) - 1) << X0;
+    }
+
+    inline void RasterizeHalfTri(float X0, float X1, float DX0, float DX1, int32 Row0, int32 Row1, uint64* BinData,
+                                 int32 BinMinX)
+    {
+        //遍历每一行 X0向上一行就DX0的差异 同理X1
+        for (int32 Row = Row0; Row <= Row1; Row++, X0 += DX0, X1 += DX1)
+        {
+            //当前行的mask数据
+            uint64 FrameBufferMask = BinData[Row];
+            //如果完全光栅化了则不用再光栅化了
+            if (FrameBufferMask != ~0ull) // whether this row is already fully rasterized
+            {
+                //得到这个这一行的mask数据
+                uint64 RowMask = ComputeBinRowBinary(BinMinX, X0, X1);
+                //如果是有1的
+                if (RowMask)
+                {
+                    //mask 或 运算
+                    BinData[Row] = (FrameBufferMask | RowMask);
+                }
+            }
+        }
+    }
+
+
+    void HSceneRaster::AddPri(HPriInfo& pri)
+    {
+        TilePrimitives.emplace_back(pri);
+    }
+
+    void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        {
+            std::vector<MVector> colorLine;
+            for (int32 i = 0; i < BIN_NUM; ++i)
+            {
+                const HFramebufferBin& Bin = Results->Bins[i];
+                uint64 RowData = Bin.Data[j];
+
+                colorLine.emplace_back(HVector(0, 0, 255));
+                for (int32 k = 1; k < BIN_WIDTH; k++)
+                {
+                    uint64 data = RowData & (1ll << k);
+                    if (data > 0)
+                    {
+                        colorLine.emplace_back(MVector(255, 255, 255));
+                    }
+                    else
+                    {
+                        colorLine.emplace_back(MVector(89, 89, 89));
+                    }
+                }
+            }
+            colors.emplace_back(colorLine);
+        }
+    }
+
+
+    void HSceneRaster::InitDataForTest()
+    {
+        //====================(1)添加一个cube物件
+        HPriInfo pri_info_1, pri_info_2;
+        pri_info_1.VertexArray.push_back(HVector(5, 5, 0));
+        pri_info_1.VertexArray.push_back(HVector(0, 5, 0));
+        pri_info_1.VertexArray.push_back(HVector(0, 0, 0));
+        pri_info_1.IndexArray.push_back(0);
+        pri_info_1.IndexArray.push_back(1);
+        pri_info_1.IndexArray.push_back(2);
+        pri_info_1.LocalToWorld = HMatrix::GetIdentity();
+
+        pri_info_2.VertexArray.push_back(HVector(15, 15, 0));
+        pri_info_2.VertexArray.push_back(HVector(10, 15, 0));
+        pri_info_2.VertexArray.push_back(HVector(10, 10, 0));
+        pri_info_2.IndexArray.push_back(0);
+        pri_info_2.IndexArray.push_back(1);
+        pri_info_2.IndexArray.push_back(2);
+        pri_info_2.LocalToWorld = HMatrix::GetIdentity();
+
+        AddPri(pri_info_1);
+        AddPri(pri_info_2);
+    }
+
+    void HSceneRaster::GeomPhase()
+    {
+        // 提前reserve Triangles 节约性能
+
+        unsigned int NumTris = TilePrimitives.size();
+        for (unsigned int PriIdx = 0; PriIdx < NumTris; ++PriIdx)
+        {
+            HPriInfo& priInfo = TilePrimitives.at(PriIdx);
+            for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
+            {
+                int nowTriSize = Triangles.size();
+                HTileTriID TriID(nowTriSize, false);
+                int vertexIndex0 = priInfo.IndexArray[index];
+                int vertexIndex1 = priInfo.IndexArray[index + 1];
+                int vertexIndex2 = priInfo.IndexArray[index + 2];
+
+                HTileTri tileTri;
+                tileTri.V[0].X = priInfo.VertexArray[vertexIndex0].X;
+                tileTri.V[0].Y = priInfo.VertexArray[vertexIndex0].Y;
+
+                tileTri.V[1].X = priInfo.VertexArray[vertexIndex1].X;
+                tileTri.V[1].Y = priInfo.VertexArray[vertexIndex1].Y;
+
+                tileTri.V[2].X = priInfo.VertexArray[vertexIndex2].X;
+                tileTri.V[2].Y = priInfo.VertexArray[vertexIndex2].Y;
+
+                if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
+                if (tileTri.V[1].Y > tileTri.V[2].Y) Swap(tileTri.V[1], tileTri.V[2]);
+                if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
+
+
+                // 计算这个三角形跨越了哪些桶 BinMin ----> BinMax
+                int32 MinX = Min3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 MaxX = Max3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 BinMin = Max(MinX, 0);
+                int32 BinMax = Min(MaxX, BIN_NUM - 1);
+
+                //放到桶里面
+                for (int32 BinIdx = BinMin; BinIdx <= BinMax; ++BinIdx)
+                {
+                    BinTriangleIDs[BinIdx].push_back(TriID);
+                }
+                Triangles.emplace_back(tileTri);
+            }
+        }
+    }
+
+    void HSceneRaster::RasterizePhase()
+    {
+        for (int32 BinIdx = 0; BinIdx < BIN_NUM; ++BinIdx)
+        {
+            const int32 BinMinX = BinIdx * BIN_WIDTH;
+            uint64* BinData = Processing->Bins[BinIdx].Data;
+            TArray<HTileTriID>& TriangleIDs = BinTriangleIDs[BinIdx];
+            for (int32 TriIdx = 0; TriIdx < TriangleIDs.size(); ++TriIdx)
+            {
+                HTileTri& tileTri = Triangles[TriangleIDs.at(TriIdx).ID];
+                if (TriangleIDs.at(TriIdx).isQuad)
+                {
+                    RasterizeQuad(tileTri, BinData, BinMinX);
+                }
+                else
+                {
+                    RasterizeTri(tileTri, BinData, BinMinX);
+                }
+            }
+        }
+    }
+
+    void HSceneRaster::RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
+    {
+        //遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
+        HVector2& A = tileTri.V[0];
+        HVector2& B = tileTri.V[1];
+        HVector2& C = tileTri.V[2];
+
+        //最小行号 最大行号
+        int32 RowMin = Max<int32>(A.Y, 0);
+        int32 RowMax = Min<int32>(FRAMEBUFFER_HEIGHT - 1, C.Y);
+
+        bool bRasterized = false;
+
+        int32 RowS = RowMin;
+        //如果中的点大于最小的 那么光栅化三角形的下部分 A->B 这部分
+        if ((B.Y - RowMin) > 0)
+        {
+            // A -> B
+            int32 RowE = Min<int32>(RowMax, B.Y);
+            // 两条边的梯度
+            float dX0 = (B.X - A.X) / (B.Y - A.Y);
+            float dX1 = (C.X - A.X) / (C.Y - A.Y);
+            if (dX0 > dX1)
+            {
+                Swap(dX0, dX1);
+            }
+            float X0 = A.X + dX0 * (RowS - A.Y);
+            float X1 = A.X + dX1 * (RowS - A.Y);
+            //光栅化这个half
+            RasterizeHalfTri(X0, X1, dX0, dX1, RowS, RowE, BinData, BinMinX);
+            bRasterized |= true;
+            RowS = RowE + 1;
+        }
+
+        //如果中的点大于最小的 那么光栅化三角形的上部分 B -> C
+        if ((RowMax - RowS) > 0)
+        {
+            // B -> C
+            // Edge gradients
+            float dX0 = (C.X - A.X) / (C.Y - A.Y);
+            float dX1 = (C.X - B.X) / (C.Y - B.Y);
+            float X0 = A.X + dX0 * (RowS - A.Y);
+            float X1 = B.X + dX1 * (RowS - B.Y);
+            if (X0 > X1)
+            {
+                Swap(X0, X1);
+                Swap(dX0, dX1);
+            }
+            RasterizeHalfTri(X0, X1, dX0, dX1, RowS, RowMax, BinData, BinMinX);
+            bRasterized |= true;
+        }
+
+        // 还没被光栅化 那么是一条线
+        if (!bRasterized)
+        {
+            float X0 = Min3(A.X, B.X, C.X);
+            float X1 = Max3(A.X, B.X, C.X);
+            RasterizeHalfTri(X0, X1, 0.0f, 0.0f, RowS, RowS, BinData, BinMinX);
+        }
+    }
+
+    void HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
+    {
+        int32 RowMin = tileTri.V[0].Y;
+        int32 RowMax = tileTri.V[2].Y;
+        // clip X to bin bounds
+        int32 X0 = Max(tileTri.V[0].X - BinMinX, 0.0);
+        int32 X1 = Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1.0);
+        // 得到这个quad 的行mask  没一行都一样 
+        int32 NumBits = (X1 - X0) + 1;
+        // 遍历每一行 做mask 查询
+        for (int32 Row = RowMin; Row <= RowMax; ++Row)
+        {
+            uint64* BinBoxData = BinData;
+            uint64 FrameBufferMask = BinBoxData[Row];
+            uint64 BoxRowMask;
+            BoxRowMask = (NumBits == BIN_WIDTH) ? ~0ull : ((1ull << NumBits) - 1) << X0;
+            BinBoxData[Row] = (FrameBufferMask | BoxRowMask);
+        }
+    }
+
+
+    void HSceneRaster::Render()
+    {
+        GeomPhase();
+        RasterizePhase();
+    }
+}
