@@ -113,8 +113,8 @@ namespace HSoftRaster
     {
         // 提前reserve Triangles 节约性能
 
-        unsigned int NumTris = (int)TilePrimitives.size();
-        for (unsigned int PriIdx = 0; PriIdx < NumTris; ++PriIdx)
+        unsigned int NumPris = (int)TilePrimitives.size();
+        for (unsigned int PriIdx = 0; PriIdx < NumPris; ++PriIdx)
         {
             HPriInfo& priInfo = TilePrimitives.at(PriIdx);
             for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
@@ -126,14 +126,15 @@ namespace HSoftRaster
                 int vertexIndex2 = priInfo.IndexArray[index + 2];
 
                 HTileTri tileTri;
-                tileTri.V[0].X = priInfo.VertexArray[vertexIndex0].X;
-                tileTri.V[0].Y = priInfo.VertexArray[vertexIndex0].Y;
+                tileTri.V[0].X = priInfo.VertexArray[vertexIndex0].X * FRAMEBUFFER_HEIGHT;
+                tileTri.V[0].Y = priInfo.VertexArray[vertexIndex0].Y * FRAMEBUFFER_HEIGHT;
 
-                tileTri.V[1].X = priInfo.VertexArray[vertexIndex1].X;
-                tileTri.V[1].Y = priInfo.VertexArray[vertexIndex1].Y;
+                tileTri.V[1].X = priInfo.VertexArray[vertexIndex1].X * FRAMEBUFFER_HEIGHT;
+                tileTri.V[1].Y = priInfo.VertexArray[vertexIndex1].Y * FRAMEBUFFER_HEIGHT;
 
-                tileTri.V[2].X = priInfo.VertexArray[vertexIndex2].X;
-                tileTri.V[2].Y = priInfo.VertexArray[vertexIndex2].Y;
+                tileTri.V[2].X = priInfo.VertexArray[vertexIndex2].X * FRAMEBUFFER_HEIGHT;
+                tileTri.V[2].Y = priInfo.VertexArray[vertexIndex2].Y * FRAMEBUFFER_HEIGHT;
+
 
                 if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
                 if (tileTri.V[1].Y > tileTri.V[2].Y) Swap(tileTri.V[1], tileTri.V[2]);
@@ -244,8 +245,8 @@ namespace HSoftRaster
         int32 RowMin = (int32)tileTri.V[0].Y;
         int32 RowMax = (int32)tileTri.V[2].Y;
         // clip X to bin bounds
-        int32 X0 = (int32)Max(tileTri.V[0].X - BinMinX, 0.0);
-        int32 X1 = (int32)Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1.0);
+        int32 X0 = Max(tileTri.V[0].X - BinMinX, 0);
+        int32 X1 = Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1);
         // 得到这个quad 的行mask  没一行都一样 
         int32 NumBits = (X1 - X0) + 1;
         // 遍历每一行 做mask 查询

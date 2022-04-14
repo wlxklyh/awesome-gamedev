@@ -9,18 +9,18 @@ namespace HSoftRaster
         {
         }
 
-        HVector2(float x, float y)
+        HVector2(signed int x, signed int y)
             : X(x),
               Y(y)
         {
         }
 
-        double X;
-        double Y;
+        signed int X;
+        signed int Y;
 
         static HVector2 GetZero()
         {
-            return HVector2(0.0f, 0.0f);
+            return HVector2(0, 0);
         }
     };
 }

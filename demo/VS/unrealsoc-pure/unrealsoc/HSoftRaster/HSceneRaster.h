@@ -17,10 +17,11 @@ namespace HSoftRaster
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
+    static const int32 TILE_SIZE = 4;
     static const int32 BIN_WIDTH = 64;
-    static const int32 BIN_NUM = 4;
+    static const int32 BIN_NUM = 4 * TILE_SIZE;
     static const int32 FRAMEBUFFER_WIDTH = BIN_WIDTH * BIN_NUM;
-    static const int32 FRAMEBUFFER_HEIGHT = 256;
+    static const int32 FRAMEBUFFER_HEIGHT = 256 * TILE_SIZE;
     const std::string MASKSOC_DATA_FOLDER = "C:\\HSoftRaster\\";
 
     struct HFramebufferBin
@@ -38,7 +39,7 @@ namespace HSoftRaster
     {
     public:
         TArray<MVector> VertexArray;
-        TArray<uint16> IndexArray;
+        TArray<uint32> IndexArray;
 
         friend std::ostream& operator<<(std::ostream& outputFile, HPriInfo& priInfo)
         {
@@ -106,6 +107,7 @@ namespace HSoftRaster
             OutputFile.open(strFileName);
             OutputFile << "FScene:\n";
             SerializationTArray(OutputFile, TilePrimitives);
+            OutputFile.close();
         }
 
         void Deserialization()
@@ -117,6 +119,7 @@ namespace HSoftRaster
             std::string strTmp;
             getline(InputFile, strTmp);
             DeserializationTArray(InputFile, TilePrimitives);
+            InputFile.close();
         }
     };
 }

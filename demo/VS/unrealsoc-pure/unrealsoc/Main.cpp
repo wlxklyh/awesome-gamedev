@@ -52,8 +52,8 @@ int main()
     // DebugFillColor(colors);
 
     //（2）测试
-    raster.InitDataForTest();
-    raster.Serialization();
+    // raster.InitDataForTest();
+    raster.Deserialization();
     raster.Render();
     raster.GetColorResult(colors);
 
