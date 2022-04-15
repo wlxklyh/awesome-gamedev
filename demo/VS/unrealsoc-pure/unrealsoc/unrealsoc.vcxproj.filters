@@ -3,8 +3,8 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="HSoftRaster\HSceneRaster.cpp" />
-    <ClCompile Include="HSoftRaster\HVector.cpp" />
-    <ClCompile Include="HSoftRaster\HSerializationUtil.cpp" />
+    <ClCompile Include="HSoftRaster\HMath\HVector.cpp" />
+    <ClCompile Include="HSoftRaster\HMath\HVector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="UEMaskSoc">
@@ -21,7 +21,8 @@
     <ClInclude Include="HSoftRaster\HSceneRaster.h" />
     <ClInclude Include="HSoftRaster\HUtil.h" />
     <ClInclude Include="HSoftRaster\HSerializationUtil.h" />
-    <ClInclude Include="HSoftRaster\HVector.h" />
     <ClInclude Include="HSoftRaster\HMathType.h" />
+    <ClInclude Include="HSoftRaster\HMath\HVector.h" />
+    <ClInclude Include="HSoftRaster\HMath\HVector2.h" />
   </ItemGroup>
 </Project>
