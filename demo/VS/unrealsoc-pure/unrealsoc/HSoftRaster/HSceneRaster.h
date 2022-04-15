@@ -79,6 +79,7 @@ namespace HSoftRaster
         HSceneRaster()
         {
             Processing = std::make_unique<HRasterFrameResults>();
+            memset(&(Processing.get()->Bins), 0, BIN_NUM * FRAMEBUFFER_HEIGHT * sizeof(uint64));
         }
 
         //结果

@@ -135,14 +135,14 @@ namespace HSoftRaster
                 int vertexIndex2 = priInfo.IndexArray[index + 2];
 
                 HTileTri tileTri;
-                tileTri.V[0].X = priInfo.VertexArray[vertexIndex0].X * FRAMEBUFFER_HEIGHT;
-                tileTri.V[0].Y = priInfo.VertexArray[vertexIndex0].Y * FRAMEBUFFER_HEIGHT;
+                tileTri.V[0].X = int32(priInfo.VertexArray[vertexIndex0].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[0].Y = int32(priInfo.VertexArray[vertexIndex0].Y * FRAMEBUFFER_HEIGHT);
 
-                tileTri.V[1].X = priInfo.VertexArray[vertexIndex1].X * FRAMEBUFFER_HEIGHT;
-                tileTri.V[1].Y = priInfo.VertexArray[vertexIndex1].Y * FRAMEBUFFER_HEIGHT;
+                tileTri.V[1].X = int32(priInfo.VertexArray[vertexIndex1].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[1].Y = int32(priInfo.VertexArray[vertexIndex1].Y * FRAMEBUFFER_HEIGHT);
 
-                tileTri.V[2].X = priInfo.VertexArray[vertexIndex2].X * FRAMEBUFFER_HEIGHT;
-                tileTri.V[2].Y = priInfo.VertexArray[vertexIndex2].Y * FRAMEBUFFER_HEIGHT;
+                tileTri.V[2].X = int32(priInfo.VertexArray[vertexIndex2].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[2].Y = int32(priInfo.VertexArray[vertexIndex2].Y * FRAMEBUFFER_HEIGHT);
 
 
                 if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
@@ -241,7 +241,7 @@ namespace HSoftRaster
         }
 
         // 还没被光栅化 那么是一条线
-        if (!bRasterized)
+        if (!bRasterized && RowS <= RowMax)
         {
             double X0 = Min3(A.X, B.X, C.X);
             double X1 = Max3(A.X, B.X, C.X);
