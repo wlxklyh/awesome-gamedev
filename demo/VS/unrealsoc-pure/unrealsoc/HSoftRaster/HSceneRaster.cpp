@@ -59,6 +59,7 @@ namespace HSoftRaster
 
     void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
     {
+        bool flag_color = true;
         HRasterFrameResults* Results = Processing.get();
         for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
         {
@@ -72,9 +73,17 @@ namespace HSoftRaster
                 for (int32 k = 1; k < BIN_WIDTH; k++)
                 {
                     uint64 data = RowData & (1ll << k);
+                    flag_color = true;
                     if (data > 0)
                     {
-                        colorLine.emplace_back(MVector(255, 255, 255));
+                        if (flag_color)
+                        {
+                            colorLine.emplace_back(MVector(255, 255, 255));
+                        }
+                        else
+                        {
+                            colorLine.emplace_back(MVector(255, 0, 0));
+                        }
                     }
                     else
                     {
@@ -199,8 +208,8 @@ namespace HSoftRaster
             // A -> B
             int32 RowE = Min<int32>(RowMax, (int32)B.Y);
             // 两条边的梯度
-            double dX0 = (B.X - A.X) / (B.Y - A.Y);
-            double dX1 = (C.X - A.X) / (C.Y - A.Y);
+            double dX0 = static_cast<double>((B.X - A.X)) / (B.Y - A.Y);
+            double dX1 = static_cast<double>((C.X - A.X)) / (C.Y - A.Y);
             if (dX0 > dX1)
             {
                 Swap(dX0, dX1);
@@ -218,8 +227,8 @@ namespace HSoftRaster
         {
             // B -> C
             // Edge gradients
-            double dX0 = (C.X - A.X) / (C.Y - A.Y);
-            double dX1 = (C.X - B.X) / (C.Y - B.Y);
+            double dX0 = static_cast<double>((C.X - A.X)) / (C.Y - A.Y);
+            double dX1 = static_cast<double>((C.X - B.X)) / (C.Y - B.Y);
             double X0 = A.X + dX0 * (RowS - A.Y);
             double X1 = B.X + dX1 * (RowS - B.Y);
             if (X0 > X1)

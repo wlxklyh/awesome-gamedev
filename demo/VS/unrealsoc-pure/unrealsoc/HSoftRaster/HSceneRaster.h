@@ -17,7 +17,7 @@ namespace HSoftRaster
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
-    static const int32 TILE_SIZE = 4;
+    static const int32 TILE_SIZE = 1;
     static const int32 BIN_WIDTH = 64;
     static const int32 BIN_NUM = 4 * TILE_SIZE;
     static const int32 FRAMEBUFFER_WIDTH = BIN_WIDTH * BIN_NUM;
