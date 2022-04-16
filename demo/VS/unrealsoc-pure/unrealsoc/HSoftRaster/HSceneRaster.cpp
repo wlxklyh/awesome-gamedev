@@ -60,13 +60,13 @@ namespace HSoftRaster
     void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
     {
         bool flag_color = true;
-        HRasterFrameResults* Results = Processing.get();
+        HRasterFrameResults64* Results = Processing.get();
         for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
         {
             std::vector<MVector> colorLine;
             for (int32 i = 0; i < BIN_NUM; ++i)
             {
-                const HFramebufferBin& Bin = Results->Bins[i];
+                const HRasterFrameBufferBin<uint64>& Bin = Results->Bins[i];
                 uint64 RowData = Bin.Data[j];
 
                 colorLine.emplace_back(MVector(0, 0, 255));

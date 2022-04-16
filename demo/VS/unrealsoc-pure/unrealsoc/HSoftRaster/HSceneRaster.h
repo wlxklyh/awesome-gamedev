@@ -17,23 +17,40 @@ namespace HSoftRaster
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
-    static const int32 TILE_SIZE = 1;
+    static const int32 BIN_NUM_EXP = 2;
     static const int32 BIN_WIDTH = 64;
-    static const int32 BIN_NUM = 4 * TILE_SIZE;
+    static const int32 BIN_NUM = 1 << BIN_NUM_EXP;
     static const int32 FRAMEBUFFER_WIDTH = BIN_WIDTH * BIN_NUM;
-    static const int32 FRAMEBUFFER_HEIGHT = 256 * TILE_SIZE;
+    static const int32 FRAMEBUFFER_HEIGHT = 256 * (1 << BIN_NUM_EXP);
     const std::string MASKSOC_DATA_FOLDER = "C:\\HSoftRaster\\";
 
-    struct HFramebufferBin
+    template <class T>
+    struct HRasterFrameBufferBin
     {
-        uint64 Data[FRAMEBUFFER_HEIGHT];
+        T Data[FRAMEBUFFER_HEIGHT];
     };
 
-    struct HRasterFrameResults
+    struct IRasterFrameBuffer
     {
-        HFramebufferBin Bins[BIN_NUM];
     };
 
+    template <class T, const int N>
+    struct HRasterFrameBuffer : IRasterFrameBuffer
+    {
+        HRasterFrameBufferBin<T> Bins[N];
+        int BinWidth;
+
+        HRasterFrameBuffer(): BinWidth(sizeof(T))
+        {
+        }
+    };
+
+    using HRasterFrameResults64 = HRasterFrameBuffer<uint64, BIN_NUM>;
+
+    class HRasterFrameHierarchy
+    {
+        IRasterFrameBuffer* []
+    };
 
     class HPriInfo
     {
@@ -78,12 +95,12 @@ namespace HSoftRaster
     public:
         HSceneRaster()
         {
-            Processing = std::make_unique<HRasterFrameResults>();
+            Processing = std::make_unique<HRasterFrameResults64>();
             memset(&(Processing.get()->Bins), 0, BIN_NUM * FRAMEBUFFER_HEIGHT * sizeof(uint64));
         }
 
         //结果
-        std::unique_ptr<HRasterFrameResults> Processing;
+        std::unique_ptr<HRasterFrameResults64> Processing;
         //模型列表
         TArray<HPriInfo> TilePrimitives;
         //每个桶里面的三角形的ID
