@@ -6,7 +6,7 @@ using namespace std;
 #include "HSoftRaster/HSceneRaster.h"
 using namespace HSoftRaster;
 //该文件里面的变量
-HSceneRaster raster;
+HTileRaster TileRaster;
 
 
 void DebugFillColor(std::vector<std::vector<MVector>>& colors)
@@ -53,9 +53,9 @@ int main()
 
     //（2）测试
     // raster.InitDataForTest();
-    raster.Deserialization();
-    raster.Render();
-    raster.GetColorResult(colors);
+    TileRaster.Deserialization();
+    TileRaster.Render();
+    TileRaster.Output2PPM();
 
     //（3）绘制
     DebugDrawSocView(colors);

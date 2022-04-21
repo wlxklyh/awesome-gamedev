@@ -1,4 +1,5 @@
 ﻿#include "HSceneRaster.h"
+#include <bitset>
 
 namespace HSoftRaster
 {
@@ -55,44 +56,6 @@ namespace HSoftRaster
     void HSceneRaster::AddPri(HPriInfo& pri)
     {
         TilePrimitives.emplace_back(pri);
-    }
-
-    void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
-    {
-        bool flag_color = true;
-        HRasterFrameResults64* Results = Processing.get();
-        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
-        {
-            std::vector<MVector> colorLine;
-            for (int32 i = 0; i < BIN_NUM; ++i)
-            {
-                const HRasterFrameBufferBin<uint64>& Bin = Results->Bins[i];
-                uint64 RowData = Bin.Data[j];
-
-                colorLine.emplace_back(MVector(0, 0, 255));
-                for (int32 k = 1; k < BIN_WIDTH; k++)
-                {
-                    uint64 data = RowData & (1ll << k);
-                    flag_color = true;
-                    if (data > 0)
-                    {
-                        if (flag_color)
-                        {
-                            colorLine.emplace_back(MVector(255, 255, 255));
-                        }
-                        else
-                        {
-                            colorLine.emplace_back(MVector(255, 0, 0));
-                        }
-                    }
-                    else
-                    {
-                        colorLine.emplace_back(MVector(89, 89, 89));
-                    }
-                }
-            }
-            colors.emplace_back(colorLine);
-        }
     }
 
 
@@ -274,5 +237,171 @@ namespace HSoftRaster
     {
         GeomPhase();
         RasterizePhase();
+        //test
+        std::vector<int> result;
+        GetRandGrids(123, result);
+    }
+
+    void HSceneRaster::Combine(std::vector<HRasterFrameResults*> rasterResults)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        {
+            for (int32 i = 0; i < BIN_NUM; ++i)
+            {
+                for (int r_Index = 0; r_Index < rasterResults.size(); r_Index++)
+                {
+                    if (rasterResults[r_Index] != NULL)
+                    {
+                        HFramebufferBin& Bin = Results->Bins[i];
+                        HFramebufferBin& CombineBin = rasterResults[r_Index]->Bins[i];
+                        Bin.Data[j] |= CombineBin.Data[j];
+                    }
+                }
+            }
+        }
+    }
+
+
+    void HSceneRaster::GetRandGrids(int seed, std::vector<int>& result)
+    {
+        std::mt19937_64 eng(seed);
+        std::uniform_int_distribution<unsigned long long> distr;
+
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        {
+            std::vector<MVector> colorLine;
+            for (int32 i = 0; i < BIN_NUM; ++i)
+            {
+                const HFramebufferBin& Bin = Results->Bins[i];
+                uint64 BinBuffer = Bin.Data[j];
+                uint64 BinCheckRand = distr(eng);
+                //黑魔法：(BinBuffer | BinCheckRand) ^ BinBuffer;
+                // 1010  BinBuffer
+                // 0110  BinCheckRand
+                // 1110  BinBuffer | BinCheckRand
+
+                // 1110  BinBuffer | BinCheckRand 
+                // 1010  BinBuffer
+                // 0100  (BinBuffer | BinCheckRand) ^ BinBuffer
+
+                uint64 BinPass = (BinBuffer | BinCheckRand) ^ BinBuffer;
+                //可能有黑魔法优化
+                for (int bin_bit = 0; bin_bit < BIN_WIDTH; bin_bit++)
+                {
+                    std::bitset<64> BintPassBit(BinPass);
+
+                    uint64 test = BinPass & (1ll << bin_bit);
+                    if (BinPass & (1 << bin_bit))
+                    {
+                        result.push_back(j * FRAMEBUFFER_HEIGHT + i * BIN_WIDTH + bin_bit);
+                    }
+                }
+                //测试代码
+                // if (BinPass & BinBuffer)
+                // {
+                //     int Error = 0;
+                //     Error ++;
+                // }
+            }
+        }
+    }
+
+
+    std::string HSceneRaster::GetSerializationFilePath()
+    {
+        return MASKSOC_DATA_FOLDER + std::to_string(Raster_ID) + "_SOCInput.data";
+    }
+
+    std::string HSceneRaster::GetPPMFilePath()
+    {
+        return MASKSOC_DATA_FOLDER + std::to_string(Raster_ID) + "_SOCOutput.ppm";
+    }
+
+    std::string HSceneRaster::Get01FilePath()
+    {
+        return MASKSOC_DATA_FOLDER + std::to_string(Raster_ID) + "_SOCOutput.txt";
+    }
+
+    void HSceneRaster::Serialization()
+    {
+        std::string strFileName = GetSerializationFilePath();
+        std::ofstream OutputFile;
+        OutputFile.open(strFileName);
+        OutputFile << "FScene:\n";
+        SerializationTArray(OutputFile, TilePrimitives);
+        OutputFile.close();
+    }
+
+    void HSceneRaster::Deserialization()
+    {
+        std::string strFileName = GetSerializationFilePath();
+        std::ifstream InputFile;
+        InputFile.open(strFileName);
+        InputFile.ignore();
+        std::string strTmp;
+        getline(InputFile, strTmp);
+        DeserializationTArray(InputFile, TilePrimitives);
+        InputFile.close();
+    }
+
+    void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        {
+            std::vector<MVector> colorLine;
+            for (int32 i = 0; i < BIN_NUM; ++i)
+            {
+                const HFramebufferBin& Bin = Results->Bins[i];
+                uint64 RowData = Bin.Data[j];
+
+                colorLine.emplace_back(MVector(0, 0, 255));
+                for (int32 k = 1; k < BIN_WIDTH; k++)
+                {
+                    uint64 data = RowData & (1ll << k);
+                    if (data > 0)
+                    {
+                        colorLine.emplace_back(MVector(255, 255, 255));
+                    }
+                    else
+                    {
+                        colorLine.emplace_back(MVector(89, 89, 89));
+                    }
+                }
+            }
+            colors.emplace_back(colorLine);
+        }
+    }
+
+    void HSceneRaster::Output2PPM()
+    {
+        std::vector<std::vector<MVector>> colors;
+        GetColorResult(colors);
+
+        std::string strFileName = GetPPMFilePath();
+        std::ofstream OutImage;
+        OutImage.open(strFileName);
+        OutImage << "P3\n" << FRAMEBUFFER_WIDTH << ' ' << FRAMEBUFFER_HEIGHT << "\n255\n";
+
+
+        std::string str01FileName = Get01FilePath();
+        std::ofstream Out01;
+        Out01.open(str01FileName);
+
+        for (int row = 0; row < colors.size(); row++)
+        {
+            for (int col = 0; col < colors[row].size(); col++)
+            {
+                OutImage << (int)(colors[row][col].X) << ' ' << (int)(colors[row][col].Y) << ' ' << (int)(colors[row][
+                    col].Z) << '\n';
+
+                Out01 << (((int)(colors[row][col].X)) == 255 ? 1 : 0) << ' ';
+            }
+            Out01 << '\n';
+        }
+
+        OutImage.close();
     }
 }

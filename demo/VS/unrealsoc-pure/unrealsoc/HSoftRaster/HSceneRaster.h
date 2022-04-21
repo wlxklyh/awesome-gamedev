@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <memory>
 #include <fstream>
+#include <random>
 #include <string>
 #include "HUtil.h"
 #include "HMathType.h"
@@ -17,40 +18,39 @@ namespace HSoftRaster
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
     // |     |     |     |     |     |     |
-    static const int32 BIN_NUM_EXP = 2;
+    static const int32 TILE_SIZE = 1;
     static const int32 BIN_WIDTH = 64;
-    static const int32 BIN_NUM = 1 << BIN_NUM_EXP;
+    static const int32 BIN_NUM = 4 * TILE_SIZE;
     static const int32 FRAMEBUFFER_WIDTH = BIN_WIDTH * BIN_NUM;
-    static const int32 FRAMEBUFFER_HEIGHT = 256 * (1 << BIN_NUM_EXP);
+    static const int32 FRAMEBUFFER_HEIGHT = 256 * TILE_SIZE;
     const std::string MASKSOC_DATA_FOLDER = "C:\\HSoftRaster\\";
 
-    template <class T>
-    struct HRasterFrameBufferBin
+    enum RasterType
     {
-        T Data[FRAMEBUFFER_HEIGHT];
+        RASTER_NONE=-1,
+        RASTER_BUILDING,
+        RASTER_GRASS,
+        RASTER_ROAD,
+        RASTER_WATER,
+        //这里加
+        RENDER_COUNT,
+        COMBINE_ROAD_WATER_BUILDING=RENDER_COUNT,
+        COMBINE_All,
+        //这里加
+        RASTER_All,
     };
 
-    struct IRasterFrameBuffer
+
+    struct HFramebufferBin
     {
+        uint64 Data[FRAMEBUFFER_HEIGHT];
     };
 
-    template <class T, const int N>
-    struct HRasterFrameBuffer : IRasterFrameBuffer
+    struct HRasterFrameResults
     {
-        HRasterFrameBufferBin<T> Bins[N];
-        int BinWidth;
-
-        HRasterFrameBuffer(): BinWidth(sizeof(T))
-        {
-        }
+        HFramebufferBin Bins[BIN_NUM];
     };
 
-    using HRasterFrameResults64 = HRasterFrameBuffer<uint64, BIN_NUM>;
-
-    class HRasterFrameHierarchy
-    {
-        IRasterFrameBuffer* []
-    };
 
     class HPriInfo
     {
@@ -95,12 +95,14 @@ namespace HSoftRaster
     public:
         HSceneRaster()
         {
-            Processing = std::make_unique<HRasterFrameResults64>();
+            Raster_ID = 0;
+            Processing = std::make_unique<HRasterFrameResults>();
             memset(&(Processing.get()->Bins), 0, BIN_NUM * FRAMEBUFFER_HEIGHT * sizeof(uint64));
         }
 
+        int Raster_ID;
         //结果
-        std::unique_ptr<HRasterFrameResults64> Processing;
+        std::unique_ptr<HRasterFrameResults> Processing;
         //模型列表
         TArray<HPriInfo> TilePrimitives;
         //每个桶里面的三角形的ID
@@ -109,35 +111,81 @@ namespace HSoftRaster
         TArray<HTileTri> Triangles;
 
         void AddPri(HPriInfo& pri);
-        void GetColorResult(std::vector<std::vector<MVector>>& colors);
+
         void InitDataForTest();
         void GeomPhase();
         void RasterizePhase();
         void RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
         void RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
         void Render();
+        void Combine(std::vector<HRasterFrameResults*> rasterResults);
+
+        //种
+        void GetRandGrids(int seed, std::vector<int>& result);
+
+        //辅助函数 
+        std::string GetSerializationFilePath();
+        std::string GetPPMFilePath();
+        std::string Get01FilePath();
+
+        void Serialization();
+        void Deserialization();
+        void Output2PPM();
+        void GetColorResult(std::vector<std::vector<MVector>>& colors);
+    };
+
+    class HTileRaster
+    {
+    public:
+        std::unique_ptr<HSceneRaster> m_layerRaster[RASTER_All];
+
+        HTileRaster()
+        {
+            for (int rasterType = RASTER_NONE + 1; rasterType < RASTER_All; rasterType++)
+            {
+                m_layerRaster[rasterType] = std::make_unique<HSoftRaster::HSceneRaster>();
+                m_layerRaster[rasterType]->Raster_ID = rasterType;
+            }
+        }
 
 
         void Serialization()
         {
-            std::string strFileName = MASKSOC_DATA_FOLDER + "SOCInput.data";
-            std::ofstream OutputFile;
-            OutputFile.open(strFileName);
-            OutputFile << "FScene:\n";
-            SerializationTArray(OutputFile, TilePrimitives);
-            OutputFile.close();
+            for (int rasterType = RASTER_NONE + 1; rasterType < RENDER_COUNT; rasterType++)
+            {
+                m_layerRaster[rasterType]->Serialization();
+            }
         }
 
         void Deserialization()
         {
-            std::string strFileName = MASKSOC_DATA_FOLDER + "SOCInput.data";
-            std::ifstream InputFile;
-            InputFile.open(strFileName);
-            InputFile.ignore();
-            std::string strTmp;
-            getline(InputFile, strTmp);
-            DeserializationTArray(InputFile, TilePrimitives);
-            InputFile.close();
+            for (int rasterType = RASTER_NONE + 1; rasterType < RENDER_COUNT; rasterType++)
+            {
+                m_layerRaster[rasterType]->Deserialization();
+            }
+        }
+
+
+        void Render()
+        {
+            for (int rasterType = RASTER_NONE + 1; rasterType < RENDER_COUNT; rasterType++)
+            {
+                m_layerRaster[rasterType]->Render();
+            }
+
+            std::vector<HRasterFrameResults*> toCombine;
+            toCombine.push_back(m_layerRaster[RASTER_ROAD]->Processing.get());
+            toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
+            toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
+            m_layerRaster[COMBINE_ROAD_WATER_BUILDING]->Combine(toCombine);
+        }
+
+        void Output2PPM()
+        {
+            for (int rasterType = RASTER_NONE + 1; rasterType < RASTER_All; rasterType++)
+            {
+                m_layerRaster[rasterType]->Output2PPM();
+            }
         }
     };
 }
