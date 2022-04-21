@@ -91,7 +91,7 @@ namespace HSoftRaster
             for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
             {
                 int nowTriSize = (int)Triangles.size();
-                HTileTriID TriID(nowTriSize, false);
+                HTileTriID TriID(nowTriSize, priInfo.isQuad);
                 int vertexIndex0 = priInfo.IndexArray[index];
                 int vertexIndex1 = priInfo.IndexArray[index + 1];
                 int vertexIndex2 = priInfo.IndexArray[index + 2];
@@ -213,11 +213,22 @@ namespace HSoftRaster
 
     void HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
     {
-        int32 RowMin = (int32)tileTri.V[0].Y;
-        int32 RowMax = (int32)tileTri.V[2].Y;
+        //遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
+        MVector2& A = tileTri.V[0];
+        MVector2& B = tileTri.V[1];
+        MVector2& C = tileTri.V[2];
+
+        //最小行号 最大行号
+        int32 RowMin = Max<int32>((int32)A.Y, 0);
+        int32 RowMax = Min<int32>(FRAMEBUFFER_HEIGHT - 1, (int32)C.Y);
+
         // clip X to bin bounds
-        int32 X0 = Max(tileTri.V[0].X - BinMinX, 0);
-        int32 X1 = Min(tileTri.V[1].X - BinMinX, BIN_WIDTH - 1);
+        int32 X0 = Max(A.X - BinMinX, 0);
+        int32 X1 = Min(B.X - BinMinX, BIN_WIDTH - 1);
+        if (X1 < 0)
+        {
+            return;
+        }
         // 得到这个quad 的行mask  没一行都一样 
         int32 NumBits = (X1 - X0) + 1;
         // 遍历每一行 做mask 查询

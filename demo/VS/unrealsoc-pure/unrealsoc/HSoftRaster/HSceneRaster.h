@@ -54,11 +54,17 @@ namespace HSoftRaster
     class HPriInfo
     {
     public:
+        HPriInfo(): isQuad(false)
+        {
+        }
+
         TArray<MVector> VertexArray;
         TArray<uint32> IndexArray;
+        bool isQuad;
 
         friend std::ostream& operator<<(std::ostream& outputFile, HPriInfo& priInfo)
         {
+            outputFile << priInfo.isQuad << "\n";
             SerializationTArray(outputFile, priInfo.VertexArray);
             SerializationTArray(outputFile, priInfo.IndexArray);
             return outputFile;
@@ -66,6 +72,7 @@ namespace HSoftRaster
 
         friend std::istream& operator>>(std::istream& inputFile, HPriInfo& priInfo)
         {
+            inputFile >> priInfo.isQuad;
             DeserializationTArray(inputFile, priInfo.VertexArray);
             DeserializationTArray(inputFile, priInfo.IndexArray);
             return inputFile;
@@ -120,7 +127,7 @@ namespace HSoftRaster
         void Combine(std::vector<HRasterFrameResults*> rasterResults);
 
         //种
-        void GetRandGrids(int seed,int sparse, std::vector<int>& result);
+        void GetRandGrids(int seed, int sparse, std::vector<int>& result);
 
         //辅助函数 
         std::string GetSerializationFilePath();
@@ -137,13 +144,12 @@ namespace HSoftRaster
     {
         std::unique_ptr<HSceneRaster> m_layerRaster[RASTER_All];
     public:
-
         //谨慎调用
         HSceneRaster* GetLayerRaster(RasterType type)
         {
             return m_layerRaster[type].get();
         }
-        
+
         HTileRaster()
         {
             for (int rasterType = RASTER_NONE + 1; rasterType < RASTER_All; rasterType++)
