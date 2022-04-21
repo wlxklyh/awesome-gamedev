@@ -35,7 +35,6 @@ namespace HSoftRaster
         //这里加
         RENDER_COUNT,
         COMBINE_ROAD_WATER_BUILDING=RENDER_COUNT,
-        COMBINE_All,
         //这里加
         RASTER_All,
     };
@@ -121,7 +120,7 @@ namespace HSoftRaster
         void Combine(std::vector<HRasterFrameResults*> rasterResults);
 
         //种
-        void GetRandGrids(int seed, std::vector<int>& result);
+        void GetRandGrids(int seed,int sparse, std::vector<int>& result);
 
         //辅助函数 
         std::string GetSerializationFilePath();
@@ -136,9 +135,15 @@ namespace HSoftRaster
 
     class HTileRaster
     {
-    public:
         std::unique_ptr<HSceneRaster> m_layerRaster[RASTER_All];
+    public:
 
+        //谨慎调用
+        HSceneRaster* GetLayerRaster(RasterType type)
+        {
+            return m_layerRaster[type].get();
+        }
+        
         HTileRaster()
         {
             for (int rasterType = RASTER_NONE + 1; rasterType < RASTER_All; rasterType++)
@@ -166,18 +171,21 @@ namespace HSoftRaster
         }
 
 
+        void Combine()
+        {
+            std::vector<HRasterFrameResults*> toCombine;
+            toCombine.push_back(m_layerRaster[RASTER_ROAD]->Processing.get());
+            toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
+            toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
+            m_layerRaster[COMBINE_ROAD_WATER_BUILDING]->Combine(toCombine);
+        }
+
         void Render()
         {
             for (int rasterType = RASTER_NONE + 1; rasterType < RENDER_COUNT; rasterType++)
             {
                 m_layerRaster[rasterType]->Render();
             }
-
-            std::vector<HRasterFrameResults*> toCombine;
-            toCombine.push_back(m_layerRaster[RASTER_ROAD]->Processing.get());
-            toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
-            toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
-            m_layerRaster[COMBINE_ROAD_WATER_BUILDING]->Combine(toCombine);
         }
 
         void Output2PPM()

@@ -1,5 +1,4 @@
 ﻿#include "HSceneRaster.h"
-#include <bitset>
 
 namespace HSoftRaster
 {
@@ -237,9 +236,6 @@ namespace HSoftRaster
     {
         GeomPhase();
         RasterizePhase();
-        //test
-        std::vector<int> result;
-        GetRandGrids(123, result);
     }
 
     void HSceneRaster::Combine(std::vector<HRasterFrameResults*> rasterResults)
@@ -263,7 +259,7 @@ namespace HSoftRaster
     }
 
 
-    void HSceneRaster::GetRandGrids(int seed, std::vector<int>& result)
+    void HSceneRaster::GetRandGrids(int seed, int sparse, std::vector<int>& result)
     {
         std::mt19937_64 eng(seed);
         std::uniform_int_distribution<unsigned long long> distr;
@@ -277,33 +273,21 @@ namespace HSoftRaster
                 const HFramebufferBin& Bin = Results->Bins[i];
                 uint64 BinBuffer = Bin.Data[j];
                 uint64 BinCheckRand = distr(eng);
-                //黑魔法：(BinBuffer | BinCheckRand) ^ BinBuffer;
-                // 1010  BinBuffer
-                // 0110  BinCheckRand
-                // 1110  BinBuffer | BinCheckRand
+                for (int rand_num = 1; rand_num < sparse; rand_num++)
+                {
+                    BinCheckRand &= distr(eng);
+                }
 
-                // 1110  BinBuffer | BinCheckRand 
-                // 1010  BinBuffer
-                // 0100  (BinBuffer | BinCheckRand) ^ BinBuffer
-
-                uint64 BinPass = (BinBuffer | BinCheckRand) ^ BinBuffer;
+                uint64 BinPass = ~BinBuffer & BinCheckRand;
+                // BinPass = ~BinBuffer;
                 //可能有黑魔法优化
                 for (int bin_bit = 0; bin_bit < BIN_WIDTH; bin_bit++)
                 {
-                    std::bitset<64> BintPassBit(BinPass);
-
-                    uint64 test = BinPass & (1ll << bin_bit);
-                    if (BinPass & (1 << bin_bit))
+                    if (BinPass & (1ull << bin_bit))
                     {
                         result.push_back(j * FRAMEBUFFER_HEIGHT + i * BIN_WIDTH + bin_bit);
                     }
                 }
-                //测试代码
-                // if (BinPass & BinBuffer)
-                // {
-                //     int Error = 0;
-                //     Error ++;
-                // }
             }
         }
     }
@@ -349,7 +333,7 @@ namespace HSoftRaster
     void HSceneRaster::GetColorResult(std::vector<std::vector<MVector>>& colors)
     {
         HRasterFrameResults* Results = Processing.get();
-        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        for (int32 j = 0; j < FRAMEBUFFER_HEIGHT; j++)
         {
             std::vector<MVector> colorLine;
             for (int32 i = 0; i < BIN_NUM; ++i)

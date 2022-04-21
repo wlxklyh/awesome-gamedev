@@ -55,6 +55,7 @@ int main()
     // raster.InitDataForTest();
     TileRaster.Deserialization();
     TileRaster.Render();
+    TileRaster.Combine();
     TileRaster.Output2PPM();
 
     //（3）绘制
