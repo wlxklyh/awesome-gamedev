@@ -54,17 +54,18 @@ namespace HSoftRaster
     class HPriInfo
     {
     public:
-        HPriInfo(): isQuad(false)
+        HPriInfo(): IsQuad(false),IsPass(true)
         {
         }
 
         TArray<MVector> VertexArray;
         TArray<uint32> IndexArray;
-        bool isQuad;
+        bool IsQuad;
+        bool IsPass;
 
         friend std::ostream& operator<<(std::ostream& outputFile, HPriInfo& priInfo)
         {
-            outputFile << priInfo.isQuad << "\n";
+            outputFile << priInfo.IsQuad << "\n";
             SerializationTArray(outputFile, priInfo.VertexArray);
             SerializationTArray(outputFile, priInfo.IndexArray);
             return outputFile;
@@ -72,7 +73,7 @@ namespace HSoftRaster
 
         friend std::istream& operator>>(std::istream& inputFile, HPriInfo& priInfo)
         {
-            inputFile >> priInfo.isQuad;
+            inputFile >> priInfo.IsQuad;
             DeserializationTArray(inputFile, priInfo.VertexArray);
             DeserializationTArray(inputFile, priInfo.IndexArray);
             return inputFile;
@@ -121,9 +122,11 @@ namespace HSoftRaster
         void InitDataForTest();
         void GeomPhase();
         void RasterizePhase();
+
         void RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
-        void RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
+        bool RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX, bool isCheck = false);
         void Render();
+        void CheckAndRender();
         void Combine(std::vector<HRasterFrameResults*> rasterResults);
 
         //种

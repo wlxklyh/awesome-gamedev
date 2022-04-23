@@ -91,7 +91,7 @@ namespace HSoftRaster
             for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
             {
                 int nowTriSize = (int)Triangles.size();
-                HTileTriID TriID(nowTriSize, priInfo.isQuad);
+                HTileTriID TriID(nowTriSize, priInfo.IsQuad);
                 int vertexIndex0 = priInfo.IndexArray[index];
                 int vertexIndex1 = priInfo.IndexArray[index + 1];
                 int vertexIndex2 = priInfo.IndexArray[index + 2];
@@ -211,7 +211,7 @@ namespace HSoftRaster
         }
     }
 
-    void HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX)
+    bool HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX, bool isCheck)
     {
         //遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
         MVector2& A = tileTri.V[0];
@@ -227,26 +227,114 @@ namespace HSoftRaster
         int32 X1 = Min(B.X - BinMinX, BIN_WIDTH - 1);
         if (X1 < 0)
         {
-            return;
+            return false;
         }
         // 得到这个quad 的行mask  没一行都一样 
         int32 NumBits = (X1 - X0) + 1;
+        uint64 BoxRowMask;
+        BoxRowMask = (NumBits == BIN_WIDTH) ? ~0ull : ((1ull << NumBits) - 1) << X0;
+
         // 遍历每一行 做mask 查询
         for (int32 Row = RowMin; Row <= RowMax; ++Row)
         {
             uint64* BinBoxData = BinData;
             uint64 FrameBufferMask = BinBoxData[Row];
-            uint64 BoxRowMask;
-            BoxRowMask = (NumBits == BIN_WIDTH) ? ~0ull : ((1ull << NumBits) - 1) << X0;
-            BinBoxData[Row] = (FrameBufferMask | BoxRowMask);
+
+            if (isCheck)
+            {
+                if ((FrameBufferMask & BoxRowMask))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                BinBoxData[Row] = (FrameBufferMask | BoxRowMask);
+            }
         }
+        return true;
     }
 
 
     void HSceneRaster::Render()
     {
-        GeomPhase();
-        RasterizePhase();
+        if (Raster_ID == RASTER_BUILDING)
+        {
+            CheckAndRender();
+        }
+        else
+        {
+            GeomPhase();
+            RasterizePhase();
+        }
+    }
+
+    void HSceneRaster::CheckAndRender()
+    {
+        unsigned int NumPris = (int)TilePrimitives.size();
+        for (unsigned int PriIdx = 0; PriIdx < NumPris; ++PriIdx)
+        {
+            HPriInfo& priInfo = TilePrimitives.at(PriIdx);
+            for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
+            {
+                //不支持三角形的
+                if (!priInfo.IsQuad)
+                {
+                    continue;
+                }
+                int vertexIndex0 = priInfo.IndexArray[index];
+                int vertexIndex1 = priInfo.IndexArray[index + 1];
+                int vertexIndex2 = priInfo.IndexArray[index + 2];
+
+                HTileTri tileTri;
+                tileTri.V[0].X = int32(priInfo.VertexArray[vertexIndex0].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[0].Y = int32(priInfo.VertexArray[vertexIndex0].Y * FRAMEBUFFER_HEIGHT);
+
+                tileTri.V[1].X = int32(priInfo.VertexArray[vertexIndex1].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[1].Y = int32(priInfo.VertexArray[vertexIndex1].Y * FRAMEBUFFER_HEIGHT);
+
+                tileTri.V[2].X = int32(priInfo.VertexArray[vertexIndex2].X * FRAMEBUFFER_HEIGHT);
+                tileTri.V[2].Y = int32(priInfo.VertexArray[vertexIndex2].Y * FRAMEBUFFER_HEIGHT);
+
+
+                if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
+                if (tileTri.V[1].Y > tileTri.V[2].Y) Swap(tileTri.V[1], tileTri.V[2]);
+                if (tileTri.V[0].Y > tileTri.V[1].Y) Swap(tileTri.V[0], tileTri.V[1]);
+
+
+                // 计算这个三角形跨越了哪些桶 BinMin ----> BinMax
+                int32 MinX = (int32)Min3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 MaxX = (int32)Max3(tileTri.V[0].X, tileTri.V[1].X, tileTri.V[2].X) / BIN_WIDTH;
+                int32 BinMin = Max(MinX, 0);
+                int32 BinMax = Min(MaxX, BIN_NUM - 1);
+
+                //测试
+                bool pass = true;
+                for (int32 BinIdx = BinMin; BinIdx <= BinMax; ++BinIdx)
+                {
+                    const int32 BinMinX = BinIdx * BIN_WIDTH;
+                    uint64* BinData = Processing->Bins[BinIdx].Data;
+
+                    pass &= RasterizeQuad(tileTri, BinData, BinMinX, true);
+                    if (!pass)
+                    {
+                        priInfo.IsPass = false;
+                        break;
+                    }
+                }
+                
+                //写入
+                if (pass)
+                {
+                    for (int32 BinIdx = BinMin; BinIdx <= BinMax; ++BinIdx)
+                    {
+                        const int32 BinMinX = BinIdx * BIN_WIDTH;
+                        uint64* BinData = Processing->Bins[BinIdx].Data;
+                        RasterizeQuad(tileTri, BinData, BinMinX, false);
+                    }
+                }
+            }
+        }
     }
 
     void HSceneRaster::Combine(std::vector<HRasterFrameResults*> rasterResults)
