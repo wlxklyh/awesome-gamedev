@@ -35,6 +35,7 @@ namespace HSoftRaster
         //这里加
         RENDER_COUNT,
         COMBINE_ROAD_WATER_BUILDING=RENDER_COUNT,
+        COMBINE_BUILDING_WATER,
         //这里加
         RASTER_All,
     };
@@ -125,13 +126,14 @@ namespace HSoftRaster
 
         void RasterizeTri(HTileTri& tileTri, uint64* BinData, int32 BinMinX);
         bool RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX, bool isCheck = false);
-        void Render();
-        void CheckAndRender();
+        void Rasterize();
+        void CheckAndRasterize();
         void Combine(std::vector<HRasterFrameResults*> rasterResults);
 
         //种
         void GetRandGrids(int seed, int sparse, std::vector<int>& result);
-
+        bool GetResult(int row, int col);
+        
         //辅助函数 
         std::string GetSerializationFilePath();
         std::string GetPPMFilePath();
@@ -182,18 +184,26 @@ namespace HSoftRaster
 
         void Combine()
         {
-            std::vector<HRasterFrameResults*> toCombine;
-            toCombine.push_back(m_layerRaster[RASTER_ROAD]->Processing.get());
-            toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
-            toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
-            m_layerRaster[COMBINE_ROAD_WATER_BUILDING]->Combine(toCombine);
+            {
+                std::vector<HRasterFrameResults*> toCombine;
+                toCombine.push_back(m_layerRaster[RASTER_ROAD]->Processing.get());
+                toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
+                toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
+                m_layerRaster[COMBINE_ROAD_WATER_BUILDING]->Combine(toCombine); 
+            }
+            {
+                std::vector<HRasterFrameResults*> toCombine;
+                toCombine.push_back(m_layerRaster[RASTER_WATER]->Processing.get());
+                toCombine.push_back(m_layerRaster[RASTER_BUILDING]->Processing.get());
+                m_layerRaster[COMBINE_BUILDING_WATER]->Combine(toCombine);
+            }
         }
 
-        void Render()
+        void Rasterize()
         {
             for (int rasterType = RASTER_NONE + 1; rasterType < RENDER_COUNT; rasterType++)
             {
-                m_layerRaster[rasterType]->Render();
+                m_layerRaster[rasterType]->Rasterize();
             }
         }
 

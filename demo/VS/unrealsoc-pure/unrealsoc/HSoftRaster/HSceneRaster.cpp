@@ -256,11 +256,11 @@ namespace HSoftRaster
     }
 
 
-    void HSceneRaster::Render()
+    void HSceneRaster::Rasterize()
     {
         if (Raster_ID == RASTER_BUILDING)
         {
-            CheckAndRender();
+            CheckAndRasterize();
         }
         else
         {
@@ -269,7 +269,7 @@ namespace HSoftRaster
         }
     }
 
-    void HSceneRaster::CheckAndRender()
+    void HSceneRaster::CheckAndRasterize()
     {
         unsigned int NumPris = (int)TilePrimitives.size();
         for (unsigned int PriIdx = 0; PriIdx < NumPris; ++PriIdx)
@@ -357,7 +357,11 @@ namespace HSoftRaster
         }
     }
 
-
+    bool HSceneRaster::GetResult(int row, int col)
+    {
+        return (Processing->Bins[col/BIN_WIDTH].Data[row]) & ((1ull) << (col%BIN_WIDTH));
+    }
+    
     void HSceneRaster::GetRandGrids(int seed, int sparse, std::vector<int>& result)
     {
         std::mt19937_64 eng(seed);
@@ -379,7 +383,7 @@ namespace HSoftRaster
 
                 uint64 BinPass = ~BinBuffer & BinCheckRand;
                 // BinPass = ~BinBuffer;
-                //可能有黑魔法优化
+                //可能有黑魔法优化  确实有个黑魔法 可以将64的复杂度优化到10以内  
                 for (int bin_bit = 0; bin_bit < BIN_WIDTH; bin_bit++)
                 {
                     if (BinPass & (1ull << bin_bit))
