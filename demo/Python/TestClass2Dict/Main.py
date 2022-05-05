@@ -39,26 +39,27 @@ class MapDict(dict):
 
 if __name__ == '__main__':
 	class A(object):
-		name = 'wukt'
+		name = 'A'
 		age = 18
 
-		def __init__(self):
-			self.gender = 'male'
+		@classmethod
+		def GetDictConfig(fatherClass, childClass):
+			child_dict = {attr: childClass.__dict__[attr] for attr in childClass.__dict__ if
+			              not callable(getattr(childClass, attr)) and not attr.startswith('__')}
 
-		def keys(self):
-			'''当对实例化对象使用dict(obj)的时候, 会调用这个方法,这里定义了字典的键, 其对应的值将以obj['name']的形式取,
-			但是对象是不可以以这种方式取值的, 为了支持这种取值, 可以为类增加一个方法'''
-			return ('name', 'age', 'gender')
+			father_dict = {attr: fatherClass.__dict__[attr] for attr in fatherClass.__dict__ if
+			               not callable(getattr(fatherClass, attr)) and not attr.startswith('__')}
 
-		def __getitem__(self, item):
-			'''内置方法, 当使用obj['name']的形式的时候, 将调用这个方法, 这里返回的结果就是值'''
-			return getattr(self, item)
+			for k, v in father_dict.items():
+				if k not in child_dict:
+					child_dict[k] = v
+
+			return child_dict
 
 
-	a = A()
+	class B(A):
+		name = "B"
+		address = "gz"
 
-	r = dict(a)
-	print(r)
-	dict1 = {attr: A.__dict__[attr] for attr in A.__dict__ if
-	         not callable(getattr(A, attr)) and not attr.startswith('__')}
-	print(dict1)
+
+	print(B.__base__.GetDictConfig(B))
