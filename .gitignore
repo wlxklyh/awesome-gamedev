@@ -12,6 +12,7 @@ Debug/
 #clion
 .idea
 cmake-build-debug
+cmake-build-release
 build
 
 #Unity
