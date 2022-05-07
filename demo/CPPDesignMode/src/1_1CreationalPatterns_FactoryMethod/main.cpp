@@ -4,11 +4,11 @@ using namespace std;
 class ProductorA
 {
 public:
-    virtual ~Product() {}
-    virtual std::string Operation() const = 0;
+    virtual ~ProductorA() {}
+    virtual std::string Operation() const=0;
 };
 
-class ProductorA1:ProductorA
+class ProductorA1:public ProductorA
 {
 public:
     std::string Operation() const override {
@@ -16,7 +16,7 @@ public:
     }
 };
 
-class ProductorA2:ProductorA
+class ProductorA2:public ProductorA
 {
     std::string Operation() const override {
         return "{Productor2}";
@@ -27,36 +27,36 @@ class ProductorA2:ProductorA
 class SimpleFactory
 {
 public:
-    ProductorA* *CreateProductA(string type)
+    ProductorA* CreateProductA(std::string type)
     {
-        switch (type) {
-            case "ProductorA1":
-                return new ProductorA1();
-            case "ProductorA2":
-                return new ProductorA2();
-        }
-        return NULL;
+        ProductorA* productor = NULL;
+       if(type == "ProductorA1") {
+           productor = new ProductorA1();
+       }else if(type == "ProductorA2") {
+           productor = new ProductorA2();
+       }
+        return productor;
     }
 };
 
-class Factory
+class FactoryA
 {
 public:
-    virtual ProductorA* *CreateProductA() const = 0;
+    virtual ProductorA* CreateProductA() const = 0;
 };
 
-class FactoryA1:Factory
+class FactoryA1:public FactoryA
 {
 public:
-    virtual ProductorA* *CreateProductA(){
+    virtual ProductorA* CreateProductA() const{
         return new ProductorA1();
     };
 };
 
-class FactoryA2:Factory
+class FactoryA2:public FactoryA
 {
 public:
-    virtual ProductorA* *CreateProductA(){
+    virtual ProductorA* CreateProductA() const{
         return new ProductorA2();
     };
 };
@@ -64,14 +64,19 @@ public:
 
 int main() {
     //(1)简单工厂： ProductorA ProductorA1 ProductorA2 SimpleFactory的Create里面switch
-    SimpleFactory simpleFactory;
-    ProductorA* A1 = simpleFactory.CreateProductA("ProductorA1");
-    ProductorA* A2 = simpleFactory.CreateProductA("ProductorA2");
+    {
+        SimpleFactory simpleFactory;
+        ProductorA* A1 = simpleFactory.CreateProductA("ProductorA1");
+        ProductorA* A2 = simpleFactory.CreateProductA("ProductorA2");
+    }
 
     //(2)工厂： ProductorA ProductorA1 ProductorA2 Factory FactoryA1 FactoryA2
-    FactoryA* factoryA1 = new FactoryA1();
-    ProductorA* A1 = factoryA1->CreateProductA();
-    FactoryA* factoryA1 = new FactoryA1();
-    ProductorA* A2 = factoryA2->CreateProductA();
+    {
+        FactoryA* factoryA1 = new FactoryA1();
+        ProductorA* A1 = factoryA1->CreateProductA();
+        FactoryA* factoryA2 = new FactoryA2();
+        ProductorA* A2 = factoryA2->CreateProductA();
+    }
+
 
 }
