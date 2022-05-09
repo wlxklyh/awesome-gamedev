@@ -50,6 +50,20 @@ void *CreateTestA() {
 }
 
 RegisterAction action("TestA",CreateTestA);
+
+
+
+
+
+
+struct TestStruct
+{
+    int V1;
+    double V2;
+    std::string V3;
+};
+
+
 //描述：
 int main() {
     TestA* testA = (TestA*)(ClassFactory::Instancce().GetClassbyName("TestA"));
