@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31314.256
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginTest", "Intermediate\ProjectFiles\PluginTest.vcxproj", "{6D21B618-557F-4132-BA69-51DF48C7DFE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizers", "Visualizers", "{1CCEC849-CC72-4C59-8C36-2F7C38706D4C}"
+	ProjectSection(SolutionItems) = preProject
+		C:\UE\Editor\Windows\Engine\Extras\VisualStudioDebugging\UE4.natvis = C:\UE\Editor\Windows\Engine\Extras\VisualStudioDebugging\UE4.natvis
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Editor|HoloLens = Debug Editor|HoloLens
+		Debug Editor|Mac = Debug Editor|Mac
+		Debug Editor|Win32 = Debug Editor|Win32
+		Debug Editor|Win64 = Debug Editor|Win64
+		Debug|HoloLens = Debug|HoloLens
+		Debug|Mac = Debug|Mac
+		Debug|Win32 = Debug|Win32
+		Debug|Win64 = Debug|Win64
+		DebugGame Editor|HoloLens = DebugGame Editor|HoloLens
+		DebugGame Editor|Mac = DebugGame Editor|Mac
+		DebugGame Editor|Win32 = DebugGame Editor|Win32
+		DebugGame Editor|Win64 = DebugGame Editor|Win64
+		DebugGame|HoloLens = DebugGame|HoloLens
+		DebugGame|Mac = DebugGame|Mac
+		DebugGame|Win32 = DebugGame|Win32
+		DebugGame|Win64 = DebugGame|Win64
+		Development Editor|HoloLens = Development Editor|HoloLens
+		Development Editor|Mac = Development Editor|Mac
+		Development Editor|Win32 = Development Editor|Win32
+		Development Editor|Win64 = Development Editor|Win64
+		Development|HoloLens = Development|HoloLens
+		Development|Mac = Development|Mac
+		Development|Win32 = Development|Win32
+		Development|Win64 = Development|Win64
+		Shipping|HoloLens = Shipping|HoloLens
+		Shipping|Mac = Shipping|Mac
+		Shipping|Win32 = Shipping|Win32
+		Shipping|Win64 = Shipping|Win64
+		Test|HoloLens = Test|HoloLens
+		Test|Mac = Test|Mac
+		Test|Win32 = Test|Win32
+		Test|Win64 = Test|Win64
+	EndGlobalSection
+	# Visual Assist Section
+	GlobalSection(44630d46-96b5-488c-8df926e21db8c1a3) = preSolution
+		ueSolution=true
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|HoloLens.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|Mac.ActiveCfg = Mac_Debug_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|Mac.Build.0 = Mac_Debug_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|Win32.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|Win64.ActiveCfg = Debug_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug Editor|Win64.Build.0 = Debug_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|HoloLens.ActiveCfg = Debug|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|HoloLens.Build.0 = Debug|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|HoloLens.Deploy.0 = Debug|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Mac.ActiveCfg = Mac_Debug|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Mac.Build.0 = Mac_Debug|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Win32.Build.0 = Debug|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Win64.ActiveCfg = Debug|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Debug|Win64.Build.0 = Debug|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|HoloLens.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|Mac.ActiveCfg = Mac_DebugGame_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|Mac.Build.0 = Mac_DebugGame_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|Win32.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|Win64.ActiveCfg = DebugGame_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame Editor|Win64.Build.0 = DebugGame_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|HoloLens.ActiveCfg = DebugGame|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|HoloLens.Build.0 = DebugGame|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|HoloLens.Deploy.0 = DebugGame|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Mac.ActiveCfg = Mac_DebugGame|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Mac.Build.0 = Mac_DebugGame|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Win32.ActiveCfg = DebugGame|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Win32.Build.0 = DebugGame|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Win64.ActiveCfg = DebugGame|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.DebugGame|Win64.Build.0 = DebugGame|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|HoloLens.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|Mac.ActiveCfg = Mac_Development_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|Mac.Build.0 = Mac_Development_Editor|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|Win32.ActiveCfg = Invalid|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|Win64.ActiveCfg = Development_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development Editor|Win64.Build.0 = Development_Editor|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|HoloLens.ActiveCfg = Development|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|HoloLens.Build.0 = Development|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|HoloLens.Deploy.0 = Development|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Mac.ActiveCfg = Mac_Development|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Mac.Build.0 = Mac_Development|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Win32.ActiveCfg = Development|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Win32.Build.0 = Development|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Win64.ActiveCfg = Development|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Development|Win64.Build.0 = Development|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|HoloLens.ActiveCfg = Shipping|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|HoloLens.Build.0 = Shipping|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|HoloLens.Deploy.0 = Shipping|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Mac.ActiveCfg = Mac_Shipping|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Mac.Build.0 = Mac_Shipping|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Win32.ActiveCfg = Shipping|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Win32.Build.0 = Shipping|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Win64.ActiveCfg = Shipping|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Shipping|Win64.Build.0 = Shipping|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|HoloLens.ActiveCfg = Test|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|HoloLens.Build.0 = Test|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|HoloLens.Deploy.0 = Test|arm64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Mac.ActiveCfg = Mac_Test|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Mac.Build.0 = Mac_Test|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Win32.ActiveCfg = Test|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Win32.Build.0 = Test|Win32
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Win64.ActiveCfg = Test|x64
+		{6D21B618-557F-4132-BA69-51DF48C7DFE8}.Test|Win64.Build.0 = Test|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

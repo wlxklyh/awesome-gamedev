@@ -4,17 +4,27 @@
 #include <iomanip>
 
 int main() {
-    std::mt19937_64 eng(124); //Use the 64-bit Mersenne Twister 19937 generator
-    //and seed it with entropy.
+    //(1)随机种子 然后随机出long long的数据
+    {
+        std::cout << "======random long long\n";
+        std::mt19937_64 eng(124);
+        std::uniform_int_distribution<unsigned long long> distr;
+        //Generate random numbers
+        for (int n = 0; n < 10; n++)
+            std::cout << distr(eng) << '\n';
+        std::cout << std::endl;
+    }
 
-    //Define the distribution, by default it goes from 0 to MAX(unsigned long long)
-    //or what have you.
-    std::uniform_int_distribution<unsigned long long> distr;
+    //(2)随机种子 然后随机出double的数据
+    {
+        std::cout << "======random double\n";
+        std::mt19937_64 eng(124);
+        std::uniform_int_distribution<unsigned> u(0, 100);
 
-    //Generate random numbers
-    for (int n = 0; n < 40; n++)
-        std::cout << distr(eng) << '\n';
-    std::cout << std::endl;
+        for(int i=0; i<10; ++i)
+            std::cout<<u( eng)<<std::endl;
+    }
+
 
     //poisson_distribution
 //    const int nrolls = 10000; // number ofexperiments

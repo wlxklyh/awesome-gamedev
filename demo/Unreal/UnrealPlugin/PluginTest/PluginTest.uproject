@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{9DCED8B5-4C98-83CF-F683-64A59C5003FD}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "PluginTest",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
