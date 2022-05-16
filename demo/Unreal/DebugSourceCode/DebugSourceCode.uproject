@@ -1,0 +1,12 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{D46E4AE8-4AA4-22C9-E79F-CF9A84E0437C}",
+	"Category": "",
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "RenderDocPlugin",
+			"Enabled": true
+		}
+	]
+}
