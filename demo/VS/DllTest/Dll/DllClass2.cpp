@@ -26,6 +26,11 @@ int DllClass2::GetValue1()
 	return 1;
 }
 
+//int DllClass2::GetValue2()
+//{
+//	return 2;
+//}
+
 int DllClass2::GetValue()
 {
 	return Value;

@@ -42,6 +42,7 @@ int main()
     dllApi->GetValue();
     std::cout << dllApi->GetValue() << "\n";
     delete dllApi;
+    //有个很有趣的问题 把GetValue2注释去掉 然后去编译dll 但是Exe不重编 运行的时候 会输出的是2
 }
 
 

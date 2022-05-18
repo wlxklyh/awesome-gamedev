@@ -12,6 +12,7 @@ public:
 	int Value;
 	int GetValue0() override;
 	int GetValue1() override;
+	//int GetValue2() override;
 	int GetValue() override;
 };
 
