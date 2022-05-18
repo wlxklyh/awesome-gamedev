@@ -3,7 +3,7 @@
 #ifdef DLLCLASSLIBRARY_EXPORT 
 #define DLLCLASSAPI   __declspec(dllexport)
 #else 
-#define DLLCLASSAPI   __declspec(dllimport)
+#define DLLCLASSAPI  
 #endif  
 
 

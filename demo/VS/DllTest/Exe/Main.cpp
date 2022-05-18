@@ -9,8 +9,8 @@ int main()
 {
     //////////== __declspec(dllexport)
     //（1）普通成员变量 只要在dll工程有__declspec(dllexport)就可以了
-    //DllClass1 dllClass1(123);
-    //std::cout << dllClass1.GetValue() << "\n";
+    DllClass1 dllClass1(123);
+    std::cout << dllClass1.GetValue() << "\n";
     
     //（2）静态成员变量
     // dllexport dllimport
