@@ -139,10 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dll.cpp" />
+    <ClCompile Include="DllClass1.cpp" />
+    <ClCompile Include="DllClass2.cpp" />
+    <ClCompile Include="DllMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dll.h" />
+    <ClInclude Include="DllClass1.h" />
+    <ClInclude Include="DllClass2.h" />
+    <ClInclude Include="iDllApi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
