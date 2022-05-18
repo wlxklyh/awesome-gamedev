@@ -10,10 +10,22 @@ class DLLCLASSAPI Config
 {
 };
 
-class  DllClass
+class  DLLCLASSAPI DllClass
 {
 public:
 	DllClass(int tmp);
 	int Value;
-	int GetValue();
-};
+	int GetValue(); 
+
+	
+
+	static int GetStaticValue()
+	{
+		return iStaticValue;
+	}
+private:
+	static int iStaticValue;
+}; 
+
+int DllClass::iStaticValue = 10;
+

@@ -8,6 +8,8 @@ int main()
     if (c != NULL) {
         c->GetValue();
     }
+
+    std::cout << DllClass::GetStaticValue() << "\n";
     //DllClass dllClass(123);
     //std::cout << dllClass.GetValue() << "\n";
 }

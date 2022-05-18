@@ -8,6 +8,8 @@ DllClass::DllClass(int tmp)
 	Value = tmp;
 }
 
+
+
 int DllClass::GetValue()
 {
 	return Value;
