@@ -7,6 +7,8 @@
 
 
 struct iDllApi {
+	virtual int GetValue0() = 0;
+	virtual int GetValue1() = 0;
 	virtual int GetValue() = 0;
 };
 

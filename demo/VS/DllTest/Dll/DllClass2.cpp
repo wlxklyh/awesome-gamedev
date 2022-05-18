@@ -15,6 +15,17 @@ DllClass2::DllClass2(int tmp)
 }
 
 
+int DllClass2::GetValue0()
+{
+	return 0;
+}
+
+
+int DllClass2::GetValue1()
+{
+	return 1;
+}
+
 int DllClass2::GetValue()
 {
 	return Value;
