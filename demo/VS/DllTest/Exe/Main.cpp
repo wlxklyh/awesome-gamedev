@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "DllClass1.h"
-#include "iDllApi.h"
+//#include "iDllApi.h"
 
 
 
@@ -37,11 +37,11 @@ int main()
 
     //////////== 抽象类+获取抽象类的函数导出
     //查看汇编的代码 https://blog.csdn.net/chenlycly/article/details/121046234
-    int value = (int)GetDllClass2;
-    iDllApi * dllApi = GetDllClass2(123);
-    dllApi->GetValue();
-    std::cout << dllApi->GetValue() << "\n";
-    delete dllApi;
+    //int value = (int)GetDllClass2;
+    //iDllApi * dllApi = GetDllClass2(123);
+    //dllApi->GetValue();
+    //std::cout << dllApi->GetValue() << "\n";
+    //delete dllApi;
     //有个很有趣的问题 把GetValue2注释去掉 然后去编译dll 但是Exe不重编 运行的时候 会输出的是2
 }
 

@@ -1,13 +1,8 @@
 #pragma once
 
-#ifdef DLLCLASSLIBRARY_EXPORT 
-#define DLLCLASSAPI   __declspec(dllexport)
-#else 
-#define DLLCLASSAPI  
-#endif  
+#include "iDllApi.h"
 
-
-class  DLLCLASSAPI DllClass1
+class  __declspec(dllexport) DllClass1
 {
 public:
 	DllClass1(int tmp);
