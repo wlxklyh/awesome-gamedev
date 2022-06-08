@@ -3,7 +3,7 @@
 #include "DllClass2.h"
 
 
-extern DLLCLASSAPI  iDllApi* GetDllClass2(int tmp)
+extern  iDllApi* GetDllClass2(int tmp)
 {
 	return new DllClass2(tmp);
 }
