@@ -13,4 +13,4 @@ struct iDllApi {
 	virtual int GetValue() = 0;
 };
 
- iDllApi*  GetDllClass2(int tmp);
+DLLCLASSAPI iDllApi*  GetDllClass2(int tmp);
