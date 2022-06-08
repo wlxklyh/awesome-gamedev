@@ -1,0 +1,6 @@
+﻿  DllClass1.cpp
+  DllClass2.cpp
+  DllMain.cpp
+  正在生成代码...
+    正在创建库 D:\myworkspace\github\proj\awesome-gamedev\demo\VS\DllTest\Debug\Dll.lib 和对象 D:\myworkspace\github\proj\awesome-gamedev\demo\VS\DllTest\Debug\Dll.exp
+  Dll.vcxproj -> D:\myworkspace\github\proj\awesome-gamedev\demo\VS\DllTest\Debug\Dll.dll
