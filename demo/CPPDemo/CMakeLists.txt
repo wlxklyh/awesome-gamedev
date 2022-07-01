@@ -37,6 +37,9 @@ foreach (FOLDER_PATH ${SRC_DEMO_DIR})
     MESSAGE(${FOLDER_NAME})
     file(GLOB_RECURSE each_target_file_list ${FOLDER_PATH}/*.*)
     add_executable(${FOLDER_NAME} ${each_target_file_list})
+    if(FOLDER_PATH MATCHES "032_Std_move")
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Od")
+    endif()
 endforeach ()
 
 #（3）设置可执行的文件 放在哪个目录
