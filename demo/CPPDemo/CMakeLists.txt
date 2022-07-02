@@ -38,7 +38,7 @@ foreach (FOLDER_PATH ${SRC_DEMO_DIR})
     file(GLOB_RECURSE each_target_file_list ${FOLDER_PATH}/*.*)
     add_executable(${FOLDER_NAME} ${each_target_file_list})
     if(FOLDER_PATH MATCHES "032_Std_move")
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Od")
+        #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Od")
     endif()
 endforeach ()
 
