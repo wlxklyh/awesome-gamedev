@@ -69,8 +69,8 @@ Shader "Universal Render Pipeline/Lit"
             // no LightMode tag are also rendered by Universal Render Pipeline
             Name "ForwardLit"
             Tags{"LightMode" = "UniversalForward"}
-
-            Blend[_SrcBlend][_DstBlend]
+ 
+            Blend[_SrcBlend][_DstBlend] 
             ZWrite[_ZWrite]
             Cull[_Cull]
 

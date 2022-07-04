@@ -140,7 +140,29 @@ half4 LitPassFragment(Varyings input) : SV_Target
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _Surface);
 
-    return color;
+
+    half4 BlendColor;
+    #ifdef _MAIN_LIGHT_SHADOWS_CASCADE
+    half cascadeIndex = ComputeCascadeIndex(inputData.positionWS);
+    #else
+    half cascadeIndex = 0;
+    #endif
+    BlendColor = half4(0,0,0,1);
+    if(cascadeIndex == 0)
+    {
+        BlendColor.r = 1;
+    }else if(cascadeIndex == 1)
+    {
+        BlendColor.g = 1;
+    }else if(cascadeIndex == 2)
+    {
+        BlendColor.b = 1;
+    }else if(cascadeIndex == 3)
+    {
+        BlendColor.rg = 1;
+    }
+
+    return color ;
 }
 
 #endif

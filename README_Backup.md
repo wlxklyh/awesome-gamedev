@@ -334,7 +334,6 @@ https://blog.csdn.net/qjh5606/article/details/118034556
 |C++ Trick|简述|链接|推荐|
 |-|-|-|-|
 |打印Include树|vs里面右键属性->配置属性->C/C++->高级->显示包含文件||:star::star::star:|
-|预处理文件|.i文件(vs里面右键属性->配置属性->C/C++->预处理器->预处理到文件（是）) include则是拷贝过来 编译生成obj(vs可以设置生成asm) obj是二进制|[视频链接](https://www.bilibili.com/video/BV1vE41187dW/)|:star::star:|
 |C或CPP头文件包含的原理和方法|讲解include会出现的问题和解决方案：pragma once、前置申明、分离h cpp、指针|[视频链接](https://www.bilibili.com/video/BV13V411o7Dn?from=search&seid=3371249028709429576)|:star::star:|
 
 
