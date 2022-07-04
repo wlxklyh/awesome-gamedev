@@ -1,35 +1,27 @@
 ﻿#include <iostream>
 using namespace std;
 
-namespace Enlighten
+struct A
 {
+    int a0 = 0;
+    int a1 = 0;
+    int a2 = 0;
+    int a3 = 0;
+};
 
-}
-
-class TestVersion
+struct B:A
 {
-public:
-    int                                         GetEnlightenVersion() const
-    {
-        static const int version =
-                Enlighten::Version::InputWorkspace +
-                Enlighten::Version::RadSystemCore +
-                Geo::Version::GeoRGBXTextureFile +
-
-                //Naming is not consistent, AlbedoWorkspaceMaterialData maps to ClusterAlbedoWorkspaceMaterialData
-                Enlighten::Version::AlbedoWorkspaceMaterialData +
-
-                Enlighten::Version::RadProbeSetCore +
-                Enlighten::Version::VisibilityData;
-
-        return version;
-    }
+    int a0 = 1;
+    int a1 = 1;
+    int a2 = 1;
+    int a3 = 1;
 
 };
 
-
 //描述：
 int main() {
-    print()
+    B b;
+    cout<<sizeof(B);
+    cout<<sizeof(A);
     return 0;
 }

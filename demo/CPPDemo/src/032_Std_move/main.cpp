@@ -103,6 +103,12 @@ int main() {
         AVec1.push_back(a0);
 
         cout << "例子 emplace_back 和 push_back:" << endl;
+        cout << "emplace_back(std::move(a0)):" << endl;
+        AVec0.emplace_back(std::move(a0));
+        cout << "push_back(std::move(a0)):" << endl;
+        AVec1.push_back(std::move(a0));
+
+        cout << "例子 emplace_back 和 push_back:" << endl;
         cout << "emplace_back(A()):" << endl;
         AVec0.emplace_back(A());
         cout << "push_back(A()):" << endl;
@@ -181,28 +187,4 @@ int main() {
 
     cout <<""<< endl;
     cout<<"\n\n";
-//    A  c0 = A(1);            //默认构造函数
-//    A  c1 = c0;                 //拷贝构造函数
-//    A c2(c1);                   //拷贝构造函数
-//    c1 = c0;                        //赋值构造函数
-//    A&& c3 = std::move(c1);     //  无
-//
-//    vector<A> child_vec;
-//    child_vec.reserve(100);  //!!!!!!!!!!
-//    cout<<"============"<<endl;
-//    child_vec.emplace_back(c0);             //拷贝构造函数
-//    child_vec.emplace_back(std::move(c0));     //移动构造函数
-//
-//    cout<<"============"<<endl;
-//    child_vec.push_back(std::move(c0));         //移动构造函数
-//
-//
-//    int A0 = 10;
-//    int&& A1 = 10;
-//    int&& A2 = std::move(A0);
-//    cout<<"============  value"<<endl;
-//    cout<<A0<<endl;
-//    cout<<A1<<endl;
-//    cout<<A2<<endl;
-
 }
