@@ -88,7 +88,7 @@ int main() {
         //对比 emplace_back 和 push_back：整数2会调用带参数构造函数
         A  a0 = A(1);
         cout << "例子 emplace_back 和 push_back:" << endl;
-        cout << "emplace_back(2):" << endl;
+        cout << "emplace_back(1,2):" << endl;
         std::vector<A> AVec0;AVec0.reserve(100);
         AVec0.emplace_back(1,2);
         cout << "push_back(2):" << endl;
