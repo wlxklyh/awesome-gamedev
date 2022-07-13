@@ -77,6 +77,11 @@ int main() {
     cout << "结论：map的key重复 以第一个为准" << endl;
 
     cout<<int_2_str_map[1]<< endl;
+    cout<<int_2_str_map.erase(11)<< endl;
+    cout<<int_2_str_map.erase(1)<< endl;
+
+
+
     return 0;
 
 }
