@@ -10,7 +10,7 @@
 
 void main() {
         //(1)Calculate UV
-    vec2 uv = (gl_FragCoord.xy / iResolution.x)*vec2(0.5,0.5);
+    vec2 uv = (gl_FragCoord.xy / iResolution.x);
     if(uv.x>1.0 || uv.x<0.0 || uv.y>1.0 || uv.y<0.0)
     {
         gl_FragColor = vec4(0,0,0,1);
@@ -52,5 +52,6 @@ void main() {
     float grass_percent = BlurColor.y/Total;
     float base_percent = BlurColor.x/Total;
     vec4 tex0Color = smallrold_color * smallrold_percent + bigrold_color * bigrold_percent + grass_color * grass_percent + base_color * base_percent;
-    gl_FragColor = tex0Color;
+    gl_FragColor = vec4(texture( iChannel0, uv).rgb,1.0);
 }
+    

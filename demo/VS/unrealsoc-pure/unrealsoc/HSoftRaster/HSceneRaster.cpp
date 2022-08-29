@@ -90,6 +90,11 @@ namespace HSoftRaster
             HPriInfo& priInfo = TilePrimitives.at(PriIdx);
             for (unsigned int index = 0; index < priInfo.IndexArray.size(); index += 3)
             {
+                //这个不用经过光栅 已经被否定了
+                if(priInfo.IsPass == false)
+                {
+                    continue;
+                }
                 int nowTriSize = (int)Triangles.size();
                 HTileTriID TriID(nowTriSize, priInfo.IsQuad);
                 int vertexIndex0 = priInfo.IndexArray[index];
@@ -210,14 +215,43 @@ namespace HSoftRaster
             RasterizeHalfTri(X0, X1, 0.0f, 0.0f, RowS, RowS, BinData, BinMinX);
         }
     }
-
+    
     bool HSceneRaster::RasterizeQuad(HTileTri& tileTri, uint64* BinData, int32 BinMinX, bool isCheck)
     {
+        // ^
+        // 2
+        // |
+        // |
+        // 0----------1>
+        
+        // ^
+        // C
+        // |
+        // |
+        // A----------B>
+
+        
         //遮挡物的屏幕坐标 A B C 注意这个顶点是排序了的 AddTriangle的时候对 ABC排序了 C的Y 最大  A的Y最小 
         MVector2& A = tileTri.V[0];
         MVector2& B = tileTri.V[1];
         MVector2& C = tileTri.V[2];
-
+        if(A.Y < 0)
+        {
+            return false;
+        }
+        if(C.Y > FRAMEBUFFER_HEIGHT - 1)
+        {
+            return false;
+        }
+        if(A.X < 0)
+        {
+            return false;
+        }
+        if(B.X > FRAMEBUFFER_HEIGHT - 1)
+        {
+            return false;
+        }
+        
         //最小行号 最大行号
         int32 RowMin = Max<int32>((int32)A.Y, 0);
         int32 RowMax = Min<int32>(FRAMEBUFFER_HEIGHT - 1, (int32)C.Y);
@@ -337,26 +371,69 @@ namespace HSoftRaster
         }
     }
 
-    void HSceneRaster::Combine(std::vector<HRasterFrameResults*> rasterResults)
+    void HSceneRaster::Combine(HRasterFrameResults& FrameResults1,CombineFun1 combineFun1)
     {
         HRasterFrameResults* Results = Processing.get();
-        for (int32 j = FRAMEBUFFER_HEIGHT - 1; j >= 0; --j)
+        for (int32 bin_index = 0; bin_index < BIN_NUM; ++bin_index)
         {
-            for (int32 i = 0; i < BIN_NUM; ++i)
+            for (int32 row = 0; row < FRAMEBUFFER_HEIGHT; row++)
             {
-                for (int r_Index = 0; r_Index < rasterResults.size(); r_Index++)
-                {
-                    if (rasterResults[r_Index] != NULL)
-                    {
-                        HFramebufferBin& Bin = Results->Bins[i];
-                        HFramebufferBin& CombineBin = rasterResults[r_Index]->Bins[i];
-                        Bin.Data[j] |= CombineBin.Data[j];
-                    }
-                }
+                Results->Bins[bin_index].Data[row] = combineFun1(FrameResults1.Bins[bin_index].Data[row]);
             }
         }
     }
+    
+    void HSceneRaster::Combine(HRasterFrameResults& FrameResults1,HRasterFrameResults& FrameResults2,CombineFun2 combineFun2)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 bin_index = 0; bin_index < BIN_NUM; ++bin_index)
+        {
+            for (int32 row = 0; row < FRAMEBUFFER_HEIGHT; row++)
+            {
+                Results->Bins[bin_index].Data[row] = combineFun2(FrameResults1.Bins[bin_index].Data[row],FrameResults2.Bins[bin_index].Data[row]);
+            }
+        }
+    }
+    
+    void HSceneRaster::Combine(HRasterFrameResults& FrameResults1,HRasterFrameResults& FrameResults2,HRasterFrameResults& FrameResults3,CombineFun3 combineFun3)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 bin_index = 0; bin_index < BIN_NUM; ++bin_index)
+        {
+            for (int32 row = 0; row < FRAMEBUFFER_HEIGHT; row++)
+            {
+                Results->Bins[bin_index].Data[row] = combineFun3(FrameResults1.Bins[bin_index].Data[row],
+                                                                    FrameResults2.Bins[bin_index].Data[row],
+                                                                    FrameResults3.Bins[bin_index].Data[row]);
+            }
+        }
+    }
+    
+    void HSceneRaster::Combine(HRasterFrameResults& FrameResults1,HRasterFrameResults& FrameResults2,HRasterFrameResults& FrameResults3,HRasterFrameResults& FrameResults4,CombineFun4 combineFun4)
+    {
+        HRasterFrameResults* Results = Processing.get();
+        for (int32 bin_index = 0; bin_index < BIN_NUM; ++bin_index)
+        {
+            for (int32 row = 0; row < FRAMEBUFFER_HEIGHT; row++)
+            {
+                Results->Bins[bin_index].Data[row] = combineFun4(FrameResults1.Bins[bin_index].Data[row],
+                                                                    FrameResults2.Bins[bin_index].Data[row],
+                                                                    FrameResults3.Bins[bin_index].Data[row],
+                                                                    FrameResults4.Bins[bin_index].Data[row]);
+            }
+        }
+    }
+        
 
+    
+
+    bool HSceneRaster::CollisionTestPoint(HVector& point)
+    {
+        int row = int32(point.Y * FRAMEBUFFER_HEIGHT);
+        int col = int32(point.X * FRAMEBUFFER_HEIGHT);
+        return GetResult(row,col);
+    }
+    
     bool HSceneRaster::GetResult(int row, int col)
     {
         return (Processing->Bins[col/BIN_WIDTH].Data[row]) & ((1ull) << (col%BIN_WIDTH));
@@ -417,7 +494,7 @@ namespace HSoftRaster
         std::ofstream OutputFile;
         OutputFile.open(strFileName);
         OutputFile << "FScene:\n";
-        SerializationTArray(OutputFile, TilePrimitives);
+        //SerializationTArray(OutputFile, TilePrimitives);
         OutputFile.close();
     }
 
@@ -429,7 +506,7 @@ namespace HSoftRaster
         InputFile.ignore();
         std::string strTmp;
         getline(InputFile, strTmp);
-        DeserializationTArray(InputFile, TilePrimitives);
+        //DeserializationTArray(InputFile, TilePrimitives);
         InputFile.close();
     }
 
@@ -444,17 +521,35 @@ namespace HSoftRaster
                 const HFramebufferBin& Bin = Results->Bins[i];
                 uint64 RowData = Bin.Data[j];
 
-                colorLine.emplace_back(MVector(0, 0, 255));
-                for (int32 k = 1; k < BIN_WIDTH; k++)
+                // colorLine.emplace_back(MVector(0, 0, 255));
+                for (int32 k = 0; k < BIN_WIDTH; k++)
                 {
                     uint64 data = RowData & (1ll << k);
                     if (data > 0)
                     {
-                        colorLine.emplace_back(MVector(255, 255, 255));
+                        switch (Raster_ID)
+                        {
+                            case RASTER_BUILDING:
+                                colorLine.emplace_back(MVector(255, 0, 0));
+                                break;
+                            case RASTER_GRASS:
+                                colorLine.emplace_back(MVector(0, 255, 0));
+                                break;
+                            case RASTER_ROAD:
+                                colorLine.emplace_back(MVector(255, 255, 255));
+                                break;
+                            case RASTER_WATER:
+                                colorLine.emplace_back(MVector(0, 0, 255));
+                                break;
+                            default:
+                                colorLine.emplace_back(MVector(255, 255, 255));
+                                break;
+                        }
+                        
                     }
                     else
                     {
-                        colorLine.emplace_back(MVector(89, 89, 89));
+                        colorLine.emplace_back(MVector(0, 0, 0));
                     }
                 }
             }

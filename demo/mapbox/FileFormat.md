@@ -30,7 +30,7 @@ pdf就是文件协议  就是protocol buff的意思
 
 ## 3、osm
 
-openstreetmap下载到的是明文格式，这个不确定是不是 mvt的结构
+openstreetmap下载到的是明文格式，这个不  确定是不是 mvt的结构
 ![](Img/2022-05-09-19-45-11.png)
 
 

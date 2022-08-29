@@ -7,13 +7,14 @@
 class DllClass2:public iDllApi
 {
 public:
+	Param data;
 	DllClass2(int tmp);
 	//（1）普通成员变量
 	int Value;
 	int GetValue0() override;
 	int GetValue1() override;
 	//int GetValue2() override;
-	int GetValue() override;
+	int GetValue(Param a) override;
 };
 
 

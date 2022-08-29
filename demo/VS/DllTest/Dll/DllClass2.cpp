@@ -31,8 +31,10 @@ int DllClass2::GetValue1()
 //	return 2;
 //}
 
-int DllClass2::GetValue()
+int DllClass2::GetValue(Param a)
 {
-	return Value;
+	data = a;
+	data.a = data.a + 11;
+	return data.a;
 }
 

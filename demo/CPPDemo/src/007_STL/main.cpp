@@ -80,7 +80,13 @@ int main() {
     cout<<int_2_str_map.erase(11)<< endl;
     cout<<int_2_str_map.erase(1)<< endl;
 
+    //std string
+    cout<<"=====std string====="<< endl;
+    char buf[10];
+    string str("ABCDEFG");
+    strcpy(buf,str.c_str());
 
+    cout<<buf<< endl;
 
     return 0;
 

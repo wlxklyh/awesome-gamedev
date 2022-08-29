@@ -1,4 +1,5 @@
-# Ignore intermediate folders
+#UE proj
+Binaries/
 Intermediate/
 Saved/
 DerivedDataCache/
@@ -17,4 +18,19 @@ cmake-build-debug-visual-studio
 build
 
 #Unity
-
+Library
+library
+Temp
+temp
+Obj
+obj
+Build
+build
+Builds
+builds
+UserSettings
+usersettings
+MemoryCaptures
+memorycaptures
+Logs
+logs
