@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <stdio.h>
+#include <unordered_map>
 #include <map>
 #include <vector>
 #include <string>
@@ -48,6 +49,12 @@ struct A{
 
 //描述：
 int main() {
+    cout<<"=====std unordered_map====="<< endl;
+    std::unordered_map<int,bool>     m_poi_point_set;
+    cout << m_poi_point_set[1] << endl;
+    m_poi_point_set[1] = true;
+    cout << m_poi_point_set[1] << endl;
+
     //std::vector
     vector<A> Avec0;
     cout << "例子 vector" << endl;

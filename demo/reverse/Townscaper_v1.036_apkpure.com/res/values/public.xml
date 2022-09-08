@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="mipmap" name="app_icon" id="0x7f010000" />
+    <public type="mipmap" name="app_icon_round" id="0x7f010001" />
+    <public type="string" name="app_name" id="0x7f020000" />
+    <public type="string" name="game_view_content_description" id="0x7f020001" />
+    <public type="style" name="BaseUnityTheme" id="0x7f030000" />
+    <public type="style" name="UnityThemeSelector" id="0x7f030001" />
+    <public type="style" name="UnityThemeSelector.Translucent" id="0x7f030002" />
+    <public type="arm" name="arm_path" id="0x7f050000" />
+</resources>

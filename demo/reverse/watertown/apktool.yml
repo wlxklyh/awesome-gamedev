@@ -1,0 +1,28 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: com.hgkj.watertown.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- png
+- assets/bin/Data/data.unity3d
+- assets/bin/Data/sharedassets1.resource
+- assets/bin/Data/sharedassets2.resource
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '22'
+  targetSdkVersion: '29'
+sharedLibrary: false
+sparseResources: true
+unknownFiles:
+  stamp-cert-sha256: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.1
+versionInfo:
+  versionCode: '22'
+  versionName: '2.2'

@@ -125,7 +125,7 @@
 #### 光追
 
 从下面两篇文章总结下光追的方法
-- 基础点：https://blog.csdn.net/libing_zeng/article/details/77239332   
+- 基础点：https://blog.csdn.net/libing_zeng/article/details/77239332
 - 进阶点（后面的PSSMLT ME等没看）：https://zhuanlan.zhihu.com/p/72673165
 
 |光追类别|介绍|缺点|光线出发||

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="id" name="unitySurfaceView" id="0x7f010000" />
+    <public type="mipmap" name="app_icon" id="0x7f020000" />
+    <public type="mipmap" name="app_icon_round" id="0x7f020001" />
+    <public type="string" name="app_name" id="0x7f030000" />
+    <public type="string" name="game_view_content_description" id="0x7f030001" />
+    <public type="style" name="BaseUnityTheme" id="0x7f040000" />
+    <public type="style" name="UnityThemeSelector" id="0x7f040001" />
+    <public type="style" name="UnityThemeSelector.Translucent" id="0x7f040002" />
+    <public type="xml" name="splits0" id="0x7f050000" />
+    <public type="xml" name="network_security_config" id="0x7f050001" />
+    <public type="integer" name="google_play_services_version" id="0x7f070000" />
+    <public type="integer" name="status_bar_notification_info_maxnum" id="0x7f070001" />
+</resources>
