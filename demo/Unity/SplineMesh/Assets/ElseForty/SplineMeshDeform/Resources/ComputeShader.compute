@@ -1,0 +1,168 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+ 
+// #ifndef __QUATERNION_INCLUDED__
+#define __QUATERNION_INCLUDED__
+
+#define QUATERNION_IDENTITY float4(0, 0, 0, 1)
+
+    int  SplineVerticesCount;
+    int  MeshTrim;
+
+     struct _SplineStruct
+     {
+       float3  Position;
+       float4  Rotation;
+       float   Distance;
+       float   Scale;
+     };
+    StructuredBuffer<_SplineStruct>  SplineStruct;
+
+      struct _InputStruct
+     {
+        float3  vertex;
+     };
+      StructuredBuffer<_InputStruct>  InputStruct;  
+    
+
+      struct _OutputStruct
+     {
+        float3  vertex;
+     };
+     RWStructuredBuffer<_OutputStruct>  OutputStruct;  
+
+
+      float4 qmul(float4 q1, float4 q2)
+     {
+         return float4(
+             q2.xyz * q1.w + q1.xyz * q2.w + cross(q1.xyz, q2.xyz),
+             q1.w * q2.w - dot(q1.xyz, q2.xyz)
+         );
+     }
+     
+     // Vector rotation with a quaternion
+     // http://mathworld.wolfram.com/Quaternion.html
+     float3 rotate_vector(float3 v, float4 r)
+     {
+         float4 r_c = r * float4(-1, -1, -1, 1);
+         return qmul(r, qmul(float4(v, 0), r_c)).xyz;
+     }
+    
+     
+    float4 q_slerp(in float4 a, in float4 b, float t)
+    {
+        // if either input is zero, return the other.
+        if (length(a) == 0.0)
+        {
+            if (length(b) == 0.0)
+            {
+                return QUATERNION_IDENTITY;
+            }
+            return b;
+        }
+        else if (length(b) == 0.0)
+        {
+            return a;
+        }
+    
+        float cosHalfAngle = a.w * b.w + dot(a.xyz, b.xyz);
+    
+        if (cosHalfAngle >= 1.0 || cosHalfAngle <= -1.0)
+        {
+            return a;
+        }
+        else if (cosHalfAngle < 0.0)
+        {
+            b.xyz = -b.xyz;
+            b.w = -b.w;
+            cosHalfAngle = -cosHalfAngle;
+        }
+    
+        float blendA;
+        float blendB;
+        if (cosHalfAngle < 0.99)
+        {
+            // do proper slerp for big angles
+            float halfAngle = acos(cosHalfAngle);
+            float sinHalfAngle = sin(halfAngle);
+            float oneOverSinHalfAngle = 1.0 / sinHalfAngle;
+            blendA = sin(halfAngle * (1.0 - t)) * oneOverSinHalfAngle;
+            blendB = sin(halfAngle * t) * oneOverSinHalfAngle;
+        }
+        else
+        {
+            // do lerp if angle is really small.
+            blendA = 1.0 - t;
+            blendB = t;
+        }
+    
+        float4 result = float4(blendA * a.xyz + blendB * b.xyz, blendA * a.w + blendB * b.w);
+        if (length(result) > 0.0)
+        {
+            return normalize(result);
+        }
+        return QUATERNION_IDENTITY;
+    }
+    
+ 
+[numthreads(64,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadId)
+{
+    int i = id.x;
+    float3 verPosOnAxis   = InputStruct[i].vertex;
+    float  verDistOnZAxis = InputStruct[i].vertex.z;
+ 
+      //Mesh triming
+
+    float branchDistance= SplineStruct[ SplineVerticesCount-1].Distance;
+     if ( MeshTrim == 1)
+    {
+        if (verDistOnZAxis >= 0) verPosOnAxis.z = 0;
+    }
+    else if ( MeshTrim ==2)
+    {
+        if (verDistOnZAxis <= branchDistance) verPosOnAxis.z = 0;
+        if (verDistOnZAxis >= branchDistance) verPosOnAxis.z -=branchDistance;
+    }
+    else if ( MeshTrim == 3)
+    {
+        verPosOnAxis.z = 0;
+    }
+    else
+    {
+        if (verDistOnZAxis >= 0 && verDistOnZAxis <= branchDistance) verPosOnAxis.z = 0;
+        if (verDistOnZAxis >= branchDistance) verPosOnAxis.z -=branchDistance;
+    }
+ 
+   int index = 0;
+   for (int n = SplineVerticesCount-2; n >= 0;n--)
+   {
+       if (verDistOnZAxis >=  SplineStruct[n].Distance)
+       {
+           index =n;
+           break;
+       }
+   }
+   
+   int a = index;
+   int b = index + 1;
+   
+   float3 vertexA =  SplineStruct[a].Position;
+   float3 vertexB =  SplineStruct[b].Position;
+   
+   float vertexDistanceA =  SplineStruct[a].Distance;
+   float vertexDistanceB =  SplineStruct[b].Distance;
+   
+   float4 vertexRotationA =  SplineStruct[a].Rotation;
+   float4 vertexRotationB =  SplineStruct[b].Rotation;
+   
+   float t= clamp((verDistOnZAxis-vertexDistanceA)/(vertexDistanceB-vertexDistanceA),0,1);
+   //vertex output data
+   float3 outputVertexPosition= lerp(vertexA, vertexB, t);
+   float4 outputVertexRotation= q_slerp(  vertexRotationA,   vertexRotationB, t);
+ 
+   float3 r= rotate_vector(verPosOnAxis,outputVertexRotation);
+   float3 p= outputVertexPosition;
+   OutputStruct[i].vertex=r* SplineStruct[a].Scale+p;
+ }
+ 
