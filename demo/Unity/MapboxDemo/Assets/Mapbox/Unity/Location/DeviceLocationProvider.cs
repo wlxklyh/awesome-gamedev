@@ -317,11 +317,11 @@ namespace Mapbox.Unity.Location
 							double latDiff = -(_lastPositions[i].x - _lastPositions[i - 1].x);
 							double lngDiff = _lastPositions[i].y - _lastPositions[i - 1].y;
 							// +90.0 to make top (north) 0°
-							double heading = (Math.Atan2(latDiff, lngDiff) * 180.0 / Math.PI) + 90.0f;
-							// stay within [0..360]° range
-							if (heading < 0) { heading += 360; }
-							if (heading >= 360) { heading -= 360; }
-							lastHeadings[i - 1] = (float)heading;
+							// double heading = (Math.Atan2(latDiff, lngDiff) * 180.0 / Math.PI) + 90.0f;
+							// // stay within [0..360]° range
+							// if (heading < 0) { heading += 360; }
+							// if (heading >= 360) { heading -= 360; }
+							// lastHeadings[i - 1] = (float)heading;
 						}
 
 						_userHeadingSmoothing.Add(lastHeadings[0]);

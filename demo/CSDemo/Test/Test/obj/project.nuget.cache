@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7NTsz2gkgowYLsGfWy2ONNfseA94sZMnvMhnBO1hRpfoaCTdvCjlk5zPzShYFr0ran7YugPRNaQEGkNxH9ERHg==",
+  "dgSpecHash": "6Itip5lnar3XrdsIVLduuUzFZyyuL4u11MdJwQXA1SS4A6eZ9n5hqkY384/l/GZgAWUpsa65e1/d+kFHSC1chQ==",
   "success": true,
   "projectFilePath": "D:\\myworkspace\\github\\proj\\awesome-gamedev\\demo\\CSDemo\\Test\\Test\\Test.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\NH50\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512"
+  ],
   "logs": []
 }
