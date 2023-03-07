@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.7)
 # 指定C++20 学习C++
-set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD 17)
 set(NAME CPPDemo)
 project(CPPDemo)
+
 
 #=====
 macro(PrintList elements preStr)
@@ -36,7 +37,12 @@ foreach (FOLDER_PATH ${SRC_DEMO_DIR})
     string(REGEX REPLACE ".*/(.*)" "\\1" FOLDER_NAME ${FOLDER_PATH})
     MESSAGE(${FOLDER_NAME})
     file(GLOB_RECURSE each_target_file_list ${FOLDER_PATH}/*.*)
-    add_executable(${FOLDER_NAME} ${each_target_file_list})
+	
+	# include的目录
+	include_directories(
+		${CMAKE_CURRENT_SOURCE_DIR}/include
+	)
+    add_executable(${FOLDER_NAME} ${each_target_file_list} src/901_NXMath/HWriteRead.hpp)
     if(FOLDER_PATH MATCHES "032_Std_move")
         #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Od")
     endif()

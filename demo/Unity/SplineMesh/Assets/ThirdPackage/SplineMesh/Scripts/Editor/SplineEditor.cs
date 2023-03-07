@@ -112,6 +112,9 @@ namespace SplineMesh {
                             selection.Position = newPosition;
                         }
                     }
+
+                    Handles.PositionHandle(spline.transform.TransformPoint(Vector3.one*10),
+                        spline.transform.rotation);
                     break;
                 case SelectionType.Direction:
                     var result = Handles.PositionHandle(spline.transform.TransformPoint(selection.Direction), Quaternion.identity);

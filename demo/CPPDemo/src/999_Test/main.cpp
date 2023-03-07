@@ -1,17 +1,32 @@
 ﻿#include <set>
 #include <iostream>
 #include <tuple>
+#include <vector>
 
-int main() {
-    // 创建一个std::set容器，并将两个键插入容器中
-    std::set<std::tuple<int, int>> edges;
-    edges.insert({1, 2});
-    edges.insert({2, 1}); // 此边与第一条边相同，因此不会被插入
-
-    // 访问容器中的所有元素
-    for (const auto& edge : edges) {
-        std::cout << std::get<0>(edge) << " " << std::get<1>(edge) << std::endl;
+struct A
+{
+public:
+    int a;
+    A(){
+        std::cout<<"Default Construct!"<<std::endl;
     }
+    A(int _a){
+        a = _a;
+        std::cout<<"Normal Construct!"<<std::endl;
+    }
+    A(A &&_a){
+        a = _a.a;
+        std::cout<<"Move Construct!"<<std::endl;
+    }
+};
+int main() {
+    std::vector<A> a_list;
 
+    std::cout<<a_list.capacity()<<std::endl;
+    a_list.push_back(1);
+    std::cout<<a_list.capacity()<<std::endl;
+    a_list.push_back(2);
+    std::cout<<a_list.capacity()<<std::endl;
+    a_list.push_back(3);
     return 0;
 }
