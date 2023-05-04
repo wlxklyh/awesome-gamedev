@@ -42,7 +42,7 @@ foreach (FOLDER_PATH ${SRC_DEMO_DIR})
 	include_directories(
 		${CMAKE_CURRENT_SOURCE_DIR}/include
 	)
-    add_executable(${FOLDER_NAME} ${each_target_file_list} src/901_NXMath/HWriteRead.hpp)
+    add_executable(${FOLDER_NAME} ${each_target_file_list} src/901_NXMath/HWriteRead.hpp src/016_octree/FVector.h)
     if(FOLDER_PATH MATCHES "032_Std_move")
         #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Od")
     endif()
