@@ -54,7 +54,8 @@ class GameEngine:
 
         def run_coroutine(self, coro):
             asyncio.create_task(coro)
-            handle = asyncio.get_running_loop()._ready[0]
+            # 立刻弹出来 run
+            handle = asyncio.get_running_loop()._ready.pop()
             handle._run()
 
         def run_once(self):
